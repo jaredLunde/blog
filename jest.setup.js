@@ -1,5 +1,10 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import "@testing-library/jest-dom/extend-expect";
+// This file is for setting up Jest test environments
+import '@testing-library/jest-dom/extend-expect'
+import serializer, {matchers} from '@dash-ui/jest'
+
+expect.extend(matchers)
+expect.addSnapshotSerializer(serializer)
+
+afterEach(() => {
+  jest.clearAllMocks()
+})

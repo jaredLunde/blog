@@ -1,24 +1,176 @@
 {
   "scripts": {
-    "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "jest",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
+    "build-storybook": "build-storybook",
+    "check-types": "tsc --noEmit",
+    "dev": "snowpack dev",
+    "down": "npx vercel@latest rm lunde",
+    "format": "prettier --write \"{,!(node_modules|build|coverage)/**/}*.{ts,tsx,js,jsx,md,mdx,yml,json,html}\"",
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "serve": "npm run build && npx serve@latest build",
+    "storybook": "IS_STORYBOOK=true start-storybook -p 6006",
+    "test": "jest --passWithNoTests",
+    "up": "npx vercel@latest",
+    "validate": "npm run check-types && npm run lint && npm run test -- --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run check-types"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{html,md,mdx,yml,json}": [
+      "prettier --write"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "lunde"
+    ],
+    "rules": {
+      "no-empty-pattern": "off",
+      "import/no-unresolved": "off",
+      "import/extensions": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.test.{ts,tsx}"
+        ],
+        "settings": {
+          "import/resolver": {
+            "node": {
+              "moduleDirectory": [
+                "node_modules",
+                "src/",
+                "test/"
+              ]
+            },
+            "jest": {
+              "jestConfigFile": "./package.json"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    ".build",
+    "build",
+    "test",
+    "web_modules"
+  ],
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src",
+      "test"
+    ],
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "./jest.setup.js"
+    ],
+    "snapshotSerializers": [
+      "@dash-ui/jest"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "^test-utils$": "./test/test-utils.tsx"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "bracketSpacing": false
   },
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
-  "devDependencies": {
+    "@accessible/button": "^2.0.2",
+    "@accessible/checkbox": "^4.0.1",
+    "@accessible/tabs": "^2.0.2",
+    "@accessible/using-keyboard": "^2.1.1",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "@dash-ui/jest": "^2.0.1",
+    "@dash-ui/mq": "^0.4.0",
+    "@dash-ui/react": "^0.9.1",
+    "@dash-ui/react-layout": "^0.8.3",
+    "@dash-ui/reset": "^0.3.1",
+    "@dash-ui/responsive": "^0.2.3",
+    "@dash-ui/styles": "^0.8.6",
+    "@mdx-js/mdx": "^1.6.16",
+    "@mdx-js/react": "^1.6.16",
+    "@react-hook/merged-ref": "^1.3.0",
+    "@react-hook/window-size": "^3.0.7",
     "@snowpack/app-scripts-react": "^1.8.3",
+    "@snowpack/plugin-react-refresh": "^2.0.2",
+    "@snowpack/plugin-webpack": "^2.0.2",
+    "@storybook/addon-a11y": "^6.0.0-rc.30",
+    "@storybook/addon-essentials": "^6.0.0-rc.30",
+    "@storybook/react": "^6.0.0-rc.30",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.3",
+    "@testing-library/react-hooks": "latest",
+    "@testing-library/user-event": "^12.1.1",
+    "@types/jest": "latest",
+    "@types/mdx-js__react": "^1.5.2",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "babel-jest": "^26.3.0",
+    "babel-plugin-dash": "^0.4.11",
+    "babel-plugin-inline-replace-variables": "^1.3.1",
+    "babel-plugin-macros": "^2.8.0",
+    "babel-plugin-optimize-react": "^0.0.4",
+    "cli-confirm": "latest",
+    "clsx": "^1.1.1",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^7.6.0",
+    "eslint-config-lunde": "^0.3.0",
+    "forward-ref-as": "^1.0.3",
+    "glob": "^7.1.6",
+    "history": "^5.0.0",
+    "husky": "latest",
+    "imagemin-mozjpeg": "^9.0.0",
     "jest": "^25.4.0",
+    "lint-staged": "latest",
+    "lundle": "latest",
+    "micromatch": "^4.0.2",
+    "minify-css.macro": "^1.0.10",
     "prettier": "^2.0.5",
+    "react": "^17.0.0-rc.0",
+    "react-dom": "^17.0.0-rc.0",
+    "react-helmet-async": "^1.0.6",
+    "react-is": "latest",
+    "react-router-dom": "^6.0.0-beta.0",
+    "react-test-renderer": "latest",
+    "sharp": "^0.25.4",
     "snowpack": "^2.7.6",
+    "snowpack-plugin-mdx": "^0.3.1",
+    "snowpack-plugin-resize-images": "^2.1.1",
+    "snowpack-plugin-svgr": "^0.1.2",
+    "standard-version": "^8.0.2",
     "typescript": "^3.9.7"
   }
 }
