@@ -1,5 +1,5 @@
 import React from 'react'
-import {OutlineButton, outlineButton} from '../'
+import {OutlineButton, outlineButton} from '../button'
 
 export default {
   title: 'Components/OutlineButton',

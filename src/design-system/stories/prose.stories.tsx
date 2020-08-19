@@ -1,5 +1,5 @@
 import React from 'react'
-import {Prose, prose} from '../'
+import {Prose, prose} from '../prose'
 // @ts-ignore
 import Dash from './__fixtures__/dash.mdx'
 

@@ -5,6 +5,8 @@ const glob = promisify(require('glob'))
 const {minify} = require('terser')
 
 module.exports = function plugin(_, terserOptions) {
+  const nameCache = {}
+
   return {
     name: 'snowpack-plugin-terser',
     async optimize({buildDirectory}) {
@@ -16,7 +18,30 @@ module.exports = function plugin(_, terserOptions) {
         try {
           await fs.writeFile(
             file,
-            (await minify(fileContents, {safari10: true})).code
+            (
+              await minify(fileContents, {
+                module: true,
+                toplevel: true,
+                nameCache,
+                compress: {
+                  arguments: true,
+                  booleans_as_integers: true,
+                  ecma: 2016,
+                  hoist_funs: true,
+                  keep_fargs: false,
+                  passes: 2,
+                  unsafe_arrows: true,
+                  unsafe_comps: true,
+                  unsafe_math: true,
+                  unsafe_methods: true,
+                  unsafe_proto: true,
+                  unsafe_undefined: true,
+                },
+                mangle: {
+                  toplevel: true,
+                },
+              })
+            ).code
           )
         } catch (err) {
           console.log(file)

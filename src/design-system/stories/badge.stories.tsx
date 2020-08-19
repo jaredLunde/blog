@@ -1,6 +1,8 @@
 import React from 'react'
 import {Column} from '@dash-ui/react-layout'
-import {Text, Button, Badge, badge} from '../'
+import {Badge, badge} from '../badge'
+import {Text} from '../text'
+import {Button} from '../button'
 
 export default {
   title: 'Components/Badge',

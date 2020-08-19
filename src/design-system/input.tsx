@@ -125,10 +125,10 @@ export const input = Object.assign(
     }),
 
     focused: ({color}) => ({
-      color: color.indigo600,
+      color: color.blue600,
 
       input: {
-        caretColor: color.indigo600,
+        caretColor: color.blue600,
         color: color.gray800,
       },
     }),
@@ -198,7 +198,7 @@ export const input = Object.assign(
           },
 
           ':last-child': {
-            flexGrow: 1,
+            flexGrow: '1',
             borderLeftWidth: 0,
             borderRadius: `0 ${radius.primary} ${radius.primary} 0`,
           },

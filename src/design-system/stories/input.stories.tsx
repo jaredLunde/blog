@@ -1,6 +1,7 @@
 import React from 'react'
 import {Column} from '@dash-ui/react-layout'
-import {Input, Button} from '../'
+import {Input} from '../input'
+import {Button} from '../button'
 
 export default {
   title: 'Forms/Input',

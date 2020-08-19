@@ -1,6 +1,7 @@
 import React from 'react'
 import {Column} from '@dash-ui/react-layout'
-import {Textarea, Button} from '../'
+import {Button} from '../button'
+import {Textarea} from '../textarea'
 
 export default {
   title: 'Forms/Textarea',

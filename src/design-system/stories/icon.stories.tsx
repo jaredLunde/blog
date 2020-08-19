@@ -1,5 +1,6 @@
 import React from 'react'
-import {Icon, tokens} from '../'
+import {Icon} from '../icon'
+import {tokens} from '../tokens'
 
 export default {
   title: 'Components/Icon',

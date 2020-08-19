@@ -14,6 +14,7 @@ export const styles = createStyles({
   themes,
   // This will mangle (minify) token names in "production" mode only.
   mangleTokens:
+    typeof import.meta !== 'undefined' &&
     import.meta.env.NODE_ENV !== 'production'
       ? false
       : // Prevents `var(--vh)` from being mangled. You can add any tokens in

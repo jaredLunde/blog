@@ -1,6 +1,7 @@
 import React from 'react'
 import {Grid} from '@dash-ui/react-layout'
-import {Badge, Alert, alert} from '../'
+import {Alert, alert} from '../alert'
+import {Badge} from '../badge'
 
 export default {
   title: 'Components/Alert',

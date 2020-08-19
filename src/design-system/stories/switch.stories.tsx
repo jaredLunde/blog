@@ -1,6 +1,7 @@
 import React from 'react'
 import {Column, Row} from '@dash-ui/react-layout'
-import {Switch, Text} from '../'
+import {Switch} from '../switch'
+import {Text} from '../text'
 
 export default {
   title: 'Forms/Switch',

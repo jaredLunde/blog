@@ -48,7 +48,7 @@ export const badge = styles({
 
   light: ({color}) => ({
     color: color.indigo700,
-    backgroundColor: color.blue100,
+    backgroundColor: color.indigo200,
   }),
 
   dark: ({color}) => ({

@@ -1,5 +1,6 @@
 import React from 'react'
-import {Text, text, tokens} from '../'
+import {Text, text} from '../text'
+import {tokens} from '../tokens'
 
 export default {
   title: 'Typography/Text',

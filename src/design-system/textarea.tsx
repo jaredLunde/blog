@@ -227,7 +227,7 @@ export const textarea = Object.assign(
           },
 
           ':last-child': {
-            flexGrow: 1,
+            flexGrow: '1',
             borderLeftWidth: 0,
             borderRadius: `0 ${radius.primary} ${radius.primary} 0`,
           },

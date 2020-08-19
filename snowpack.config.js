@@ -5,6 +5,7 @@ module.exports = {
     port: 3000,
   },
   buildOptions: {
+    minify: false,
     clean: true,
   },
   alias: {
@@ -49,5 +50,6 @@ module.exports = {
         },
       },
     ],
+    './snowpack/plugin-terser.js',
   ],
 }

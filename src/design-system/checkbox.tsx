@@ -102,15 +102,15 @@ export const checkbox = Object.assign(
 
     checked: mq({
       default: ({color}) => ({
-        backgroundColor: color.indigo700,
+        backgroundColor: color.blue700,
         boxShadow: 'none',
       }),
       hover: ({color}) => ({
         '&:hover': {
-          backgroundColor: color.indigo600,
+          backgroundColor: color.blue600,
         },
         '[disabled] ~ &:hover': {
-          backgroundColor: color.indigo700,
+          backgroundColor: color.blue700,
         },
       }),
     }),

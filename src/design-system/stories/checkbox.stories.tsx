@@ -1,6 +1,7 @@
 import React from 'react'
 import {Column, Row} from '@dash-ui/react-layout'
-import {Checkbox, Text} from '../'
+import {Checkbox} from '../checkbox'
+import {Text} from '../text'
 
 export default {
   title: 'Forms/Checkbox',

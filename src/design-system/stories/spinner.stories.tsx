@@ -1,5 +1,6 @@
 import React from 'react'
-import {Spinner, tokens} from '../'
+import {Spinner} from '../spinner'
+import {tokens} from '../tokens'
 
 export default {
   title: 'Components/Spinner',
