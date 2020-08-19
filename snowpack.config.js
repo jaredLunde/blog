@@ -50,6 +50,7 @@ module.exports = {
         },
       },
     ],
+    './snowpack/plugin-compile-web-modules.js',
     './snowpack/plugin-terser.js',
   ],
 }
