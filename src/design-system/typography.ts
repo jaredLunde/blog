@@ -108,7 +108,6 @@ export const typography = responsiveStyles({
         fontFamily: font.family.mono,
         color: color.blue900,
         backgroundColor: color.gray200,
-        boxShadow: elevation.inner,
         overflowX: 'auto',
       },
       'pre code': {

@@ -8,8 +8,10 @@ module.exports = {
     minify: false,
     clean: true,
   },
+  install: ['prism-react-renderer/themes/vsDark'],
   alias: {
     '@design-system': './src/design-system',
+    '@components': './src/components',
     '@assets': './src/assets',
   },
   exclude: [

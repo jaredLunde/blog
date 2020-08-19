@@ -14,6 +14,7 @@ module.exports = function plugin(_, terserOptions) {
         cwd: buildDirectory,
         absolute: true,
       })
+
       const fileContents = await Promise.all(
         files.map((file) => fs.readFile(file, 'utf-8'))
       )
@@ -55,10 +56,3 @@ module.exports = function plugin(_, terserOptions) {
     },
   }
 }
-/**
- * This is a mapping of glob patterns and their sharp methods
- * and options. See the Sharp documentation for a complete list of
- * methods and their respective options.
- *
- * @see https://sharp.pixelplumbing.com/api-output
- */

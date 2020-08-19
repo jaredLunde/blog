@@ -4,6 +4,7 @@ import type {BoxProps} from '@dash-ui/react-layout'
 import forwardRefAs from 'forward-ref-as'
 import clsx from 'clsx'
 import {styles, responsiveStyles} from './styles'
+import {mq} from './mq'
 import {typography} from './typography'
 import {em} from './utils'
 
@@ -64,14 +65,50 @@ const proseSpacing = responsiveStyles.one({
   img: {
     marginTop: em(32, 16),
     marginBottom: em(32, 16),
+    maxWidth: '100vw',
+
+    // @ts-expect-error
+    [mq('sm')]: {
+      width: '100%',
+      marginLeft: 0,
+    },
+    // @ts-expect-error
+    [mq('md')]: {
+      width: '132%',
+      marginLeft: '-16%',
+    },
   },
   video: {
     marginTop: em(32, 16),
     marginBottom: em(32, 16),
+    maxWidth: '100vw',
+
+    // @ts-expect-error
+    [mq('sm')]: {
+      width: '100%',
+      marginLeft: 0,
+    },
+    // @ts-expect-error
+    [mq('md')]: {
+      width: '132%',
+      marginLeft: '-16%',
+    },
   },
   figure: {
     marginTop: em(32, 16),
     marginBottom: em(32, 16),
+    maxWidth: '100vw',
+
+    // @ts-expect-error
+    [mq('sm')]: {
+      width: '100%',
+      marginLeft: 0,
+    },
+    // @ts-expect-error
+    [mq('md')]: {
+      width: '132%',
+      marginLeft: '-16%',
+    },
   },
   'figure > *': {
     marginTop: '0',
@@ -83,6 +120,18 @@ const proseSpacing = responsiveStyles.one({
   pre: {
     marginTop: em(24, 14),
     marginBottom: em(24, 14),
+    maxWidth: '100vw',
+
+    // @ts-expect-error
+    [mq('sm')]: {
+      width: '100%',
+      marginLeft: 0,
+    },
+    // @ts-expect-error
+    [mq('md')]: {
+      width: '132%',
+      marginLeft: '-16%',
+    },
   },
   ol: {
     marginTop: em(20, 16),

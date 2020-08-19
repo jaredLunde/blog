@@ -112,8 +112,8 @@
   },
   "proser": {
     "blog": {
-      "index": "./src/pages/posts/index.js",
-      "template": "./src/pages/posts/template.mdx"
+      "index": "./src/pages/blog-posts/index.js",
+      "template": "./src/pages/blog-posts/template.mdx"
     },
     "book-club": {
       "index": "./src/pages/books/index.js"
@@ -193,6 +193,7 @@
     "minimist": "^1.2.5",
     "open-editor": "^2.0.1",
     "prettier": "^2.0.5",
+    "prism-react-renderer": "^1.1.1",
     "proser": "^0.1.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

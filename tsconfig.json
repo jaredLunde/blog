@@ -12,7 +12,7 @@
     "baseUrl": ".",
     "paths": {
       "@design-system/*": ["src/design-system/*"],
-      "@pages": ["src/pages/index.tsx"],
+      "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"]
     }
   }
