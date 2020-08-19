@@ -5,12 +5,10 @@ module.exports = {
     port: 3000,
   },
   buildOptions: {
-    minify: false,
     clean: true,
   },
   alias: {
     '@design-system': './src/design-system',
-    '@pages': './src/pages/index.tsx',
     '@assets': './src/assets',
   },
   exclude: [
@@ -19,10 +17,9 @@ module.exports = {
     '**/.storybook/**',
     '**/coverage/**',
     '**/__fixtures__/**',
-    '**/*.@(spec|test|stories).@(ts|tsx|js|jsx|mjs)',
+    '**/*.@(spec|test|stories|d).@(ts|tsx|js|jsx|mjs)',
   ],
   plugins: [
-    '@snowpack/plugin-react-refresh',
     'snowpack-plugin-mdx',
     // ['./snowpack/plugin-proser', {include: ['**/posts/**']}],
     ['snowpack-plugin-svgr', {svgrOptions: {ref: true}}],

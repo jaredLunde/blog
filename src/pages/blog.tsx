@@ -19,7 +19,7 @@ function Blog() {
           <Post />
         ) : (
           page.map((post) => {
-            return React.createElement(post.component)
+            return React.createElement(post.component, {key: post.id})
           })
         )}
       </div>

@@ -12,7 +12,7 @@ import {Icon} from '@design-system/icon'
 import {Image} from '@design-system/image'
 import {styles} from '@design-system/styles'
 import {Tabs, TabList, Tab, tabs} from '@design-system/tabs'
-import {Pages} from '@pages'
+import {Pages} from './pages'
 
 export function App() {
   return (
@@ -73,7 +73,7 @@ const TabNav = () => {
   const matchesBookClub = useMatch('/book-club/*')
   const navigate = useNavigate()
   const active = matchesResume ? 1 : matchesBookClub ? 2 : 0
-  console.log('wtf??', tabNav())
+
   return (
     <Tabs
       active={active}

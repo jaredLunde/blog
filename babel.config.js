@@ -11,9 +11,6 @@ module.exports = (api) => {
       '@babel/preset-typescript',
     ].filter(Boolean),
     plugins: [
-      api.env('development') &&
-        !process.env.IS_STORYBOOK &&
-        'react-refresh/babel',
       '@babel/plugin-syntax-import-meta',
       'macros',
       api.env('production') && 'optimize-react',
