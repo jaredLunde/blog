@@ -53,5 +53,6 @@ declare module '*.ttf' {
 
 declare module '*.mdx' {
   const MDXComponent: (props) => JSX.Element
+  export const metadata: Record<string, any>
   export default MDXComponent
 }

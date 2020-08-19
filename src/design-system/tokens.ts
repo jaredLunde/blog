@@ -5,6 +5,7 @@ export const tokens = {
   vh: '100vh' as string,
 
   color: {
+    contentBgColor: '#f2faff',
     primary: '#2B6CB0',
     white: '#fff',
     black: '#000',

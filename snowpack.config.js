@@ -5,7 +5,13 @@ module.exports = {
     port: 3000,
   },
   buildOptions: {
-    minify: true,
+    minify: false,
+    clean: true,
+  },
+  alias: {
+    '@design-system': './src/design-system',
+    '@pages': './src/pages/index.tsx',
+    '@assets': './src/assets',
   },
   exclude: [
     '**/node_modules/**',
@@ -18,15 +24,16 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-react-refresh',
     'snowpack-plugin-mdx',
+    // ['./snowpack/plugin-proser', {include: ['**/posts/**']}],
     ['snowpack-plugin-svgr', {svgrOptions: {ref: true}}],
     [
-      './snowpack-plugin-resize-images',
+      './snowpack/plugin-resize-images',
       {
         '**/*.placeholder.jpg': {
           resize: {
             width: 32,
           },
-          blur: [3],
+          blur: [32 / 4],
         },
         '**/*.560.jpg': {
           resize: {

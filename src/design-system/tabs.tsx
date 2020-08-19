@@ -1,5 +1,6 @@
 import React from 'react'
 import * as Accessible from '@accessible/tabs'
+import clsx from 'clsx'
 import forwardRefAs from 'forward-ref-as'
 import type {AsProp} from 'forward-ref-as'
 import {resetVendorButtonStyles} from './button'
@@ -10,8 +11,8 @@ export const Tabs = Accessible.Tabs
 export interface TabsProps extends Accessible.TabsProps {}
 
 export const TabList = forwardRefAs<TabListProps, 'div'>(
-  ({as: As = 'div', children, ...props}, ref) => (
-    <div className={tabs()} ref={ref} {...props}>
+  ({as: As = 'div', children, className, ...props}, ref) => (
+    <div className={clsx(tabs(), className)} ref={ref} {...props}>
       <span className={tabs.border()} />
       <Accessible.TabList>
         <As className={tabs.list()}>{children}</As>
@@ -23,6 +24,7 @@ export const TabList = forwardRefAs<TabListProps, 'div'>(
 export interface TabListProps
   extends Omit<Accessible.TabListProps, 'children'> {
   as?: AsProp
+  className?: string
 }
 
 export const Tab = forwardRefAs<TabProps, 'button'>(

@@ -76,12 +76,6 @@ export const typography = responsiveStyles({
         borderStyle: 'solid',
         quotes: '"\\201C""\\201D""\\2018""\\2019"',
       },
-      'blockquote p:first-of-type::before': {
-        content: 'open-quote',
-      },
-      'blockquote p:last-of-type::after': {
-        content: 'close-quote',
-      },
       h1: {
         color: color.gray800,
         fontWeight: '700',

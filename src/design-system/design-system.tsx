@@ -50,7 +50,7 @@ export function DesignSystemGlobals() {
         outline: 'none',
       },
       body: {
-        backgroundColor: 'rgba(235, 248, 255, 0.63)',
+        backgroundColor: color.contentBgColor,
       },
       'body.using-keyboard *:focus,body.using-keyboard .focused': {
         boxShadow: elevation.outline,

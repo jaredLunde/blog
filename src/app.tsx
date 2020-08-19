@@ -1,20 +1,18 @@
 import React from 'react'
 import {Link, useMatch, useNavigate} from 'react-router-dom'
 import {Box, Column} from '@dash-ui/react-layout'
-import heroPlaceholderPhoto from './assets/bali.placeholder.jpg'
-import heroPhotoLg from './assets/bali.720.jpg'
-import heroPhotoSm from './assets/bali.560.jpg'
-import BlogIcon from './assets/blog-icon.svg'
-import ResumeIcon from './assets/resume-icon.svg'
-import BookClubIcon from './assets/book-club-icon.svg'
-import GitHubIcon from './assets/github-icon.svg'
-import InstagramIcon from './assets/instagram-icon.svg'
-import TwitterIcon from './assets/twitter-icon.svg'
-import {Text} from './design-system/text'
-import {Icon} from './design-system/icon'
-import {Image} from './design-system/image'
-import {Tabs, TabList, Tab, tabs} from './design-system/tabs'
-import {Pages} from './pages'
+import BlogIcon from '@assets/blog-icon.svg'
+import ResumeIcon from '@assets/resume-icon.svg'
+import BookClubIcon from '@assets/book-club-icon.svg'
+import GitHubIcon from '@assets/github-icon.svg'
+import InstagramIcon from '@assets/instagram-icon.svg'
+import TwitterIcon from '@assets/twitter-icon.svg'
+import {Text} from '@design-system/text'
+import {Icon} from '@design-system/icon'
+import {Image} from '@design-system/image'
+import {styles} from '@design-system/styles'
+import {Tabs, TabList, Tab, tabs} from '@design-system/tabs'
+import {Pages} from '@pages'
 
 export function App() {
   return (
@@ -23,16 +21,16 @@ export function App() {
         <Column
           gap='xl'
           pad={{min: 'lg', sm: ['lg', 'xl', 'lg']}}
-          width={{min: '100%', md: '80ch'}}
+          width={{min: '100%', md: '72ch'}}
         >
           <Column gap='xl' align='start' height='100%'>
             <Image
               alt='A picture of a beach in Nusa Dua, Bali'
-              placeholder={heroPlaceholderPhoto}
+              placeholder={import('@assets/bali.placeholder.jpg')}
               srcSet={{
-                min: heroPhotoSm,
-                md: heroPhotoLg,
-                lg: heroPhotoLg,
+                min: import('@assets/bali.560.jpg'),
+                md: import('@assets/bali.560.jpg'),
+                lg: import('@assets/bali.720.jpg'),
               }}
               width='100%'
               elevation='inner'
@@ -61,7 +59,7 @@ export function App() {
 
       <TabNav />
 
-      <Box width={{min: '100%', md: '80ch'}} pad={{min: 'lg', sm: 'xl'}}>
+      <Box width={{min: '100%', md: '72ch'}} pad={{min: 'lg', sm: 'xl'}}>
         <Pages />
       </Box>
     </Column>
@@ -75,7 +73,7 @@ const TabNav = () => {
   const matchesBookClub = useMatch('/book-club/*')
   const navigate = useNavigate()
   const active = matchesResume ? 1 : matchesBookClub ? 2 : 0
-
+  console.log('wtf??', tabNav())
   return (
     <Tabs
       active={active}
@@ -86,18 +84,18 @@ const TabNav = () => {
         index !== undefined && navigate(tabTo[index])
       }}
     >
-      <TabList as='nav'>
+      <TabList as='nav' className={tabNav()}>
         <Tab as={Link} index={0} to={tabTo[0]}>
           <Icon render={BlogIcon} />
           <span>Blog</span>
         </Tab>
-        <Tab as={Link} index={1} to={tabTo[1]}>
-          <Icon render={ResumeIcon} />
-          <span>Resume</span>
-        </Tab>
         <Tab as={Link} index={2} to={tabTo[2]}>
           <Icon render={BookClubIcon} />
           <span>Book club</span>
+        </Tab>
+        <Tab as={Link} index={1} to={tabTo[1]}>
+          <Icon render={ResumeIcon} />
+          <span>Resume</span>
         </Tab>
         <a href='https://github.com/jaredLunde' className={tabs.tab('icon')}>
           <Icon render={GitHubIcon} />
@@ -112,3 +110,10 @@ const TabNav = () => {
     </Tabs>
   )
 }
+
+const tabNav = styles.one(({color, z}) => ({
+  position: 'sticky',
+  top: 0,
+  backgroundColor: color.contentBgColor,
+  zIndex: z.max,
+}))

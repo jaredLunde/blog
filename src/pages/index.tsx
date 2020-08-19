@@ -5,23 +5,19 @@ import {Spinner} from '../design-system/spinner'
 const Blog = React.lazy(() => import('./blog'))
 const Resume = React.lazy(() => import('./resume'))
 const BookClub = React.lazy(() => import('./book-club'))
-const Topics = React.lazy(() => import('./topics'))
+const Tags = React.lazy(() => import('./tags'))
 
 export function Pages() {
   return (
     <React.Suspense
       fallback={
-        <Column width='100%' align='center'>
+        <Column width='100%' align='center' pad={['xl', 'none']}>
           <Spinner size='2em' />
         </Column>
       }
     >
       <Routes basename='/'>
-        <Route path='book-club/:slug?'>
-          <BookClub />
-        </Route>
-
-        <Route path='book-club'>
+        <Route path='book-club/*'>
           <BookClub />
         </Route>
 
@@ -29,11 +25,11 @@ export function Pages() {
           <Resume />
         </Route>
 
-        <Route path='blog/topic/:slug'>
-          <Topics />
+        <Route path='tag/:slug'>
+          <Tags />
         </Route>
 
-        <Route path='blog/:slug'>
+        <Route path='post/:slug'>
           <Blog />
         </Route>
 
