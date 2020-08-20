@@ -9,11 +9,17 @@ export type Post = {
   slug: string
   component: React.LazyExoticComponent<(props: any) => JSX.Element>
   metadata: {
-    title: string
-    description: string
+    title: React.ReactNode
+    description: React.ReactNode
+    timestamp: number
     image?: Promise<typeof import('*.jpg')>
     categories: string[]
     tags: string[]
+    readingTime: {
+      text: string
+      time: number
+      words: number
+    }
   }
 }
 

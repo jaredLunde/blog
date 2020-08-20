@@ -6,45 +6,18 @@ export const metadata = {
   },
   timestamp: 1597628866203,
   tags: ['proser', 'node', 'react'],
-  categories: ['oss', 'weekend builds'],
+  categories: ['OSS', 'Weekend Builds'],
 }
 
-import {Image} from '@design-system/image'
-
-<h1>{metadata.title}</h1>
-<blockquote>{metadata.description}</blockquote>
-
-```tsx
-import React from 'react'
-import useChange from '@react-hook/change'
-import {orderBy} from 'natural-orderby'
-import baseSlugify from 'slugify'
-
-export function usePaginate<T>(posts: T[], options: UsePaginateOptions = {}) {
-  const [page, setPage] = React.useState(
-    options.page ?? options.initialPage ?? 1
-  )
-  useChange(page, options.onChange || noop)
-  const currentPage = options.page ?? page
-  const postsPerPage = options.postsPerPage ?? 20
-  const pages = Math.ceil(posts.length / postsPerPage)
-  const start = postsPerPage * (currentPage - 1)
-  const bound = (value: number) => Math.min(Math.max(1, value), pages)
-
-  return [
-    posts.slice(start, start + postsPerPage),
-    {
-      page: currentPage,
-      pages,
-      set: (nextPage: number) => setPage(bound(nextPage)),
-      next: () => setPage((current) => bound(++current)),
-      prev: () => setPage((current) => bound(--current)),
-    },
-  ] as const
+```json
+{
+  "proser": {
+    "index": "./src/blog-posts"
+  }
 }
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at metus condimentum risus porttitor fringilla. Maecenas at mi blandit massa suscipit finibus sit amet ut enim. Vestibulum vitae ligula at turpis lobortis porttitor. Nulla eu urna quis enim mollis molestie ac sit amet massa. Nam molestie nec massa ut porttitor. Nulla at accumsan orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc aliquet elementum justo, sed gravida ipsum malesuada eu. Donec nunc dolor, efficitur in vehicula sit amet, mattis quis augue. In ut libero viverra, bibendum est a, mattis leo. Nulla dapibus enim leo, sed mollis elit congue non. Pellentesque maximus est orci, sed ullamcorper enim porttitor vel. Donec dignissim nunc fringilla sapien convallis, a porta tortor vulputate. Donec egestas semper velit, ac convallis augue sagittis in. Sed fermentum turpis vitae gravida volutpat. Pellentesque sem lorem, feugiat et egestas ac, tincidunt nec eros.
+Lorem ipsum dolor sit amet, `more code` consectetur adipiscing elit. Donec at metus condimentum risus porttitor fringilla. Maecenas at mi blandit massa suscipit finibus sit amet ut enim. Vestibulum vitae ligula at turpis lobortis porttitor. Nulla eu urna quis enim mollis molestie ac sit amet massa. Nam molestie nec massa ut porttitor. Nulla at accumsan orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc aliquet elementum justo, sed gravida ipsum malesuada eu. Donec nunc dolor, efficitur in vehicula sit amet, mattis quis augue. In ut libero viverra, bibendum est a, mattis leo. Nulla dapibus enim leo, sed mollis elit congue non. Pellentesque maximus est orci, sed ullamcorper enim porttitor vel. Donec dignissim nunc fringilla sapien convallis, a porta tortor vulputate. Donec egestas semper velit, ac convallis augue sagittis in. Sed fermentum turpis vitae gravida volutpat. Pellentesque sem lorem, feugiat et egestas ac, tincidunt nec eros.
 
 | Usefulness | Description |
 | ---------- | ----------- |
@@ -52,6 +25,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at metus condimen
 
 Quisque semper lacus in risus bibendum accumsan. Nullam iaculis erat id quam ornare tempus. Duis faucibus volutpat lorem, a suscipit turpis aliquet sit amet. Vivamus sit amet ex non dui iaculis pharetra ac congue urna. Nam sit amet urna a metus finibus porttitor in placerat diam. Sed nec purus finibus, ultrices velit a, varius velit. Vivamus faucibus enim mauris, eu pulvinar enim commodo at. Mauris id ullamcorper odio. Aenean interdum ultrices enim, dapibus consequat augue bibendum ac. Sed a quam eget risus volutpat interdum. Pellentesque in iaculis metus. Vestibulum vel condimentum ipsum, vitae tempor erat.
 
-<Image src={metadata.image} />
+<img src={metadata.image} alt='Image of Bali, Indonesia' />
 
 Nunc ac dolor in ex pharetra dapibus. Curabitur quis est pulvinar, facilisis nunc ut, congue libero. Phasellus eu posuere sem. Nam lacinia sagittis turpis quis tempor. Aliquam vestibulum, turpis lacinia pharetra posuere, ante erat suscipit mi, quis pellentesque ipsum nibh sed risus. Etiam pretium sapien vel erat blandit imperdiet. Nam finibus pharetra est. Integer eleifend, enim blandit iaculis hendrerit, ex sapien interdum arcu, eget efficitur sem purus eget enim. Nullam id purus erat. Nullam mollis enim sit amet rutrum fermentum. Aliquam consequat nulla ac lorem consequat, et molestie odio pulvinar. Suspendisse condimentum rutrum congue. Curabitur vulputate ut odio et ultrices. Vestibulum eu magna sit amet ante tristique faucibus.

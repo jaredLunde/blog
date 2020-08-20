@@ -9,7 +9,7 @@ export const tokens = {
     primary: '#2B6CB0',
     white: '#fff',
     black: '#000',
-    translucent: 'rgba(74, 85, 104, 0.08)',
+    translucent: 'rgba(74, 85, 104, 0.1)',
 
     gray100: '#F7FAFC',
     gray200: '#EDF2F7',

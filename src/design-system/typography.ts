@@ -98,8 +98,8 @@ export const typography = responsiveStyles({
       },
       code: {
         fontFamily: font.family.mono,
-        color: color.indigo700,
-        backgroundColor: color.blue100,
+        color: color.indigo800,
+        backgroundColor: color.indigo200,
         borderRadius: radius.primary,
         padding: '0.125em 0.25em',
         fontWeight: '400',

@@ -67,15 +67,13 @@ const proseSpacing = responsiveStyles.one({
     marginBottom: em(32, 16),
     maxWidth: '100vw',
 
-    // @ts-expect-error
-    [mq('sm')]: {
+    [mq('min')]: {
       width: '100%',
       marginLeft: 0,
     },
-    // @ts-expect-error
     [mq('md')]: {
-      width: '132%',
-      marginLeft: '-16%',
+      width: '124%',
+      marginLeft: '-12%',
     },
   },
   video: {
@@ -83,15 +81,13 @@ const proseSpacing = responsiveStyles.one({
     marginBottom: em(32, 16),
     maxWidth: '100vw',
 
-    // @ts-expect-error
-    [mq('sm')]: {
+    [mq('min')]: {
       width: '100%',
       marginLeft: 0,
     },
-    // @ts-expect-error
     [mq('md')]: {
-      width: '132%',
-      marginLeft: '-16%',
+      width: '124%',
+      marginLeft: '-12%',
     },
   },
   figure: {
@@ -99,15 +95,13 @@ const proseSpacing = responsiveStyles.one({
     marginBottom: em(32, 16),
     maxWidth: '100vw',
 
-    // @ts-expect-error
-    [mq('sm')]: {
+    [mq('min')]: {
       width: '100%',
       marginLeft: 0,
     },
-    // @ts-expect-error
     [mq('md')]: {
-      width: '132%',
-      marginLeft: '-16%',
+      width: '124%',
+      marginLeft: '-12%',
     },
   },
   'figure > *': {
@@ -122,15 +116,13 @@ const proseSpacing = responsiveStyles.one({
     marginBottom: em(24, 14),
     maxWidth: '100vw',
 
-    // @ts-expect-error
-    [mq('sm')]: {
+    [mq('min')]: {
       width: '100%',
       marginLeft: 0,
     },
-    // @ts-expect-error
     [mq('md')]: {
-      width: '132%',
-      marginLeft: '-16%',
+      width: '124%',
+      marginLeft: '-12%',
     },
   },
   ol: {

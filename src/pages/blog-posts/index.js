@@ -22,7 +22,51 @@ export const postsMap = {
       },
       timestamp: 1597628866203,
       tags: ['proser', 'node', 'react'],
-      categories: ['oss', 'weekend builds'],
+      categories: ['OSS', 'Weekend Builds'],
+      readingTime: {text: '3 min read', time: 126300, words: 421},
+    },
+  },
+
+  'setting-up-storybook-and-snowpack': {
+    id: 1,
+    slug: 'setting-up-storybook-and-snowpack',
+
+    component: /*#__PURE__*/ React.lazy(() =>
+      import('./1-setting-up-storybook-and-snowpack.mdx')
+    ),
+    metadata: {
+      title: 'Setting up Storybook in a Snowpack project',
+      description: /*#__PURE__*/ React.createElement(
+        React.Fragment,
+        null,
+        'In this post I cover how to make Storybook play nicely with Snowpack semantics like ',
+        /*#__PURE__*/ React.createElement('code', null, 'import.meta.env'),
+        ' instead of',
+        ' ',
+        /*#__PURE__*/ React.createElement('code', null, 'process.env')
+      ),
+      timestamp: 1597879288280,
+      tags: ['storybook', 'snowpack'],
+      categories: ['Frontend'],
+      readingTime: {text: '1 min read', time: 13800, words: 46},
+    },
+  },
+
+  'write-fewer-components': {
+    id: 2,
+    slug: 'write-fewer-components',
+
+    component: /*#__PURE__*/ React.lazy(() =>
+      import('./2-write-fewer-components.mdx')
+    ),
+    metadata: {
+      title: 'Write fewer components',
+      description:
+        'In which I offer an alternative to abstractions like styled-components, styled-system, and others that promote writing unique styles for every element.',
+      timestamp: 1597896907299,
+      tags: ['react', 'css', 'javascript'],
+      categories: ['Opinion', 'Frontend'],
+      readingTime: {text: '1 min read', time: 12300, words: 41},
     },
   },
 }

@@ -1,64 +1,36 @@
 import React from 'react'
 import {MDXProvider} from '@mdx-js/react'
 import {Link, useParams} from 'react-router-dom'
-import {Column, Row, Cluster} from '@dash-ui/react-layout'
-import {prose} from '@design-system/prose'
+import {Column, Row} from '@dash-ui/react-layout'
 import {Text} from '@design-system/text'
 import {Image} from '@design-system/image'
 import {Divider} from '@design-system/divider'
 import {styles} from '@design-system/styles'
-import {mq} from '@design-system/mq'
-import {useOrder, usePaginate, slugify} from 'proser'
+import {useOrder, usePaginate, useTag, slugify} from 'proser'
 import * as components from './blog-posts/components'
-import {posts, postsMap} from './blog-posts'
+import {posts as basePosts} from './blog-posts'
 import type {Post as PostType} from './blog-posts'
 
-function Blog() {
-  const {slug} = useParams() as {slug?: string}
-  const Post = slug && postsMap[slug]
+function Tagged() {
+  const {tag} = useParams() as {tag: string}
+  const {slug, posts} = useTag(basePosts, tag)
   const orderedPosts = useOrder(posts, 'desc')
   const [page, paginate] = usePaginate(orderedPosts)
 
   return (
     <MDXProvider components={components}>
-      {Post ? (
-        <Column as='article' gap='xl'>
-          {/* @ts-ignore */}
-          <Row as={Text} gap='md' variant='caption'>
-            <components.time>{Post.metadata.timestamp}</components.time>{' '}
-            <span aria-hidden>&mdash;</span>
-            <Row as='span' gap='sm'>
-              {Post.metadata.categories.map((category) => (
-                <React.Fragment key={category}>
-                  <Link to={`/posts/${slugify(category)}`}>{category}</Link>
-                </React.Fragment>
-              ))}
-            </Row>
-          </Row>
+      <Column gap='lg'>
+        <h1
+          style={{
+            textTransform: formattedTags[slug] ? undefined : 'capitalize',
+          }}
+        >
+          {formattedTags[slug] || slug}
+        </h1>
 
-          <Column gap='md'>
-            <h1>{Post.metadata.title}</h1>
-            <blockquote>{Post.metadata.description}</blockquote>
-          </Column>
+        <Divider />
 
-          <Column gap='lg'>
-            <div className={prose()}>
-              <Post.component />
-            </div>
-
-            <div>
-              <Cluster as='div' gap='sm' className={tags()}>
-                {Post.metadata.tags.map((tag) => (
-                  <React.Fragment key={tag}>
-                    <Link to={`/posts/tagged/${slugify(tag)}`}>{tag}</Link>
-                  </React.Fragment>
-                ))}
-              </Cluster>
-            </div>
-          </Column>
-        </Column>
-      ) : (
-        <Column gap='xl'>
+        <Column gap='xl' pad={['md', 'none', 'none']}>
           {page.map((post, i) => (
             <React.Fragment key={post.id}>
               <BlogPostItem post={post} />
@@ -66,13 +38,17 @@ function Blog() {
             </React.Fragment>
           ))}
         </Column>
-      )}
+      </Column>
     </MDXProvider>
   )
 }
 
+const formattedTags: Record<string, string> = {
+  javascript: 'JavaScript',
+  css: 'CSS',
+}
+
 function BlogPostItem({post}: {post: PostType}) {
-  console.log(post.metadata.description)
   return (
     <Column key={post.id} as='section' className={blogPostItem()} gap='lg'>
       {/* @ts-ignore */}
@@ -104,7 +80,6 @@ function BlogPostItem({post}: {post: PostType}) {
             />
           )}
         </Column>
-
         <Text color='indigo700'>
           Hear me out{' '}
           <Text color='gray800'>&middot; {post.metadata.readingTime.text}</Text>
@@ -132,33 +107,4 @@ const blogPostItem = Object.assign(
   }
 )
 
-const tags = styles.one(
-  mq({
-    default: ({color, font, hairline, radius, pad}) => ({
-      '> a': {
-        border: `${hairline} solid ${color.gray700}`,
-        color: color.gray700,
-        fontWeight: 'bold',
-        fontSize: 11 / 16 + 'rem',
-        borderRadius: radius.primary,
-        padding: `0 ${pad.sm}`,
-        textDecoration: 'none',
-        textTransform: 'uppercase',
-      },
-
-      '.using-keyboard &:focus > a': {
-        border: `${hairline} solid ${color.primary}`,
-        color: color.primary,
-      },
-    }),
-    hover: ({color, hairline}) => ({
-      '> a:hover': {
-        border: `${hairline} solid ${color.white}`,
-        color: color.white,
-        backgroundColor: color.indigo700,
-      },
-    }),
-  })
-)
-
-export default Blog
+export default Tagged
