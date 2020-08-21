@@ -2,7 +2,7 @@ import React from 'react'
 import Highlight, {defaultProps} from 'prism-react-renderer'
 import type {Language, PrismTheme} from 'prism-react-renderer'
 
-export function CodeBlock({language = 'tsx', children}: CodeBlockProps) {
+function CodeBlock({language = 'tsx', children}: CodeBlockProps) {
   return (
     <Highlight
       {...defaultProps}
@@ -102,3 +102,5 @@ const theme: PrismTheme = {
     },
   ],
 }
+
+export default CodeBlock

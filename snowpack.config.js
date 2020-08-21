@@ -8,10 +8,9 @@ module.exports = {
     minify: false,
     clean: true,
   },
-  install: ['prism-react-renderer/themes/vsDark'],
   alias: {
     '@design-system': './src/design-system',
-    '@components': './src/components',
+    '@hooks': './src/hooks',
     '@assets': './src/assets',
   },
   exclude: [
@@ -22,6 +21,7 @@ module.exports = {
     '**/__fixtures__/**',
     '**/*.@(spec|test|stories|d).@(ts|tsx|js|jsx|mjs)',
   ],
+  install: ['history'],
   plugins: [
     'snowpack-plugin-mdx',
     // ['./snowpack/plugin-proser', {include: ['**/posts/**']}],

@@ -14,6 +14,7 @@ module.exports = {
       'react-dom': require.resolve('react-dom'),
       '@assets': path.resolve(__dirname, '../src/assets/'),
       '@design-system': path.resolve(__dirname, '../src/design-system/'),
+      '@hooks': path.resolve(__dirname, '../src/hooks/'),
     }
     config.module.rules.push({
       test: /\.tsx?$/,

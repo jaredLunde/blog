@@ -2,7 +2,7 @@
 import React from 'react'
 import {Image} from '@design-system/image'
 import ago from 's-ago'
-import {CodeBlock} from './code-block'
+const CodeBlock = React.lazy(() => import('./code-block'))
 
 export function pre({children}: {children: React.ReactNode}) {
   return <React.Fragment children={children} />

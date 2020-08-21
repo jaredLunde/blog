@@ -10,6 +10,7 @@ export const tokens = {
     white: '#fff',
     black: '#000',
     translucent: 'rgba(74, 85, 104, 0.1)',
+    current: 'currentColor',
 
     gray100: '#F7FAFC',
     gray200: '#EDF2F7',

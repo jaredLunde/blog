@@ -1555,14 +1555,14 @@
   resolved "https://registry.yarnpkg.com/@dash-ui/mq/-/mq-0.4.1.tgz#9591cbb174f8af140d8f2ae723b3176db12c526e"
   integrity sha512-sJSt44idlIJltdSuBSTcTpdIihUXYIUK5LG1SdNc79A9cvjAJK7vOSpHZaoSuufbaniGCrFniut8jX2QnOHV6Q==
 
-"@dash-ui/react-layout@^0.8.3":
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/@dash-ui/react-layout/-/react-layout-0.8.3.tgz#037d53cc74590d16ae546e9988d7568bdf93c835"
-  integrity sha512-qCrVr+nGCKjkJyVwJj93MVU4zTd5Igzb6Bd2GLrSx/cRYg8mWoj/SyFIsGauxWApzrS3/iFOfbNnVetFkjkt+A==
+"@dash-ui/react-layout@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@dash-ui/react-layout/-/react-layout-0.8.4.tgz#0fd1b56b873cd956b6e7cd2bd313169c0f038891"
+  integrity sha512-vhx1eIK7yR2iWXDPDodBsN8tw1Y8n2fFOv6Dwc3vRrlJAKK2vxdqgIhQS2/4XyAwbZqFpf1lOwyEU68CMJ480g==
   dependencies:
     "@dash-ui/responsive" "^0.2.3"
     clsx "^1.1.1"
-    forward-ref-as "^1.0.1"
+    forward-ref-as "^1.0.4"
 
 "@dash-ui/react@^0.9.1":
   version "0.9.1"
@@ -1596,6 +1596,11 @@
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@dash-ui/stylis/-/stylis-1.0.5.tgz#a577b0f18cb34b63fcc04944395c43148ea7acda"
   integrity sha512-7G2I1tqfIcBNyegJeORLapdsfAVSQiuoyyp725K+FBSemWNOaVMTrtRE7us1HFbAN+CP1S88vSDcKcKxgNBuxw==
+
+"@dash-ui/transition@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@dash-ui/transition/-/transition-0.4.0.tgz#452fd1874101123ac22f575a15b85f07153968d6"
+  integrity sha512-4p6eALkUBqyIasYCoGy15p7F5WMLWUprntg0OPeE7psP5sPIfGzu0dCrYcrHlheuqstcjFmJq4PDxsWPU5Mdag==
 
 "@dash-ui/unitless@^2.0.0":
   version "2.0.0"
@@ -1703,6 +1708,23 @@
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
+
+"@essentials/memoize-one@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@essentials/memoize-one/-/memoize-one-1.1.0.tgz#98e7d425d1548921a4c0d2877a2bfe2d5adb8735"
+  integrity sha512-HMkuIkKNe0EWSUpZhlaq9+5Yp47YhrMhxLMnXTRnEyE5N4xKLspAvMGjUFdi794VnEF1EcOZFS8rdROeujrgag==
+
+"@essentials/raf@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@essentials/raf/-/raf-1.2.0.tgz#2755670021618433aa437453dc98ad4bc8436177"
+  integrity sha512-AWJvpprE2o7ATMb7HBYMVUVmPJBCt2wZp2rY7d+rAcNSMvzLbDepy9KFeqqrPZh+s9aIpbw1LgmuAW7kuRFgrQ==
+
+"@essentials/request-timeout@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@essentials/request-timeout/-/request-timeout-1.3.0.tgz#d479c521260a4efc43c30da6aea653ea407c30c0"
+  integrity sha512-lKZPhKScNFnR1MBnk4+sxshk46fpvdN+Uh1LlKWFO5g1ocuz4EcknNIL7tm/rsCAs/+xMWiBTwbDUvm+pDNlXw==
+  dependencies:
+    "@essentials/raf" "^1.2.0"
 
 "@icons/material@^0.2.4":
   version "0.2.4"
@@ -9082,10 +9104,10 @@ format@^0.2.0:
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
   integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
-forward-ref-as@^1.0.1, forward-ref-as@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/forward-ref-as/-/forward-ref-as-1.0.3.tgz#05bfa21b264c6328aff526fe0be4cbc18ae0f247"
-  integrity sha512-pqNKLtHIEKtHGKoc/3T0TGkn+epu36Jq107/fGTxVglH5k2/5uGOx4nz1EThhyfscJKC6Hc5d/2fK3oscMpnRA==
+forward-ref-as@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/forward-ref-as/-/forward-ref-as-1.0.4.tgz#3264856542a0c0c79471ea0f8451f84f316f84fa"
+  integrity sha512-AJs/TIsGi3EIpg4OprRcShKOaJ8gXoTxV7Y+n6x1q/oYBGo92Y7821mbkduo0ljQqutjMFxmjNmmufPcwwdrDw==
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -12486,6 +12508,17 @@ mini-css-extract-plugin@^0.9.0:
     schema-utils "^1.0.0"
     webpack-sources "^1.1.0"
 
+mini-virtual-list@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/mini-virtual-list/-/mini-virtual-list-0.3.1.tgz#034ca258d04f3a1202b099eb1aeb2ea7ec0e8157"
+  integrity sha512-P0gsdj97Ib5gCQx5OXusR8V6FMvw6kCBY6UxZHDSWC8v8ZpPdstXfNfCRXnspMfU+GtEL9NHFk8uliGsVpbkbg==
+  dependencies:
+    "@essentials/memoize-one" "^1.1.0"
+    "@essentials/request-timeout" "^1.3.0"
+    "@react-hook/event" "^1.2.2"
+    "@react-hook/passive-layout-effect" "^1.2.0"
+    "@react-hook/throttle" "^2.2.0"
+
 minify-css.macro@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/minify-css.macro/-/minify-css.macro-1.0.10.tgz#c97dd3e36b6e5bac4692463f9290baa1b085dc9d"
@@ -14226,10 +14259,10 @@ property-information@^5.0.0, property-information@^5.3.0:
   dependencies:
     xtend "^4.0.0"
 
-proser@^0.1.14:
-  version "0.1.14"
-  resolved "https://registry.yarnpkg.com/proser/-/proser-0.1.14.tgz#a26fd1936e95015092cbbb6ceb5d4598b859700b"
-  integrity sha512-U1dW4Dw12AjmkI+rM6v5xLzejSjY9XBoeV4+mWTrXO3KdZxXU7octBzCReyHgqzeJaT+08u9fX8UD3OEiuOFog==
+proser@^0.1.16:
+  version "0.1.16"
+  resolved "https://registry.yarnpkg.com/proser/-/proser-0.1.16.tgz#ed44645fb2cc4acf50871e09694464bd205f7593"
+  integrity sha512-82H429dbFLUlb5mkWq2a4qPIHR+/y3RSY/oLr90p30v+oP0ckMAtF4KG5jS5pXXbI7vRaCFo0FWjUlafmsNANQ==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/generator" "^7.11.0"

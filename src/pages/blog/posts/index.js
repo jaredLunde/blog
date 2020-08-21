@@ -21,7 +21,7 @@ export const postsMap = {
         return import('@assets/bali.720.jpg')
       },
       timestamp: 1597628866203,
-      tags: ['proser', 'node', 'react'],
+      tags: ['Proser', 'Node', 'React'],
       categories: ['OSS', 'Weekend Builds'],
       readingTime: {text: '3 min read', time: 126300, words: 421},
     },
@@ -46,7 +46,7 @@ export const postsMap = {
         /*#__PURE__*/ React.createElement('code', null, 'process.env')
       ),
       timestamp: 1597879288280,
-      tags: ['storybook', 'snowpack'],
+      tags: ['Storybook', 'Snowpack'],
       categories: ['Frontend'],
       readingTime: {text: '1 min read', time: 13800, words: 46},
     },
@@ -64,9 +64,25 @@ export const postsMap = {
       description:
         'In which I offer an alternative to abstractions like styled-components, styled-system, and others that promote writing unique styles for every element.',
       timestamp: 1597896907299,
-      tags: ['react', 'css', 'javascript'],
+      tags: ['React', 'CSS', 'JavaScript'],
       categories: ['Opinion', 'Frontend'],
       readingTime: {text: '1 min read', time: 12300, words: 41},
+    },
+  },
+  'in-defense-of-rolling-your-own': {
+    id: 3,
+    slug: 'in-defense-of-rolling-your-own',
+    component: /*#__PURE__*/ React.lazy(() =>
+      import('./3-in-defense-of-rolling-your-own.mdx')
+    ),
+    metadata: {
+      title: 'In defense of rolling your own ____',
+      description:
+        'Developers love to tell you not to reinvent the wheel. But what if you really, really want to?',
+      timestamp: 1597962733761,
+      tags: [],
+      categories: ['Opinion', 'Motivation'],
+      readingTime: {text: '1 min read', time: 13500, words: 45},
     },
   },
 }

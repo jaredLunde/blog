@@ -191,7 +191,7 @@ export const typography = responsiveStyles({
         lineHeight: round(40 / 36),
       },
       h2: {
-        fontSize: em(21, 16),
+        fontSize: em(20, 16),
         lineHeight: round(32 / 24),
       },
       h3: {
@@ -259,12 +259,12 @@ export const typography = responsiveStyles({
     },
     md: {
       h1: {
-        fontSize: em(32, 16),
+        fontSize: em(30, 16),
         lineHeight: round(40 / 36),
       },
       h2: {
-        fontSize: em(24, 16),
-        lineHeight: round(32 / 24),
+        fontSize: em(22, 16),
+        lineHeight: round(34 / 24),
       },
       h3: {
         fontSize: em(20, 16),
