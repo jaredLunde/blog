@@ -29,6 +29,8 @@ module.exports = (api) => {
           },
         },
       ],
+      api.env('production') &&
+        '@babel/plugin-transform-react-constant-elements',
     ].filter(Boolean),
   }
 }

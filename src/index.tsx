@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {DesignSystem} from './design-system/design-system'
 import {App} from './app'
-const Blog = React.lazy(() => import('./pages/blog/blog'))
-const Category = React.lazy(() => import('./pages/blog/category'))
-const Tagged = React.lazy(() => import('./pages/blog/tagged'))
-const Resume = React.lazy(() => import('./pages/resume'))
-const Contact = React.lazy(() => import('./pages/contact'))
-const BookClub = React.lazy(() => import('./pages/book-club'))
+import * as pages from './pages'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -16,18 +11,18 @@ ReactDOM.render(
       <DesignSystem>
         <Routes basename='/'>
           <Route path='/' element={<App />}>
-            <Route path='book-club/*' element={<BookClub />} />
-            <Route path='resume' element={<Resume />} />
-            <Route path='contact' element={<Contact />} />
-            <Route path='/' element={<Blog />} />
+            <Route path='book-club/*' element={<pages.BookClub />} />
+            <Route path='resume' element={<pages.Resume />} />
+            <Route path='contact' element={<pages.Contact />} />
+            <Route path='/' element={<pages.Blog />} />
             <Route path='posts'>
-              <Route path='/' element={<Blog />} />
+              <Route path='/' element={<pages.Blog />} />
               <Route path=':category'>
-                <Route path='/' element={<Category />} />
-                <Route path=':slug' element={<Blog />} />
+                <Route path='/' element={<pages.Category />} />
+                <Route path=':slug' element={<pages.Blog />} />
               </Route>
               <Route path='tagged'>
-                <Route path=':tag' element={<Tagged />} />
+                <Route path=':tag' element={<pages.Tagged />} />
               </Route>
             </Route>
           </Route>

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {Column, Row, Cluster} from '@dash-ui/react-layout'
 import {prose} from '@design-system/prose'
 import {Text} from '@design-system/text'
+import type {TextProps} from '@design-system/text'
 import {Spinner} from '@design-system/spinner'
 import {Divider} from '@design-system/divider'
 import {styles} from '@design-system/styles'
@@ -17,13 +18,20 @@ export function Post({post, posts}: PostProps) {
 
   return (
     <Column as='article' gap='xl'>
-      <Row as={Text} gap='md' variant='caption'>
+      {/* @ts-expect-error */}
+      <Row
+        as={(props: TextProps) => <Text as='div' {...props} />}
+        gap='md'
+        variant='caption'
+      >
         <components.time>{metadata.timestamp}</components.time>{' '}
         <span aria-hidden>&mdash;</span>
         <Row as='span' gap='sm'>
           {metadata.categories.map((category) => (
             <React.Fragment key={category}>
-              <Link to={`/posts/${slugify(category)}`}>{category}</Link>
+              <Link to={`/posts/${slugify(category)}`} rel='category'>
+                {category}
+              </Link>
             </React.Fragment>
           ))}
         </Row>
@@ -51,7 +59,9 @@ export function Post({post, posts}: PostProps) {
           <Cluster as='div' gap='sm' className={tags()}>
             {metadata.tags.map((tag) => (
               <React.Fragment key={tag}>
-                <Link to={`/posts/tagged/${slugify(tag)}`}>{tag}</Link>
+                <Link to={`/posts/tagged/${slugify(tag)}`} rel='tag'>
+                  {tag}
+                </Link>
               </React.Fragment>
             ))}
           </Cluster>
@@ -62,7 +72,9 @@ export function Post({post, posts}: PostProps) {
         <Column gap='xxl'>
           <Column gap='sm'>
             <Column>
-              <Text variant='caption'>Written by</Text>
+              <Text as='div' variant='caption'>
+                Written by
+              </Text>
               <h3 className='author'>Jared Lunde</h3>
             </Column>
             <blockquote>

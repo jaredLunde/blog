@@ -6,8 +6,10 @@
  */
 import React from 'react'
 
+const b = 'introducing-proser'
+
 export const postsMap = {
-  'introducing-proser': {
+  [b]: {
     id: 0,
     slug: 'introducing-proser',
 

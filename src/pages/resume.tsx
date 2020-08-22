@@ -1,12 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {Grid, GridItem, Row, Column} from '@dash-ui/react-layout'
+import {slugify} from 'proser'
 import {Text} from '@design-system/text'
 import {Icon} from '@design-system/icon'
 import {Divider} from '@design-system/divider'
 import {mq} from '@design-system/mq'
 import {styles} from '@design-system/styles'
 import ExternaLinkIcon from '@assets/external-link.svg'
+import AnchorIcon from '@assets/link.svg'
 
 function Resume() {
   return (
@@ -32,7 +34,7 @@ function Resume() {
           </li>
           <li>
             <b>110+</b> public{' '}
-            <ExternalLink href='https://github.com/jaredLunde'>
+            <ExternalLink href='https://github.com/jaredLunde?tab=repositories'>
               GitHub repos
             </ExternalLink>
           </li>
@@ -85,7 +87,7 @@ function Resume() {
             organization='dash-ui'
             tooling={['TypeScript', 'CSS', 'Babel']}
           >
-            Framework-agnostic, design system-focused, CSS-in-JS libraries and
+            Framework-agnostic, design system-focused CSS-in-JS libraries and
             tooling
           </LibraryCard>
 
@@ -94,7 +96,7 @@ function Resume() {
             organization='accessible-ui'
             tooling={['React', 'TypeScript']}
           >
-            Headless React components implementing WAI-ARIA best practices
+            Headless React components and hooks enacting WAI-ARIA best practices
           </LibraryCard>
 
           <LibraryCard
@@ -301,7 +303,7 @@ function LibraryCard({
       className={libraryCard()}
     >
       <Column
-        as='a'
+        as={ExternalLink}
         radius='primary'
         bg='gray800'
         gap='sm'
@@ -407,17 +409,24 @@ export interface ExperienceCardProps {
 }
 
 function SectionHeading({emoji, children}: SectionHeadingProps) {
+  const id = slugify(children)
   return (
-    <Row as='h2' gap='md'>
-      {emoji && <span aria-hidden>{emoji}</span>}
-      <span>{children}</span>
-    </Row>
+    <h2 id={id} className={sectionHeading()}>
+      <a href={`#${id}`} className='anchor' aria-hidden>
+        <Icon color='gray500' render={AnchorIcon} />
+      </a>
+
+      <Row as='span' gap='md'>
+        {emoji && <span aria-hidden>{emoji}</span>}
+        <span>{children}</span>
+      </Row>
+    </h2>
   )
 }
 
 export interface SectionHeadingProps {
   emoji?: React.ReactText
-  children: React.ReactNode
+  children: string
 }
 
 function ExternalLink(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
@@ -469,6 +478,24 @@ const libraryCard = styles.one(
     hover: {
       '> a:hover h3': {
         textDecoration: 'underline',
+      },
+    },
+  })
+)
+
+const sectionHeading = styles.one(
+  mq({
+    default: {
+      '.anchor': {
+        position: 'absolute',
+        left: '-1em',
+        fontSize: '0.9em',
+        visibility: 'hidden',
+      },
+    },
+    hover: {
+      ':hover .anchor': {
+        visibility: 'visible',
       },
     },
   })

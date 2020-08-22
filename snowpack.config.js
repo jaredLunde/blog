@@ -23,7 +23,14 @@ module.exports = {
   ],
   install: ['history'],
   plugins: [
-    'snowpack-plugin-mdx',
+    [
+      'snowpack-plugin-mdx',
+      {
+        mdxOptions: {
+          remarkPlugins: [require('remark-slug')],
+        },
+      },
+    ],
     // ['./snowpack/plugin-proser', {include: ['**/posts/**']}],
     ['snowpack-plugin-svgr', {svgrOptions: {ref: true}}],
     [

@@ -5,6 +5,7 @@ import {useOrder, slugify} from 'proser'
 import {DynamicList, useScroller, useSize} from 'mini-virtual-list'
 import type {DynamicListRenderProps} from 'mini-virtual-list'
 import {Text} from '@design-system/text'
+import type {TextProps} from '@design-system/text'
 import {Image} from '@design-system/image'
 import {Divider} from '@design-system/divider'
 import {styles} from '@design-system/styles'
@@ -63,13 +64,19 @@ function BlogPostCard({
     <React.Fragment>
       <Column as='section' gap='lg' className={blogPostCard()}>
         {/* @ts-ignore */}
-        <Row as={Text} gap='md' variant='caption'>
+        <Row
+          as={(props: TextProps) => <Text as='div' {...props} />}
+          gap='md'
+          variant='caption'
+        >
           <components.time>{post.metadata.timestamp}</components.time>{' '}
           <span aria-hidden>&mdash;</span>
           <Row as='span' gap='sm'>
             {post.metadata.categories.map((category) => (
               <React.Fragment key={category}>
-                <Link to={`/posts/${slugify(category)}`}>{category}</Link>
+                <Link to={`/posts/${slugify(category)}`} rel='category'>
+                  {category}
+                </Link>
               </React.Fragment>
             ))}
           </Row>

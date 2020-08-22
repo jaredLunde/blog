@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Column, Row} from '@dash-ui/react-layout'
 import {Text} from '@design-system/text'
+import type {TextProps} from '@design-system/text'
 import {Image} from '@design-system/image'
 import {styles} from '@design-system/styles'
 import {useRelatedPosts, slugify} from 'proser'
@@ -13,7 +14,7 @@ export function RelatedPosts({post, posts}: RelatedPostsProps) {
 
   return (
     <Column as='aside' gap='xl'>
-      {relatedPosts.map((post, i) => (
+      {relatedPosts.map((post) => (
         <BlogPostCard key={post.id} post={post} />
       ))}
     </Column>
@@ -29,14 +30,20 @@ function BlogPostCard({post}: BlogPostCardProps) {
   return (
     <React.Fragment>
       <Column as='section' gap='lg' className={blogPostCard()}>
-        {/* @ts-ignore */}
-        <Row as={Text} gap='md' variant='caption'>
+        {/* @ts-expect-error */}
+        <Row
+          as={(props: TextProps) => <Text as='div' {...props} />}
+          gap='md'
+          variant='caption'
+        >
           <components.time>{post.metadata.timestamp}</components.time>{' '}
           <span aria-hidden>&mdash;</span>
           <Row as='span' gap='sm'>
             {post.metadata.categories.map((category) => (
               <React.Fragment key={category}>
-                <Link to={`/posts/${slugify(category)}`}>{category}</Link>
+                <Link to={`/posts/${slugify(category)}`} rel='category'>
+                  {category}
+                </Link>
               </React.Fragment>
             ))}
           </Row>

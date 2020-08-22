@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link, Outlet, useMatch, useNavigate} from 'react-router-dom'
+import {visuallyHidden} from '@accessible/visually-hidden'
 import {Box, Column} from '@dash-ui/react-layout'
 import transition from '@dash-ui/transition'
 import BlogIcon from '@assets/blog-icon.svg'
@@ -18,11 +19,19 @@ import {useScrollToTop} from '@hooks/scroll-to-top'
 
 export function App() {
   useScrollToTop()
+
   return (
     <Column align='center'>
+      <SkipNav />
       <Header />
       <TabNav />
-      <Box width={{min: '100%', md: '72ch'}} pad={{min: 'lg', sm: 'xl'}}>
+      <Box
+        as='main'
+        id='main-content'
+        role='main'
+        width={{min: '100%', md: '72ch'}}
+        pad={{min: 'lg', sm: 'xl'}}
+      >
         <React.Suspense
           fallback={
             <Column width='100%' align='center' pad={['xl', 'none']}>
@@ -82,11 +91,11 @@ function Header() {
                 write words here, too, but with slightly more nuance.
               </p>
             ) : (
-              <h3>
+              <Text as='h3' size='lg'>
                 Pragmatic engineer with a diverse technical background. Long
                 history of creating DX-focused software emphasizing reliable,
                 rapid deployment.
-              </h3>
+              </Text>
             )}
           </Column>
         </Column>
@@ -131,13 +140,13 @@ const imageContainer = styles.one(({radius}) => ({
   },
 }))
 
-const tabTo = ['/', '/resume', '/book-club']
+const tabTo = ['/', '/book-club', '/resume']
 
 function TabNav() {
-  const matchesResume = useMatch('/resume/*')
+  const matchesResume = useMatch('/resume')
   const matchesBookClub = useMatch('/book-club/*')
   const navigate = useNavigate()
-  const active = matchesResume ? 1 : matchesBookClub ? 2 : 0
+  const active = matchesResume ? 2 : matchesBookClub ? 1 : 0
 
   return (
     <Tabs
@@ -154,11 +163,11 @@ function TabNav() {
           <Icon render={BlogIcon} />
           <span>Blog</span>
         </Tab>
-        <Tab as={Link} index={2} to={tabTo[2]}>
+        <Tab as={Link} index={1} to={tabTo[1]}>
           <Icon render={BookClubIcon} />
           <span>Book club</span>
         </Tab>
-        <Tab as={Link} index={1} to={tabTo[1]}>
+        <Tab as={Link} index={2} to={tabTo[2]}>
           <Icon render={ResumeIcon} />
           <span>Resume</span>
         </Tab>
@@ -181,4 +190,25 @@ const tabNav = styles.one(({color, z}) => ({
   top: 0,
   backgroundColor: color.contentBgColor,
   zIndex: z.max,
+}))
+
+function SkipNav() {
+  return (
+    <a href='#main-content' className={skipNav()}>
+      Skip to main content
+    </a>
+  )
+}
+
+const skipNav = styles.one(({pad}) => ({
+  ...visuallyHidden,
+  '.using-keyboard &:focus': {
+    clip: 'inherit',
+    height: 'auto',
+    width: 'auto',
+    margin: 0,
+    padding: pad.md,
+    overflow: 'inherit',
+    position: 'relative',
+  },
 }))

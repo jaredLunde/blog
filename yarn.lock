@@ -25,10 +25,10 @@
   resolved "https://registry.yarnpkg.com/@accessible/tabbable/-/tabbable-1.1.2.tgz#f4a5298f6d594b01368ef70496d643dde1230aec"
   integrity sha512-FJCKCtewk0x2dAr+KYv+SZOgFoclmsBd7wH3i8oVIr09dCRrliHixMqC2g52lasqk1VNfxPjNue1ebEjlP5S+g==
 
-"@accessible/tabs@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@accessible/tabs/-/tabs-2.0.2.tgz#a2ed38a728e6281b9e74470076078caee46037d5"
-  integrity sha512-uEUuEqu1c08nlU8tAO6o2MelBAFpmNIRULrRt/n+nnohCW3hv166w1t1ywVvhh7MIa0hR5pAPphl5Jw1NzNKSg==
+"@accessible/tabs@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@accessible/tabs/-/tabs-3.0.0.tgz#ba242d5b55a973b6139ca02d029d1942581266ac"
+  integrity sha512-8me0nwB9SzN6MPyMeWNZPLBmJ9K9DS4G3cH2qDPyeuvJunLyTrD7+gRw6/qCnNwOV7vuULgXpqR96zxfouatkQ==
   dependencies:
     "@accessible/button" "^2.0.2"
     "@accessible/use-conditional-focus" "^3.0.0"
@@ -14259,10 +14259,10 @@ property-information@^5.0.0, property-information@^5.3.0:
   dependencies:
     xtend "^4.0.0"
 
-proser@^0.1.16:
-  version "0.1.16"
-  resolved "https://registry.yarnpkg.com/proser/-/proser-0.1.16.tgz#ed44645fb2cc4acf50871e09694464bd205f7593"
-  integrity sha512-82H429dbFLUlb5mkWq2a4qPIHR+/y3RSY/oLr90p30v+oP0ckMAtF4KG5jS5pXXbI7vRaCFo0FWjUlafmsNANQ==
+proser@^0.1.17:
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/proser/-/proser-0.1.17.tgz#0275318d2015c015cd95f06a66ef08da4675c247"
+  integrity sha512-2VsdJ7pwT5co1KdVmXi/kCMHet2zRWI5YEVSEATCZ7VwFhsYH+ddGvPUEHVDKbqlKrfS5ci06dA6oKO8wEV2qw==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/generator" "^7.11.0"
