@@ -11,6 +11,7 @@ module.exports = (api) => {
       '@babel/preset-typescript',
     ].filter(Boolean),
     plugins: [
+      'babel-plugin-transform-node-env-inline',
       '@babel/plugin-syntax-import-meta',
       'macros',
       api.env('production') && 'optimize-react',

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, useSearchParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {Column, Row} from '@dash-ui/react-layout'
 import {useOrder, slugify} from 'proser'
 import {DynamicList, useScroller, useSize} from 'mini-virtual-list'
@@ -15,11 +15,7 @@ import * as components from '../posts/components'
 import type {Post} from '../posts'
 
 export function ListPosts({posts}: ListPostsProps) {
-  const [searchParams] = useSearchParams()
-  const orderedPosts = useOrder(
-    posts,
-    searchParams.get('order') === 'asc' ? 'asc' : 'desc'
-  )
+  const orderedPosts = useOrder(posts, 'desc')
   const ref = React.useRef<HTMLDivElement>(null)
   const size = useSize(ref)
   const offset = useOffset(ref, [size.width])

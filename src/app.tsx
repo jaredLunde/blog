@@ -1,11 +1,11 @@
 import React from 'react'
-import {Link, Outlet, useMatch, useNavigate} from 'react-router-dom'
+import {Route, Switch, Link, useRouteMatch} from 'react-router-dom'
 import {visuallyHidden} from '@accessible/visually-hidden'
 import {Box, Column} from '@dash-ui/react-layout'
 import transition from '@dash-ui/transition'
 import BlogIcon from '@assets/blog-icon.svg'
 import ResumeIcon from '@assets/resume-icon.svg'
-import BookClubIcon from '@assets/book-club-icon.svg'
+// import BookClubIcon from '@assets/book-club-icon.svg'
 import GitHubIcon from '@assets/github-icon.svg'
 import InstagramIcon from '@assets/instagram-icon.svg'
 import TwitterIcon from '@assets/twitter-icon.svg'
@@ -16,6 +16,7 @@ import {styles} from '@design-system/styles'
 import {Tabs, TabList, Tab, tabs} from '@design-system/tabs'
 import {Spinner} from '@design-system/spinner'
 import {useScrollToTop} from '@hooks/scroll-to-top'
+import * as pages from './pages'
 
 export function App() {
   useScrollToTop()
@@ -39,7 +40,14 @@ export function App() {
             </Column>
           }
         >
-          <Outlet />
+          <Switch>
+            <Route path='/resume' children={<pages.Resume />} />
+            <Route path='/contact' children={<pages.Contact />} />
+            <Route path='/posts/tagged/:tag' children={<pages.Tagged />} />
+            <Route path='/posts/:category/:slug' children={<pages.Blog />} />
+            <Route path='/posts/:category' children={<pages.Category />} />
+            <Route path='/' children={<pages.Blog />} />
+          </Switch>
         </React.Suspense>
       </Box>
     </Column>
@@ -47,8 +55,9 @@ export function App() {
 }
 
 function Header() {
-  const isRoot = useMatch('/')
-  const isResume = useMatch('/resume')
+  // @ts-ignore
+  const {isExact: isRoot} = useRouteMatch('/')
+  const isResume = useRouteMatch('/resume')
 
   return (
     <Column as='header' align='center' bg='white' width='100%'>
@@ -140,34 +149,25 @@ const imageContainer = styles.one(({radius}) => ({
   },
 }))
 
-const tabTo = ['/', '/book-club', '/resume']
+const tabTo = ['/', /*'/book-club',*/ '/resume']
 
 function TabNav() {
-  const matchesResume = useMatch('/resume')
-  const matchesBookClub = useMatch('/book-club/*')
-  const navigate = useNavigate()
-  const active = matchesResume ? 2 : matchesBookClub ? 1 : 0
+  const matchesResume = useRouteMatch('/resume')
+  // const {isExact: matchesBookClub} = useRouteMatch('/book-club/*')
+  const active = matchesResume ? 1 : 0
 
   return (
-    <Tabs
-      active={active}
-      manualActivation
-      onChange={(index) => {
-        // Needs an `onChange` handler here because the space key
-        // which activates tabs _will not_ trigger clicks on links
-        index !== undefined && navigate(tabTo[index])
-      }}
-    >
+    <Tabs active={active} manualActivation>
       <TabList as='nav' className={tabNav()}>
         <Tab as={Link} index={0} to={tabTo[0]}>
           <Icon render={BlogIcon} />
           <span>Blog</span>
         </Tab>
-        <Tab as={Link} index={1} to={tabTo[1]}>
+        {/*<Tab as={Link} index={1} to={tabTo[1]}>
           <Icon render={BookClubIcon} />
           <span>Book club</span>
-        </Tab>
-        <Tab as={Link} index={2} to={tabTo[2]}>
+    </Tab>*/}
+        <Tab as={Link} index={1} to={tabTo[1]}>
           <Icon render={ResumeIcon} />
           <span>Resume</span>
         </Tab>

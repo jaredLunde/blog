@@ -20,6 +20,7 @@ module.exports = function plugin() {
             filename: file,
             ast: false,
             compact: false,
+            plugins: ['babel-plugin-transform-node-env-inline'],
             presets: [
               [
                 '@babel/preset-env',
@@ -45,15 +46,6 @@ module.exports = function plugin() {
       await Promise.all(
         files.map((file, i) => {
           let {code} = t[i]
-
-          if (code) {
-            // Some Babel plugins assume process.env exists, but Snowpack
-            // uses import.meta.env instead. Handle this here since it
-            // seems to be pretty common.
-            // See: https://www.pika.dev/npm/snowpack/discuss/496
-            code = code.replace(/process\.env/g, 'import.meta.env')
-          }
-
           return fs.writeFile(file, code)
         })
       )

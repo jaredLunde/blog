@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) {
 module.exports = function plugin(_, images) {
   return {
     name: 'snowpack-plugin-resize-images',
-    async transform({contents, filePath}) {
+    async transform({contents, id: filePath}) {
       let base
 
       for (const globPattern in images) {

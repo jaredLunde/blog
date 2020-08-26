@@ -1,19 +1,13 @@
 import React from 'react'
-import {useLocation} from 'react-router-dom'
-
-let popped = false
-window.addEventListener('popstate', () => {
-  popped = true
-})
+import {useHistory, useLocation} from 'react-router-dom'
 
 export function useScrollToTop() {
-  const {pathname} = useLocation()
+  const location = useLocation()
+  const {action} = useHistory()
 
   React.useEffect(() => {
-    if (!popped) {
-      window.scrollTo({top: 0})
+    if (action === 'PUSH') {
+      window.scrollTo(0, 0)
     }
-
-    popped = false
-  }, [pathname])
+  }, [action, location.pathname])
 }
