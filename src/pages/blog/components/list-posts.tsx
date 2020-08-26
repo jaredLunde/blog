@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {Column, Row} from '@dash-ui/react-layout'
-import {useOrder, slugify} from 'proser'
+import {useOrder, slugify, preload} from 'proser'
 import {DynamicList, useScroller, useSize} from 'mini-virtual-list'
 import type {DynamicListRenderProps} from 'mini-virtual-list'
 import {Text} from '@design-system/text'
@@ -70,7 +70,11 @@ function BlogPostCard({
           <Row as='span' gap='sm'>
             {post.metadata.categories.map((category) => (
               <React.Fragment key={category}>
-                <Link to={`/posts/${slugify(category)}`} rel='category'>
+                <Link
+                  to={`/posts/${slugify(category)}`}
+                  rel='category'
+                  onMouseEnter={() => import('../category')}
+                >
                   {category}
                 </Link>
               </React.Fragment>
@@ -81,6 +85,7 @@ function BlogPostCard({
         <Column
           as={Link}
           to={`/posts/${slugify(post.metadata.categories[0])}/${post.slug}`}
+          onMouseEnter={() => preload(post.component)}
           className={blogPostCard.link()}
           gap='lg'
         >

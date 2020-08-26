@@ -5,7 +5,7 @@ import {Text} from '@design-system/text'
 import type {TextProps} from '@design-system/text'
 import {Image} from '@design-system/image'
 import {styles} from '@design-system/styles'
-import {useRelatedPosts, slugify} from 'proser'
+import {useRelatedPosts, slugify, preload} from 'proser'
 import * as components from '../posts/components'
 import type {Post} from '../posts'
 
@@ -41,7 +41,11 @@ function BlogPostCard({post}: BlogPostCardProps) {
           <Row as='span' gap='sm'>
             {post.metadata.categories.map((category) => (
               <React.Fragment key={category}>
-                <Link to={`/posts/${slugify(category)}`} rel='category'>
+                <Link
+                  to={`/posts/${slugify(category)}`}
+                  onMouseEnter={() => import('../category')}
+                  rel='category'
+                >
                   {category}
                 </Link>
               </React.Fragment>
@@ -52,6 +56,7 @@ function BlogPostCard({post}: BlogPostCardProps) {
         <Column
           as={Link}
           to={`/posts/${slugify(post.metadata.categories[0])}/${post.slug}`}
+          onMouseEnter={() => preload(post.component)}
           className={blogPostCard.link()}
           gap='lg'
         >

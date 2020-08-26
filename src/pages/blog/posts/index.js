@@ -11,15 +11,32 @@ export const postsMap = {
   'write-your-first-babel-plugin': {
     id: 0,
     slug: 'write-your-first-babel-plugin',
+
     component: lazy(() => import('./0-write-your-first-babel-plugin.mdx')),
     metadata: {
       title: 'So you want to write a Babel plugin',
       description:
-        'Here I cover some Babel plugin basics and provide the links you need to go deeper',
+        'Here I cover some Babel plugin basics and provide the resources you need to go deeper',
       timestamp: 1598459311282,
       tags: ['Babel', 'Node'],
       categories: ['How-to'],
-      readingTime: {text: '2 min read', time: 108900, words: 363},
+      readingTime: {text: '5 min read', time: 281400, words: 938},
+    },
+  },
+
+  'drop-your-bundler-in-2020': {
+    id: 1,
+    slug: 'drop-your-bundler-in-2020',
+
+    component: lazy(() => import('./1-drop-your-bundler-in-2020.mdx')),
+    metadata: {
+      title: 'Drop your bundler in 2020',
+      description:
+        "Snowpack and ES modules are the future of the web. If you don't need to support legacy browsers, what is stopping you from dropping your bundler?",
+      timestamp: 1598476509136,
+      tags: ['Snowpack', 'Webpack', 'Rollup', 'Parcel', 'ES modules'],
+      categories: ['Hot takes', 'Frontend'],
+      readingTime: {text: '2 min read', time: 62100, words: 207},
     },
   },
 }

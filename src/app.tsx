@@ -167,7 +167,12 @@ function TabNav() {
           <Icon render={BookClubIcon} />
           <span>Book club</span>
     </Tab>*/}
-        <Tab as={Link} index={1} to={tabTo[1]}>
+        <Tab
+          as={Link}
+          index={1}
+          to={tabTo[1]}
+          onMouseEnter={() => import('./pages/resume')}
+        >
           <Icon render={ResumeIcon} />
           <span>Resume</span>
         </Tab>

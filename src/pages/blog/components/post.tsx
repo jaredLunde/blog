@@ -47,7 +47,11 @@ export function Post({post, posts}: PostProps) {
         <Row as='span' gap='sm'>
           {metadata.categories.map((category) => (
             <React.Fragment key={category}>
-              <Link to={`/posts/${slugify(category)}`} rel='category'>
+              <Link
+                to={`/posts/${slugify(category)}`}
+                onMouseEnter={() => import('../category')}
+                rel='category'
+              >
                 {category}
               </Link>
             </React.Fragment>
@@ -77,7 +81,11 @@ export function Post({post, posts}: PostProps) {
           <Cluster as='div' gap='sm' className={tags()}>
             {metadata.tags.map((tag) => (
               <React.Fragment key={tag}>
-                <Link to={`/posts/tagged/${slugify(tag)}`} rel='tag'>
+                <Link
+                  to={`/posts/tagged/${slugify(tag)}`}
+                  onMouseEnter={() => import('../tagged')}
+                  rel='tag'
+                >
                   {tag}
                 </Link>
               </React.Fragment>

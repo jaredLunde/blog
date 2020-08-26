@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "snowpack build",
+    "build": "npm run build-posts && snowpack build",
     "build-posts": "proser build",
     "build-storybook": "build-storybook",
     "check-types": "tsc --noEmit",
