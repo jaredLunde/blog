@@ -20,6 +20,9 @@ export type Post = {
       time: number
       words: number
     }
+    meta?: {
+      description?: string
+    }
   }
 }
 

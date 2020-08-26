@@ -59,7 +59,7 @@ export const typography = responsiveStyles({
         content: '""',
         position: 'absolute',
         backgroundColor: color.gray400,
-        top: `calc(50% - 0.125em)`,
+        top: `0.67em`,
         borderRadius: '50%',
       },
       hr: {

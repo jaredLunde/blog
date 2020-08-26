@@ -1,4 +1,5 @@
 import React from 'react'
+import {Helmet} from 'react-helmet-async'
 import {MDXProvider} from '@mdx-js/react'
 import {useParams} from 'react-router-dom'
 import {Box, Column} from '@dash-ui/react-layout'
@@ -12,14 +13,25 @@ function Category() {
   const {category} = useParams() as {category: string}
   const {slug, posts} = useCategory(basePosts, category)
   const orderedPosts = useOrder(posts, 'desc')
+  const formattedTitle =
+    posts[0].metadata.categories.find((c) => slugify(c) === slug) || category
 
   return (
     <MDXProvider components={components}>
       <Column gap='lg'>
-        <h1>
-          {posts[0].metadata.categories.find((c) => slugify(c) === slug) ||
-            category}
-        </h1>
+        <Helmet>
+          <title>{formattedTitle} articles by Jared Lunde</title>
+          <meta
+            name='description'
+            content={`Dive in to my "${formattedTitle}" articles. Follow me at @jaredLunde on Twitter for my less nuanced musings.`}
+          />
+          <link
+            rel='canonical'
+            href={`https://jaredlunde.com/posts/${slugify(formattedTitle)}`}
+          />
+        </Helmet>
+
+        <h1>{formattedTitle}</h1>
 
         <Divider />
 

@@ -18,9 +18,12 @@ module.exports = {
     }
     config.module.rules.push({
       test: /\.tsx?$/,
-      loader: require.resolve(
-        '@snowpack/plugin-webpack/plugins/import-meta-fix'
-      ),
+      loader: [
+        require.resolve('@open-wc/webpack-import-meta-loader'),
+        require.resolve(
+          '@snowpack/plugin-webpack/plugins/proxy-import-resolve'
+        ),
+      ],
     })
     config.plugins.push(
       new webpack.DefinePlugin({

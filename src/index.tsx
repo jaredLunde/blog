@@ -1,16 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
+import {HelmetProvider} from 'react-helmet-async'
 import {DesignSystem} from './design-system/design-system'
 import {App} from './app'
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <DesignSystem>
-        <App />
-      </DesignSystem>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <DesignSystem>
+          <App />
+        </DesignSystem>
+      </BrowserRouter>
+    </HelmetProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )

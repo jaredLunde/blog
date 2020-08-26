@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {Helmet} from 'react-helmet-async'
 import {Column, Row, Cluster} from '@dash-ui/react-layout'
 import {prose} from '@design-system/prose'
 import {Text} from '@design-system/text'
@@ -15,16 +16,33 @@ import {RelatedPosts} from './related-posts'
 
 export function Post({post, posts}: PostProps) {
   const {component: Component, metadata} = post
+  const primaryCategory = metadata.categories[0]
 
   return (
     <Column as='article' gap='xl'>
+      <Helmet>
+        <title>
+          {metadata.title} / {primaryCategory}
+        </title>
+        <meta
+          name='description'
+          content={(metadata?.meta?.description || metadata.description) as any}
+        />
+        <link
+          rel='canonical'
+          href={`https://jaredlunde.com/posts/${slugify(primaryCategory)}/${
+            post.slug
+          }`}
+        />
+      </Helmet>
+
       {/* @ts-expect-error */}
       <Row
         as={(props: TextProps) => <Text as='div' {...props} />}
         gap='md'
         variant='caption'
       >
-        <components.time>{metadata.timestamp}</components.time>{' '}
+        <components.time>{metadata.timestamp}</components.time>
         <span aria-hidden>&mdash;</span>
         <Row as='span' gap='sm'>
           {metadata.categories.map((category) => (

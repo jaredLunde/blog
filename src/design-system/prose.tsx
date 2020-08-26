@@ -51,7 +51,7 @@ const proseSpacing = responsiveStyles.one({
     marginBottom: em(18, 36),
   },
   h2: {
-    marginTop: em(48, 24),
+    marginTop: em(32, 24),
     marginBottom: em(18, 24),
   },
   h3: {

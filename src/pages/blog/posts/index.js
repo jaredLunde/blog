@@ -5,29 +5,21 @@
  * Edits may be overwritten.
  */
 import React from 'react'
-/*__PROSER_HOISTED_STRINGS__*/ const _proserRef0 = 'Proser',
-  _proserRef1 = 'Node',
-  _proserRef2 = 'React',
-  _proserRef3 = '1 min read'
-
 const {lazy} = React
 
 export const postsMap = {
-  'introducing-proser': {
+  'write-your-first-babel-plugin': {
     id: 0,
-    slug: 'introducing-proser',
-
-    component: lazy(() => import('./0-introducing-proser.mdx')),
+    slug: 'write-your-first-babel-plugin',
+    component: lazy(() => import('./0-write-your-first-babel-plugin.mdx')),
     metadata: {
-      title: '✐ Introducing Proser',
-      description: "This blog you're looking at? This is Proser.",
-      get image() {
-        return import('@assets/bali.720.jpg')
-      },
-      timestamp: 1597628866203,
-      tags: ['Proser', 'Node', 'React'],
-      categories: ['OSS', 'Weekend Builds'],
-      readingTime: {text: '3 min read', time: 127200, words: 424},
+      title: 'So you want to write a Babel plugin',
+      description:
+        'Here I cover some Babel plugin basics and provide the links you need to go deeper',
+      timestamp: 1598459311282,
+      tags: ['Babel', 'Node'],
+      categories: ['How-to'],
+      readingTime: {text: '2 min read', time: 108900, words: 363},
     },
   },
 }

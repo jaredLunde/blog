@@ -94,8 +94,8 @@ function Header() {
 
             {!isResume ? (
               <p>
-                I write code, read things, take photos, eat, think, and
-                frequently hyperbolize on{' '}
+                I write code, read things, design, eat, think, and frequently
+                hyperbolize on{' '}
                 <a href='https://twitter.com/jaredLunde'>Twitter</a>. Now I
                 write words here, too, but with slightly more nuance.
               </p>

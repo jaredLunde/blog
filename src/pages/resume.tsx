@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {Helmet} from 'react-helmet-async'
 import {Grid, GridItem, Row, Column} from '@dash-ui/react-layout'
 import {slugify} from 'proser'
 import {Text} from '@design-system/text'
@@ -13,6 +14,15 @@ import AnchorIcon from '@assets/link.svg'
 function Resume() {
   return (
     <Column gap='xxl'>
+      <Helmet>
+        <title>Resume / UI Engineer / Jared Lunde</title>
+        <meta
+          name='description'
+          content={`Want to know more about my professional experience? Check out my resume here.`}
+        />
+        <link rel='canonical' href={`https://jaredlunde.com/resume`} />
+      </Helmet>
+
       <Column as='section' gap='lg'>
         <SectionHeading emoji='🔆'>Career highlights</SectionHeading>
 
