@@ -69,6 +69,7 @@ module.exports = {
       },
     ],
     './snowpack/plugin-compile-web-modules.js',
+    './snowpack/plugin-minify-html.js',
     './snowpack/plugin-terser.js',
   ],
 }

@@ -189,6 +189,7 @@
     "forward-ref-as": "^1.0.4",
     "glob": "^7.1.6",
     "history": "^5.0.0",
+    "html-minifier": "^4.0.0",
     "husky": "latest",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",

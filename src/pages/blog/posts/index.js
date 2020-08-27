@@ -60,7 +60,7 @@ export const postsMap = {
       timestamp: 1598485593466,
       tags: [_proserRef1, _proserRef2, 'Storybook'],
       categories: [_proserRef0, _proserRef3],
-      readingTime: {text: _proserRef4, time: 78000, words: 260},
+      readingTime: {text: _proserRef4, time: 77700, words: 259},
     },
   },
 }
