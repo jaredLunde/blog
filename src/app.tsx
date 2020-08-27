@@ -75,8 +75,8 @@ function Header() {
           >
             <Image
               alt='A picture of a beach in Nusa Dua, Bali'
-              placeholder={import('@assets/bali.720.jpg')}
-              src={import('@assets/bali.720.jpg')}
+              placeholder={import('@assets/lake-tahoe.720.jpg')}
+              src={import('@assets/lake-tahoe.720.jpg')}
               width='100%'
               elevation='inner'
             />

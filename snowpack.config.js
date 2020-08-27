@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
+
 module.exports = {
   extends: '@snowpack/app-scripts-react',
   devOptions: {
@@ -9,9 +11,9 @@ module.exports = {
     clean: true,
   },
   alias: {
-    '@design-system': './src/design-system',
-    '@hooks': './src/hooks',
-    '@assets': './src/assets',
+    '@design-system': path.join(__dirname, 'src/design-system'),
+    '@hooks': path.join(__dirname, 'src/hooks'),
+    '@assets': path.join(__dirname, 'src/assets'),
   },
   exclude: [
     '**/node_modules/**',
@@ -57,6 +59,13 @@ module.exports = {
             quality: 80,
           },
         },
+      },
+    ],
+    [
+      'snowpack-plugin-imagemin',
+      {
+        include: ['**/*.png'],
+        plugins: [require('imagemin-optipng')({optimizationLevel: 7})],
       },
     ],
     './snowpack/plugin-compile-web-modules.js',

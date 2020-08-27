@@ -1,0 +1,124 @@
+export const metadata = {
+  title: 'Set up Storybook in a Snowpack project ',
+  description:
+    'How to fix common issues when adding Storybook to a Snowpack app.',
+  timestamp: 1598485593466,
+  tags: ['Snowpack', 'Webpack', 'Storybook'],
+  categories: ['How-to', 'Frontend'],
+}
+
+**Problem**: `process.env` becomes `import.meta` in Snowpack. Webpack and
+Storybook don't support `import.meta` out-of-the-box.
+
+**Solution**: Add Webpack rules for handling `import.meta`
+
+```js
+// .storybook/main.js
+module.exports = {
+  webpackFinal: (config) => {
+    config.module.rules.push({
+      test: /\.[tj]sx?$/,
+      loader: [
+        // This assumes snowpack@>=2.9.0
+        require.resolve('@open-wc/webpack-import-meta-loader'),
+        require.resolve(
+          '@snowpack/plugin-webpack/plugins/proxy-import-resolve'
+        ),
+      ],
+    })
+
+    return config
+  },
+}
+```
+
+**Problem**: Snowpack expects a `__SNOWPACK_ENV__` global.
+
+**Solution**: Use the `webpack.DefinePlugin` plugin to insert `process.env` into the
+Snowpack environment.
+
+```js
+// .storybook/main.js
+const webpack = require('webpack')
+
+module.exports = {
+  webpackFinal: (config) => {
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __SNOWPACK_ENV__: JSON.stringify(process.env),
+      })
+    )
+
+    return config
+  },
+}
+```
+
+**Problem**: Aliases
+
+**Solution**: Add your Snowpack aliases to the Storybook Webpack configuration
+
+```js
+// snowpack.config.js
+const path = require('path')
+
+module.exports = {
+  alias: {
+    '@components': path.join(__dirname, 'src/components'),
+    '@hooks': path.join(__dirname, 'src/hooks'),
+    '@assets': path.join(__dirname, 'src/assets'),
+  },
+}
+```
+
+```js
+// .storybook/main.js
+const snowpackConfig = require('../snowpack.config.js')
+
+module.exports = {
+  webpackFinal: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      ...snowpackConfig.alias,
+    }
+
+    return config
+  },
+}
+```
+
+## Putting it together
+
+```js
+// .storybook/main.js
+const snowpackConfig = require('../snowpack.config')
+const webpack = require('webpack')
+
+module.exports = {
+  webpackFinal: async (config) => {
+    // Assign aliases from snowpack.config.js
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      ...snowpackConfig.alias,
+    }
+    // Add rules for supporting import.meta
+    config.module.rules.push({
+      test: /\.[tj]sx?$/,
+      loader: [
+        require.resolve('@open-wc/webpack-import-meta-loader'),
+        require.resolve(
+          '@snowpack/plugin-webpack/plugins/proxy-import-resolve'
+        ),
+      ],
+    })
+    // Add __SNOWPACK_ENV__ global
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        __SNOWPACK_ENV__: JSON.stringify(process.env),
+      })
+    )
+
+    return config
+  },
+}
+```

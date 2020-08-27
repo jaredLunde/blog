@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const snowpackConfig = require('../snowpack.config')
 
 module.exports = {
   stories: [
@@ -12,12 +13,10 @@ module.exports = {
       ...config.resolve.alias,
       react: require.resolve('react'),
       'react-dom': require.resolve('react-dom'),
-      '@assets': path.resolve(__dirname, '../src/assets/'),
-      '@design-system': path.resolve(__dirname, '../src/design-system/'),
-      '@hooks': path.resolve(__dirname, '../src/hooks/'),
+      ...snowpackConfig.alias,
     }
     config.module.rules.push({
-      test: /\.tsx?$/,
+      test: /\.[tj]sx?$/,
       loader: [
         require.resolve('@open-wc/webpack-import-meta-loader'),
         require.resolve(
