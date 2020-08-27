@@ -36,7 +36,7 @@ module.exports = {
     // ['./snowpack/plugin-proser', {include: ['**/posts/**']}],
     ['snowpack-plugin-svgr', {svgrOptions: {ref: true}}],
     [
-      './snowpack/plugin-resize-images',
+      'snowpack-plugin-resize-images',
       {
         '**/*.placeholder.jpg': {
           resize: {
@@ -69,7 +69,48 @@ module.exports = {
       },
     ],
     './snowpack/plugin-compile-web-modules.js',
-    './snowpack/plugin-minify-html.js',
-    './snowpack/plugin-terser.js',
+    [
+      'snowpack-plugin-minify-html',
+      {
+        htmlMinifierOptions: {
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true,
+          sortAttributes: true,
+          useShortDoctype: true,
+          removeRedundantAttributes: true,
+          removeComments: true,
+          removeAttributeQuotes: true,
+          collapseWhitespace: true,
+          collapseInlineTagWhitespace: true,
+          collapseBooleanAttributes: true,
+        },
+      },
+    ],
+    [
+      'snowpack-plugin-terser',
+      {
+        terserOptions: {
+          compress: {
+            arguments: true,
+            booleans_as_integers: true,
+            hoist_funs: true,
+            keep_fargs: false,
+            passes: 2,
+            unsafe_arrows: true,
+            unsafe_comps: true,
+            unsafe_math: true,
+            unsafe_methods: true,
+            unsafe_proto: true,
+            unsafe_undefined: true,
+          },
+          mangle: {
+            toplevel: true,
+          },
+          format: {
+            comments: false,
+          },
+        },
+      },
+    ],
   ],
 }

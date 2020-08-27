@@ -256,7 +256,7 @@ function Resume() {
 
       <h2 style={{textAlign: 'center'}}>
         Want to hear more?{' '}
-        <Text as={Link} to='/contact' color='indigo600'>
+        <Text as='a' href='mailto:jared.lunde@gmail.com' color='indigo600'>
           Contact me
         </Text>
       </h2>

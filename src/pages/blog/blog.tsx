@@ -15,7 +15,8 @@ function Blog() {
     <MDXProvider components={components}>
       {!post && (
         <Helmet>
-          <title>Jared Lunde / UI Engineer / Denver, CO</title>
+          {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
+          <title>✌️ Jared Lunde / UI Engineer / Denver, CO</title>
           <meta
             name='description'
             content={`👋 I'm a UI engineer &amp; creative living in Denver, Colorado. Follow my blog to see what I am thinking about right now.`}

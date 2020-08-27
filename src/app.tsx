@@ -42,7 +42,6 @@ export function App() {
         >
           <Switch>
             <Route path='/resume' children={<pages.Resume />} />
-            <Route path='/contact' children={<pages.Contact />} />
             <Route path='/posts/tagged/:tag' children={<pages.Tagged />} />
             <Route path='/posts/:category/:slug' children={<pages.Blog />} />
             <Route path='/posts/:category' children={<pages.Category />} />
@@ -74,8 +73,8 @@ function Header() {
             )}
           >
             <Image
-              alt='A picture of a beach in Nusa Dua, Bali'
-              placeholder={import('@assets/lake-tahoe.720.jpg')}
+              alt='A picture of Lake Tahoe, California'
+              placeholder={import('@assets/lake-tahoe.placeholder.jpg')}
               src={import('@assets/lake-tahoe.720.jpg')}
               width='100%'
               elevation='inner'
