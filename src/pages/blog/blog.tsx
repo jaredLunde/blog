@@ -20,7 +20,7 @@ function Blog() {
             name='description'
             content={`👋 I'm a UI engineer &amp; creative living in Denver, Colorado. Follow my blog to see what I am thinking about right now.`}
           />
-          <link rel='canonical' href={`https://jaredlunde.com/resume`} />
+          <link rel='canonical' href={`https://jaredlunde.com/`} />
         </Helmet>
       )}
 
