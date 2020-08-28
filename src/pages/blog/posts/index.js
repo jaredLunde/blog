@@ -63,6 +63,25 @@ export const postsMap = {
       readingTime: {text: _proserRef4, time: 77700, words: 259},
     },
   },
+
+  'on-death-and-dying': {
+    id: 3,
+    slug: 'on-death-and-dying',
+
+    component: lazy(() => import('./3-on-death-and-dying.mdx')),
+    metadata: {
+      title: 'On death and dying',
+      description:
+        'A timeline of my relationship with death, its inevitability, and my futile resistance.',
+      timestamp: 1598572358549,
+      get image() {
+        return import('@assets/sleep-paralysis.720.jpg')
+      },
+      tags: ['Mortality', 'Personal'],
+      categories: ['Philosophy'],
+      readingTime: {text: '7 min read', time: 419700, words: 1399},
+    },
+  },
 }
 
 export const posts = Object.values(postsMap)

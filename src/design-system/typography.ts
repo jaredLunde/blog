@@ -94,7 +94,11 @@ export const typography = responsiveStyles({
         fontWeight: '600',
       },
       'figure figcaption': {
+        fontSize: font.size.xs,
         color: color.gray600,
+      },
+      'figure img': {
+        marginBottom: 0,
       },
       code: {
         fontFamily: font.family.mono,

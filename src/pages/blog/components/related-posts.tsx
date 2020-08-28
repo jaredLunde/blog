@@ -29,7 +29,7 @@ export interface RelatedPostsProps {
 function BlogPostCard({post}: BlogPostCardProps) {
   return (
     <React.Fragment>
-      <Column as='section' gap='lg' className={blogPostCard()}>
+      <Column as='section' gap='lg' className={postCard()}>
         {/* @ts-expect-error */}
         <Row
           as={(props: TextProps) => <Text as='div' {...props} />}
@@ -57,7 +57,7 @@ function BlogPostCard({post}: BlogPostCardProps) {
           as={Link}
           to={`/posts/${slugify(post.metadata.categories[0])}/${post.slug}`}
           onMouseEnter={() => preload(post.component)}
-          className={blogPostCard.link()}
+          className={postCard.link()}
           gap='lg'
         >
           <Column>
@@ -70,11 +70,13 @@ function BlogPostCard({post}: BlogPostCardProps) {
           </Column>
 
           {post.metadata.image && (
-            <Image
-              src={post.metadata.image}
-              alt={`A photo for the "${post.metadata.title}" post`}
-              radius='sm'
-            />
+            <div className={postCard.imageContainer()}>
+              <Image
+                src={post.metadata.image}
+                alt={`A photo for the "${post.metadata.title}" post`}
+                radius='sm'
+              />
+            </div>
           )}
 
           <Text color='indigo700'>
@@ -93,7 +95,7 @@ export interface BlogPostCardProps {
   post: Post
 }
 
-const blogPostCard = Object.assign(
+const postCard = Object.assign(
   styles.one(({radius, hairline, color, pad}) => ({
     background: color.white,
     padding: pad.lg,
@@ -101,6 +103,26 @@ const blogPostCard = Object.assign(
     border: `${hairline} solid ${color.translucent}`,
   })),
   {
+    imageContainer: styles.one(({radius}) => ({
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      overflow: 'hidden',
+      width: '100%',
+      maxWidth: '100%',
+      maxHeight: 360,
+      borderRadius: radius.primary,
+
+      picture: {
+        maxWidth: 'none',
+        width: 'auto',
+
+        img: {
+          width: 'auto',
+          maxWidth: 'none',
+        },
+      },
+    })),
     link: styles.one({
       textDecoration: 'none',
       '.using-keyboard &:focus': {

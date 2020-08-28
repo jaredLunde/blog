@@ -58,7 +58,7 @@ function BlogPostCard({
 
   return (
     <React.Fragment>
-      <Column as='section' gap='lg' className={blogPostCard()}>
+      <Column as='section' gap='lg' className={postCard()}>
         {/* @ts-ignore */}
         <Row
           as={(props: TextProps) => <Text as='div' {...props} />}
@@ -86,17 +86,20 @@ function BlogPostCard({
           as={Link}
           to={`/posts/${slugify(post.metadata.categories[0])}/${post.slug}`}
           onMouseEnter={() => preload(post.component)}
-          className={blogPostCard.link()}
+          className={postCard.link()}
           gap='lg'
         >
           <Column gap='md'>
             <h2>{post.metadata.title}</h2>
             <blockquote>{post.metadata.description}</blockquote>
             {post.metadata.image && (
-              <Image
-                src={post.metadata.image}
-                alt={`A photo for the "${post.metadata.title}" post`}
-              />
+              <div className={postCard.imgContainer()}>
+                <Image
+                  src={post.metadata.image}
+                  alt={`A photo for the "${post.metadata.title}" post`}
+                  onLoad={measure}
+                />
+              </div>
             )}
           </Column>
 
@@ -117,11 +120,32 @@ export interface BlogPostCardProps extends DynamicListRenderProps<Post> {
   numPosts: number
 }
 
-const blogPostCard = Object.assign(
+const postCard = Object.assign(
   styles.one(({pad}) => ({
     paddingBottom: pad.lg,
   })),
   {
+    imgContainer: styles.one(({radius}) => ({
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      overflow: 'hidden',
+      width: '100%',
+      maxWidth: '100%',
+      maxHeight: 400,
+      borderRadius: radius.primary,
+
+      picture: {
+        minHeight: '100%',
+        maxWidth: 'none',
+        width: 'auto',
+
+        img: {
+          width: 'auto',
+          maxWidth: 'none',
+        },
+      },
+    })),
     link: styles.one({
       textDecoration: 'none',
       '.using-keyboard &:focus': {
