@@ -10,7 +10,10 @@ const mediaQueryKeys = Object.keys(mediaQueries).reverse() as Exclude<
 >[]
 
 export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
-  ({source, src, placeholder, alt, width, height, srcSet, ...props}, ref) => {
+  (
+    {source, src, placeholder, alt, caption, width, height, srcSet, ...props},
+    ref
+  ) => {
     // TODO: handle dynamic imports
     const sources = useAsyncEffect(async () => {
       const sources = []
@@ -92,10 +95,10 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
     return !source ? (
       picture
     ) : (
-      <figure>
+      <figure aria-label={alt}>
         {picture}
         <figcaption>
-          <a href={source}>Source</a>
+          {caption} <a href={source}>Source</a>
         </figcaption>
       </figure>
     )
@@ -111,6 +114,7 @@ export interface ImageProps
   alt: string
   placeholder?: ImageSrc
   source?: string
+  caption?: React.ReactNode
   src?: ImageSrc
   srcSet?: {
     [key in Extract<
