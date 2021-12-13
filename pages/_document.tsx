@@ -9,8 +9,11 @@ export default class Document extends NextDocument {
     const nonce = crypto.randomBytes(16).toString("base64");
 
     return (
-      <Html>
+      <Html lang="en-US">
         <Head nonce={nonce}>
+          {process.env.NEXT_PUBLIC_VERCEL_ENV !== "production" && (
+            <meta name="robots" content="noindex" />
+          )}
           <meta httpEquiv="Content-Security-Policy" content={csp(nonce)} />
           <meta name="referrer" content="strict-origin" />
           <meta content="yes" name="apple-mobile-web-app-capable" />

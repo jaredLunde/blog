@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { useOrder } from "proser";
 import * as React from "react";
 import { PostsList } from "@/components/posts-list";
 import { posts } from "@/posts";
+import { absRoutes } from "@/routes.config";
 import { vstack } from "@/styles/layout";
 
 const Home: NextPage<HomeProps> = function ({}) {
@@ -11,14 +12,15 @@ const Home: NextPage<HomeProps> = function ({}) {
 
   return (
     <div>
-      <Head>
-        <title>✌️ Jared Lunde / UI Engineer / Denver, CO</title>
-        <meta
-          name="description"
-          content={`👋 I'm a UI engineer &amp; creative living in Denver, Colorado. Follow my blog to see what I am thinking about right now.`}
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <NextSeo
+        title="✌️ Jared Lunde / UI Engineer / Denver, CO"
+        description={`👋 I'm a UI engineer & creative living in Denver, Colorado. Follow my blog to see what I am thinking about right now.`}
+        canonical={absRoutes.home()}
+        openGraph={{ images: [{ url: "/dunes.jpg" }] }}
+        twitter={{
+          cardType: "summary_large_image",
+        }}
+      />
 
       <div
         className={vstack({

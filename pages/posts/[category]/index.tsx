@@ -5,7 +5,7 @@ import { slugify, useCategory, useOrder } from "proser";
 import * as React from "react";
 import { PostsList } from "@/components/posts-list";
 import { posts, postsMap } from "@/posts";
-import { routes } from "@/routes.config";
+import { absRoutes, routes } from "@/routes.config";
 import { box, vstack } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -23,11 +23,16 @@ const Category: NextPage<CategoryProps> = function ({ category }) {
       <NextSeo
         title={`${formattedTitle} articles / Jared Lunde`}
         description={`Dive in to my "${formattedTitle}" articles. Follow me at @jaredLunde on Twitter for more.`}
-        canonical={routes.category({ category: formattedTitle })}
+        canonical={absRoutes.category({ category: formattedTitle })}
         openGraph={{
           images: postWithImage?.metadata.image
             ? [{ url: postWithImage.metadata.image }]
             : [],
+        }}
+        twitter={{
+          cardType: postWithImage?.metadata.image
+            ? "summary_large_image"
+            : "summary",
         }}
       />
 

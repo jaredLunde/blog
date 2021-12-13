@@ -11,7 +11,7 @@ import { IconButton, iconButton } from "@/components/icon-button";
 import { NavLink, useNavLink } from "@/components/link";
 import { styles, themeAtom } from "@/dash.config";
 import { GlobalStyles } from "@/styles/global";
-import { box, grid, hstack, vstack } from "@/styles/layout";
+import { box, grid, hstack, inline, vstack } from "@/styles/layout";
 import { tabs } from "@/styles/tabs";
 import { text } from "@/styles/text";
 
@@ -60,7 +60,10 @@ function Header() {
         })}
         style={{ margin: "0 auto" }}
       >
-        <nav className={clsx(tabs.tabList(), text({ size: 100 }))}>
+        <nav
+          className={clsx(tabs.tabList(), text({ size: 100 }))}
+          aria-label="Main navigation"
+        >
           <NavLink
             to="home"
             rel="home"
@@ -87,41 +90,54 @@ function Header() {
             }
           />
 
-          <a
-            href="https://github.com/jaredLunde"
-            rel="external"
-            title="@jaredLunde on GitHub"
-            className={iconButton({ color: "primary", size: "sm" })}
+          <ul
+            className={hstack({ gap: 500, align: "center" })}
+            aria-label="Links to my social media accounts"
           >
-            <Icon name="Logos/github-fill" />
-          </a>
+            <li>
+              <a
+                href="https://github.com/jaredLunde"
+                rel="external"
+                title="@jaredLunde on GitHub"
+                className={iconButton({ color: "primary", size: "sm" })}
+              >
+                <Icon name="Logos/github-fill" />
+              </a>
+            </li>
 
-          <a
-            href="https://twitter.com/jaredLunde"
-            rel="external"
-            title="@jaredLunde on Twitter"
-            className={iconButton({ color: "primary", size: "sm" })}
-          >
-            <Icon name="Logos/twitter-fill" />
-          </a>
+            <li>
+              <a
+                href="https://twitter.com/jaredLunde"
+                rel="external"
+                title="@jaredLunde on Twitter"
+                className={iconButton({ color: "primary", size: "sm" })}
+              >
+                <Icon name="Logos/twitter-fill" />
+              </a>
+            </li>
 
-          <a
-            href="https://instagram.com/jaredlunde/"
-            rel="external"
-            title="@jaredlunde on Instagram"
-            className={iconButton({ color: "primary", size: "sm" })}
-          >
-            <Icon name="Logos/instagram-fill" />
-          </a>
+            <li>
+              <a
+                href="https://instagram.com/jaredlunde/"
+                rel="external"
+                title="@jaredlunde on Instagram"
+                className={iconButton({ color: "primary", size: "sm" })}
+              >
+                <Icon name="Logos/instagram-fill" />
+              </a>
+            </li>
 
-          <a
-            href="https://www.linkedin.com/in/jared-lunde"
-            rel="external"
-            title="Jared Lunde on LinkedIn"
-            className={iconButton({ color: "primary", size: "sm" })}
-          >
-            <Icon name="Logos/linkedin-fill" />
-          </a>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/jared-lunde"
+                rel="external"
+                title="Jared Lunde on LinkedIn"
+                className={iconButton({ color: "primary", size: "sm" })}
+              >
+                <Icon name="Logos/linkedin-fill" />
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -137,9 +153,11 @@ function Header() {
             box({ width: "100%", height: 200 }),
             scale(homeActive ? "in" : "out")
           )}
+          aria-hidden={!homeActive}
         >
           <Image
             src="/dunes.jpeg"
+            alt="An image of the Great Sand Dunes in Southwest Colorado"
             layout="fill"
             loading="eager"
             objectFit="cover"
@@ -153,7 +171,13 @@ function Header() {
           })}
         >
           <div className={hstack({ gap: "em400", align: "center" })}>
-            {!homeActive && <Avatar src="/avatar.jpeg" size="44px" />}
+            {!homeActive && (
+              <Avatar
+                src="/avatar.jpeg"
+                alt="A picture of Jared Lunde"
+                size="44px"
+              />
+            )}
 
             <div>
               {React.createElement(
@@ -212,17 +236,34 @@ function Header() {
           {(homeActive || resumeActive) && (
             <div
               className={clsx(
-                hstack({ gap: 500, align: "center" }),
+                inline({ gap: 500, align: "center" }),
                 text({ size: 100, color: "text500" })
               )}
             >
               <div className={hstack({ gap: 300, align: "center" })}>
                 <Icon name="Map/map-pin-2-fill" /> <span>Denver, CO</span>
               </div>
-              <div className={hstack({ gap: 300, align: "center" })}>
-                <Icon name="Business/calendar-2-fill" />{" "}
-                <span>Joined March 17, 1987</span>
-              </div>
+
+              {!resumeActive && (
+                <div className={hstack({ gap: 300, align: "center" })}>
+                  <Icon name="Business/calendar-2-fill" />{" "}
+                  <span>Joined March 17, 1987</span>
+                </div>
+              )}
+
+              {resumeActive && (
+                <a
+                  className={clsx(
+                    hstack({ gap: 300, align: "center" }),
+                    text({ size: 100, color: "text500" })
+                  )}
+                  href="mailto:jared.lunde@gmail.com"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Icon name="Business/mail-fill" />{" "}
+                  <span>jared.lunde@gmail.com</span>
+                </a>
+              )}
             </div>
           )}
         </div>

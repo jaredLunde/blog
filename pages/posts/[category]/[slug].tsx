@@ -8,7 +8,7 @@ import { RelatedPosts } from "@/components/related-posts";
 import { mq, styles } from "@/dash.config";
 import { Post, posts, postsMap } from "@/posts";
 import * as postComponents from "@/posts/components";
-import { routes } from "@/routes.config";
+import { absRoutes, routes } from "@/routes.config";
 import { divider } from "@/styles/divider";
 import { bleed, box, grid, hstack, inline, vstack } from "@/styles/layout";
 import { prose } from "@/styles/prose";
@@ -34,12 +34,15 @@ const Post: NextPage<PostProps> = function ({ slug }) {
             ? post.metadata.description
             : ""
         }
-        canonical={routes.post({
+        canonical={absRoutes.post({
           category: post.metadata.categories[0],
           slug: post.slug,
         })}
         openGraph={{
           images: post.metadata.image ? [{ url: post.metadata.image }] : [],
+        }}
+        twitter={{
+          cardType: post.metadata.image ? "summary_large_image" : "summary",
         }}
       />
 
