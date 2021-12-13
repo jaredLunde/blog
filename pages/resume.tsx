@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import { Icon } from "@/components/icon";
 import { pipeStyles, styles } from "@/dash.config";
@@ -481,11 +481,5 @@ const openSourceCard = styles.one(
     })
   )
 );
-
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: {},
-  };
-};
 
 export default Resume;

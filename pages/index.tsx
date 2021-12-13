@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Head from "next/head";
 import { useOrder } from "proser";
 import * as React from "react";
@@ -31,12 +31,6 @@ const Home: NextPage<HomeProps> = function ({}) {
       </div>
     </div>
   );
-};
-
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  return {
-    props: {},
-  };
 };
 
 export interface HomeProps {}
