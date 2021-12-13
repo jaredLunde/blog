@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "github": {
+    "enabled": false
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+export const metadata = {
+  title: "So you want to write a Babel plugin",
+  description:
+    "Here are the Babel plugin basics and resources you need to get started.",
+  timestamp: 1598459311282,
+  type: "macro",
+  tags: ["Babel", "Node"],
+  categories: ["How-to"],
+};
+
+Babel is an extremely powerful tool for frontend development. Chances are you will
+[find the plugin you need on **npm**](https://www.npmjs.com/search?q=babel%20plugin),
+but what if you need something novel?
+
+## Use cases
+
+- Adding transformations to personal TypeScript/JavaScript libraries
+- Automating test cases or mocks
+- Simple codemods
+
+## Learn these terms
+
+- [**AST**](https://en.wikipedia.org/wiki/Abstract_syntax_tree): Source code abstracted as a JavaScript object. When Babel parses code, it
+  transforms it into this.
+- **Nodes**: These are objects representing specific [Babel types](https://babeljs.io/docs/en/babel-types)
+  in the AST
+- **Paths**: These are objects that link nodes to one another in the AST
+- [**Visitor**](https://en.wikipedia.org/wiki/Visitor_pattern): Visitors
+  allow you to perform operations on specific paths in the AST based on
+  their type
+
+## Treat yourself
+
+- Do yourself a favor and prefer TypeScript to JavaScript when writing your plugin.
+- Type guards (e.g. `t.isObjectProperty(path)`) in `@babel/types` create a flawless autocomplete
+  experience and result in more resilient plugins.
+
+## Libraries you'll need
+
+- [**@babel/core**](https://www.npmjs.com/package/@babel/core): Parse source code into an AST and transform it.
+  In particular, see the `parseAsync()` and `transformAsync()` API references.
+- [**@babel/types**](https://www.npmjs.com/package/@babel/types): Check node types and construct new AST nodes.
+- [**@babel/generator**](https://www.npmjs.com/package/@babel/generator): Generate source code from an AST.
+- [**@babel/template**](https://www.npmjs.com/package/@babel/template): Build an AST from strings and placeholders
+  rather than the utility functions in `@babel/types`.
+- [**@babel/helper-plugin-utils**](https://babeljs.io/docs/en/next/babel-helper-plugin-utils.html): Provide clear messages
+  to your plugin users if their Babel version doesn't have APIs required by your plugin.
+- [**babel-plugin-tester**](https://github.com/babel-utils/babel-plugin-tester): The easiest way to test your babel plugin.
+
+## Resources
+
+- [**Babel Plugin Handbook**](https://github.com/kentcdodds/babel-plugin-handbook/blob/master/README.md#table-of-contents): Go
+  deeper into Babel plugin concepts.
+- [**Babel Types**](https://babeljs.io/docs/en/babel-types): Quickly search for the AST
+  node types you're looking for.
+- [**Babel Plugin Macros**](https://github.com/kentcdodds/babel-plugin-macros): Allow
+  plugin users to utilize your plugin transformations without adding it to their
+  Babel config. This is useful for libraries like [create-react-app](https://github.com/facebook/create-react-app)
+  that don't allow you to customize your plugins.
+
+## Finding examples
+
+- **Hiding in plain sight**: The best place to find example plugins is the [Babel monorepo](https://github.com/babel/babel/tree/eea156b2cb8deecfcf82d52aa1b71ba4995c7d68/packages)
+  itself.
+- **Less is more**: The more basic the plugin, the more fruitful for understanding.
+  - [@babel/plugin-proposal-export-default-from](https://github.com/babel/babel/blob/eea156b2cb8deecfcf82d52aa1b71ba4995c7d68/packages/babel-plugin-proposal-export-default-from/src/index.js)
+  - [@babel/plugin-transform-react-constant-elements](https://github.com/babel/babel/blob/eea156b2cb8deecfcf82d52aa1b71ba4995c7d68/packages/babel-plugin-transform-react-constant-elements/src/index.js)
+  - [@babel/plugin-transform-object-assign](https://github.com/babel/babel/blob/eea156b2cb8deecfcf82d52aa1b71ba4995c7d68/packages/babel-plugin-transform-object-assign/src/index.js)
+  - [@babel/plugin-transform-duplicate-keys](https://github.com/babel/babel/blob/eea156b2cb8deecfcf82d52aa1b71ba4995c7d68/packages/babel-plugin-transform-duplicate-keys/src/index.js)
+
+## Anatomy of a plugin
+
+This is a contrived example of a Babel plugin that hoists all duplicate `StringLiteral` types to
+a higher scope. In the real world more nuanced logic is required to avoid replacing object
+property keys and mutable strings willy-nilly.
+
+** What you're going to see**
+
+- Plugin options, state
+- A few built-in plugin utilities
+- What `enter()` and `exit()` visitors look like
+
+```ts
+import * as t from "@babel/types";
+import * as babel from "@babel/core";
+
+export default function babelPluginHoistCommonStrings() {
+  return {
+    // This provides the user with better error messages if
+    // our plugin throws
+    name: "hoist-common-strings",
+    // And here is the meat of your plugin - the visitor
+    visitor: {
+      /**
+       * @param path This is the Path we talked about above. It
+       *  is an object that links Nodes together.
+       * @param state An object that contains a bunch of metadata
+       *  about the ... state ... of the transformation. Here you'll find:
+       *    - state.ast: The current AST from its root Node
+       *    - state.code: The code string being transformed
+       *    - state.opts: Plugin options
+       *    - state.cwd: The working directory of the user
+       *    - state.filename: The absolute filename of file
+       *      currently being transformed
+       */
+      StringLiteral(path: babel.NodePath<t.StringLiteral>, state: any) {
+        // state.opts give us access to options specific to this plugin
+        // provided by the user with ['hoist-common-strings', {...options...}]
+        const { minLen = 2 } = state.opts;
+
+        // Here we're going to add the paths for each string literal that
+        // was used to our state. This will allow us to count them later
+        // and make sure our `minUses` option was surpassed.
+        const { node } = path;
+        state.commonStrings = state.commonStrings || {};
+        const { commonStrings } = state;
+        // Only hoist strings that surpass our minimum length
+        if (node.value.length >= minLen) {
+          commonStrings[node.value] = commonStrings[node.value] || [];
+          commonStrings[node.value].push(path);
+        }
+      },
+      // Program is at the root of the AST
+      Program: {
+        /**
+         * This is a method on our visitor that is going to be
+         * called right before the visitor exits the node.
+         */
+        exit(path: babel.NodePath<t.Program>, state: any) {
+          // state.opts give us access to options specific to this plugin
+          // provided by the user with ['hoist-common-strings', {...options...}]
+          const { minUses = 1 } = state.opts;
+          // These are the strings we found matching our criteria
+          const { commonStrings } = state;
+
+          for (const string in commonStrings) {
+            const paths = commonStrings[string];
+            // This ensures we only hoist common strings that are used
+            // more than the user's `minUses` option
+            if (paths.length > minUses) {
+              // Babel has some greate utilities that come with
+              // each plugin. To cover them all in one post
+              // would be impossible.
+              //
+              // This helper will create a unique Identifier node
+              // specific to this string
+              const id = path.scope.generateUidIdentifier(string);
+              // Here we replace each of our string paths with the Identifier
+              // returned above
+              paths.forEach((stringPath: babel.NodePath<t.StringLiteral>) => {
+                stringPath.replaceWith(id);
+              });
+              // Finally, we add our Identifier into AST
+              path.scope.push({ id, init: t.stringLiteral(string) });
+            }
+          }
+        },
+      },
+    },
+  };
+}
+```
+
+Given the input:
+
+```js
+const MyObject = {
+  hello: "world",
+  hello1: "world",
+  hello2: "world",
+  a: "a",
+  a1: "a",
+  a2: "a",
+};
+```
+
+We expect the output:
+
+```js
+var _world = "world";
+const MyObject = {
+  hello: _world,
+  hello1: _world,
+  hello2: _world,
+  a: "a",
+  a1: "a",
+  a2: "a",
+};
+```
+
+[Click here](https://github.com/jaredLunde/babel-plugin-example) to see the plugin and its associated tests on **GitHub**
