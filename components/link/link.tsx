@@ -40,6 +40,7 @@ function LinkBase<
   );
 }
 
+// @ts-expect-error: TypeScript is being dumb about the route params
 export const Link = React.forwardRef(LinkBase) as <
   To extends keyof typeof routes,
   Params extends Parameters<typeof routes[To]>[0]
@@ -82,6 +83,7 @@ function NavLinkBase<
   );
 }
 
+// @ts-expect-error: TypeScript is being dumb about the route params
 export const NavLink = React.forwardRef(NavLinkBase) as <
   To extends keyof typeof routes = keyof typeof routes,
   Params extends Parameters<typeof routes[To]>[0] = Parameters<

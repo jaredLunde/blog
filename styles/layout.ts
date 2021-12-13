@@ -1,4 +1,5 @@
 import layout from "@dash-ui/layout";
+import type { DesignTokens, themes } from "@/dash.config";
 import { mediaQueries, styles } from "@/dash.config";
 
 export const {
@@ -13,4 +14,7 @@ export const {
   autoGrid,
   gridItem,
   bleed,
-} = layout(styles, mediaQueries);
+} = layout<DesignTokens, typeof themes, typeof mediaQueries>(
+  styles,
+  mediaQueries
+);

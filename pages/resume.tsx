@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import type { styles } from "@/dash.config";
 import { vstack } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -29,6 +30,12 @@ const Resume: NextPage = function () {
       </div>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+  };
 };
 
 export default Resume;
