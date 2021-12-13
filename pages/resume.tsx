@@ -1,8 +1,10 @@
+import { useId } from "@radix-ui/react-id";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import * as React from "react";
 import { Icon } from "@/components/icon";
-import { pipeStyles, styles } from "@/dash.config";
-import { routes } from "@/routes.config";
+import { mq, pipeStyles, styles } from "@/dash.config";
+import { absRoutes } from "@/routes.config";
 import { grid, gridItem, vstack } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -21,93 +23,86 @@ const Resume: NextPage = function () {
       <NextSeo
         title="Resume / UI Engineer / Jared Lunde"
         description={`Want to know more about my professional experience? Check out my resume here.`}
-        canonical={routes.resume()}
+        canonical={absRoutes.resume()}
+        openGraph={{
+          images: [{ url: "/avatar.jpeg" }],
+        }}
+        twitter={{
+          cardType: "summary",
+        }}
       />
 
-      <section className={section()}>
-        <h2 className={section.heading()}>
-          <span role="img" aria-hidden>
-            🔆{" "}
-          </span>
-          About me
-        </h2>
+      <Section
+        title={
+          <React.Fragment>
+            <span role="img" aria-hidden>
+              🔆{" "}
+            </span>
+            About me
+          </React.Fragment>
+        }
+      >
+        <ul className={vstack({ gap: 400 })}>
+          <AboutMeCard
+            title="Grit"
+            examples={[
+              "Self-employed majority of professional career",
+              "Engineered, grew, exited two self-funded, high traffic web apps",
+              "Self-taught, focused on design patterns and data structures",
+            ]}
+          />
 
-        <section className={aboutMeCard()}>
-          <h3>Grit</h3>
-          <ul>
-            <li>Self-employed majority of professional career</li>
-            <li>
-              Engineered, grew, exited two self-funded, high traffic web apps
-            </li>
-            <li>Self-taught, focused on design patterns and data structures</li>
-          </ul>
-        </section>
+          <AboutMeCard
+            title="Library & app code"
+            examples={[
+              <React.Fragment key={0}>
+                <strong>14 years</strong> shipping web applications
+              </React.Fragment>,
+              <React.Fragment key={1}>
+                <strong>6 years</strong> programming in React
+              </React.Fragment>,
+              <React.Fragment key={2}>
+                <strong>120+</strong> public repositories
+              </React.Fragment>,
+              <React.Fragment key={3}>
+                <strong>500,000+</strong> weekly NPM downloads
+              </React.Fragment>,
+            ]}
+          />
 
-        <section className={aboutMeCard()}>
-          <h3>Library &amp; app code</h3>
-          <ul>
-            <li>
-              <b>14 years</b> shipping web applications
-            </li>
-            <li>
-              <b>6 years</b> programming in React
-            </li>
-            <li>
-              <b>120+</b> public repositories
-            </li>
-            <li>
-              <b>500,000+</b> weekly NPM downloads
-            </li>
-          </ul>
-        </section>
+          <AboutMeCard
+            title="UI/UX"
+            examples={[
+              <React.Fragment key={0}>
+                <strong>3 years</strong> creating design systems
+              </React.Fragment>,
+              <React.Fragment key={1}>
+                <strong>14 years</strong> creating user experiences
+              </React.Fragment>,
+              "Laser-focused on WAI-ARIA accessibility patterns",
+            ]}
+          />
+        </ul>
+      </Section>
 
-        <section className={aboutMeCard()}>
-          <h3>UI/UX</h3>
-          <ul>
-            <li>
-              <b>3 years</b> creating design systems
-            </li>
-            <li>
-              <b>14 years</b> creating user experiences
-            </li>
-            <li>Laser-focused on WAI-ARIA accessibility patterns</li>
-          </ul>
-        </section>
-      </section>
-
-      <section className={section()}>
-        <h2 className={section.heading()}>Professional experience</h2>
-
+      <Section title="Professional experience">
         <ul className={professionalExperience()}>
-          {" "}
-          <li className={professionalExperience.card()}>
-            <div>
-              <h3>
-                Software Engineering Manager{" "}
-                <span className="date-range">Aug 2021 &ndash; Now</span>
-              </h3>
-              <h4>
-                <a href="https://hotelengine.com">
-                  <Icon name="System/external-link-fill" /> Hotel Engine — A
-                  better way to manage business travel lodging
-                </a>
-              </h4>
-            </div>
-          </li>
-          <li className={professionalExperience.card()}>
-            <div>
-              <h3>
-                Senior Front-end Engineer{" "}
-                <span className="date-range">Oct 2020 &ndash; Apr 2021</span>
-              </h3>
-              <h4>
-                <a href="https://paperspace.com">
-                  <Icon name="System/external-link-fill" /> Paperspace — The
-                  cloud platform built for the future
-                </a>
-              </h4>
-            </div>
+          <ProfessionalExperienceCard
+            title="Software Engineering Manager"
+            startDate="Aug 2021"
+            companyName="Hotel Engine"
+            companyDescription="A better way to manage business travel lodging"
+            companyWebsite="https://hotelengine.com"
+          />
 
+          <ProfessionalExperienceCard
+            title="Senior Front-end Engineer"
+            startDate="Oct 2020"
+            endDate="Apr 2021"
+            companyName="Paperspace"
+            companyDescription="The cloud platform built for the future"
+            companyWebsite="https://paperspace.com"
+          >
             <ul>
               <li>
                 Designed and engineered the frontend for the company’s Google
@@ -129,27 +124,21 @@ const Resume: NextPage = function () {
                 Mentored and paired regularly with junior engineers on my team
               </li>
             </ul>
-          </li>
-          <li className={professionalExperience.card()}>
-            <div>
-              <h3>
-                Senior Front-end Engineer{" "}
-                <span className="date-range">Sep 2019 &ndash; Oct 2020</span>
-              </h3>
-              <h4>
-                <a href="https://getadmiral.com">
-                  <Icon name="System/external-link-fill" /> Admiral — The
-                  visitor relationship management company
-                </a>
-              </h4>
-            </div>
+          </ProfessionalExperienceCard>
 
+          <ProfessionalExperienceCard
+            title="Senior Front-end Engineer"
+            startDate="Sep 2019"
+            endDate="Oct 2020"
+            companyName="Admiral"
+            companyDescription="The visitor relationship management company"
+            companyWebsite="https://getadmiral.com"
+          >
             <ul>
               <li>
                 Modernized build tooling, positively impacting developer
                 productivity, product reliability and bundle size
               </li>
-
               <li>
                 Introduced accessibility features, protecting the company from
                 liability issues while championing inclusivity
@@ -159,16 +148,14 @@ const Resume: NextPage = function () {
                 and component library, providing products a cohesive brand story
               </li>
             </ul>
-          </li>
-          <li className={professionalExperience.card()}>
-            <div>
-              <h3>
-                Founder, Fullstack Software Engineer{" "}
-                <span className="date-range">Jan 2017 &ndash; Aug 2019</span>
-              </h3>
-              <h4>Stellar</h4>
-            </div>
+          </ProfessionalExperienceCard>
 
+          <ProfessionalExperienceCard
+            title="Founder, Fullstack Software Engineer"
+            startDate="Jan 2017"
+            endDate="Aug 2019"
+            companyName="Stellar"
+          >
             <ul>
               <li>
                 Designed frontend libraries for rapidly launching serverless
@@ -181,21 +168,16 @@ const Resume: NextPage = function () {
               </li>
               <li>Generated up to 100 quality leads for clients each month</li>
             </ul>
-          </li>
-          <li className={professionalExperience.card()}>
-            <div>
-              <h3>
-                Founder, Full Stack Software Engineer{" "}
-                <span className="date-range">Jun 2010 &ndash; Dec 2016</span>
-              </h3>
-              <h4>
-                <a href="https://makeagif.com">
-                  <Icon name="System/external-link-fill" /> Cool Story —
-                  MakeAGIF.com, MakeADare.com, et. al.
-                </a>
-              </h4>
-            </div>
+          </ProfessionalExperienceCard>
 
+          <ProfessionalExperienceCard
+            title="Founder, Fullstack Software Engineer"
+            startDate="Jun 2010"
+            endDate="Dec 2016"
+            companyName="Cool Story"
+            companyDescription="MakeAGIF.com, MakeADare.com, et. al."
+            companyWebsite="https://makeagif.com"
+          >
             <ul>
               <li>
                 Consistently delivered as many as 12 million page views to 1.8
@@ -211,116 +193,282 @@ const Resume: NextPage = function () {
                 GIFs each day targeting mobile and desktop viewing devices
               </li>
             </ul>
-          </li>
+          </ProfessionalExperienceCard>
         </ul>
-      </section>
+      </Section>
 
-      <section className={section()}>
-        <h2 className={section.heading()}>Technical competencies</h2>
+      <Section title="Technical competencies">
+        <ul className={vstack({ gap: 400 })}>
+          <TechnicalCompetencyCard
+            title="Languages"
+            examples={[
+              "TypeScript",
+              "Node.js",
+              "GraphQL",
+              "Python",
+              "SQL",
+              "HTML",
+              "CSS",
+            ]}
+          />
 
-        <section className={aboutMeCard()}>
-          <h3>Languages</h3>
-          <p className={text({ size: 100 })}>
-            TypeScript, Node.js, GraphQL, Python, SQL, HTML, CSS
-          </p>
-        </section>
+          <TechnicalCompetencyCard
+            title="Libraries"
+            examples={[
+              "React",
+              "Next.js",
+              "Styled Components",
+              "React Query",
+              "SWR",
+              "Urql",
+              "Apollo",
+              "Redux",
+              "Jest",
+              "Webpack",
+              "Rollup",
+              "Babel",
+              "Serverless",
+              "and more",
+            ]}
+          />
 
-        <section className={aboutMeCard()}>
-          <h3>Libraries</h3>
-          <p className={text({ size: 100 })}>
-            React, Next.js, Styled Components, React Query, SWR, Urql, Apollo,
-            Redux, Jest, Webpack, Rollup, Babel, Serverless,{" "}
-            <em>and many more</em>
-          </p>
-        </section>
+          <TechnicalCompetencyCard
+            title="AWS"
+            examples={[
+              "Lambda",
+              "API Gateway",
+              "RDS",
+              "VPC",
+              "CloudFormation",
+              "Route 53",
+              "S3",
+              "CloudFront",
+              "ElastiCache",
+              "SNS",
+              "SQS",
+              "Parameter Store",
+            ]}
+          />
+        </ul>
+      </Section>
 
-        <section className={aboutMeCard()}>
-          <h3>AWS</h3>
-          <p className={text({ size: 100 })}>
-            Lambda, API Gateway, RDS, VPC, CloudFormation, Route 53, S3,
-            CloudFront, ElastiCache, SNS, SQS, Parameter Store
-          </p>
-        </section>
-      </section>
-
-      <section className={section()}>
-        <h2 className={section.heading()}>Open source</h2>
-
+      <Section title="Open source projects">
         <ul
           className={grid({
             cols: 2,
-            gap: 500,
+            gap: 400,
             alignY: "stretch",
           })}
         >
-          <li>
-            <a className={openSourceCard()} href="https://github.com/dash-ui">
-              <h3>dash-ui</h3>
-              <p className={text({ size: 100 })}>
-                A tiny, powerful, framework-agnostic CSS-in-JS ecosystem
-              </p>
-              <span>TypeScript, CSS, React, Babel</span>
-            </a>
-          </li>
+          <OpenSourceCard
+            repo="dash-ui"
+            name="dash-ui"
+            description="A tiny, powerful, framework-agnostic CSS-in-JS ecosystem."
+            techStack={["TypeScript", "CSS", "React", "Babel"]}
+          />
 
-          <li>
-            <a
-              className={openSourceCard()}
-              href="https://github.com/accessible-ui"
-            >
-              <h3>accessible-ui</h3>
-              <p className={text({ size: 100 })}>
-                Headless React components and hooks enacting WAI-ARIA best
-                practices
-              </p>
-              <span>React, TypeScript</span>
-            </a>
-          </li>
+          <OpenSourceCard
+            repo="accessible-ui"
+            name="accessible-ui"
+            description="Headless React components and hooks enacting WAI-ARIA best practices."
+            techStack={["React", "TypeScript", "Accessibility"]}
+          />
 
-          <li>
-            <a
-              className={openSourceCard()}
-              href="https://github.com/jaredLunde/react-hook"
-            >
-              <h3>react-hook</h3>
-              <p className={text({ size: 100 })}>
-                Strongly typed React hooks for function components
-              </p>
-              <span>React, TypeScript</span>
-            </a>
-          </li>
+          <OpenSourceCard
+            repo="jaredLunde/react-hook"
+            name="react-hook"
+            description="Strongly typed React hooks for function components."
+            techStack={["React", "TypeScript"]}
+          />
 
-          <li>
-            <a
-              className={openSourceCard()}
-              href="https://github.com/jaredLunde/masonic"
-            >
-              <h3>masonic</h3>
-              <p className={text({ size: 100 })}>
-                High performance virtual masonry layouts for React
-              </p>
-              <span>React, TypeScript, Algorithms</span>
-            </a>
-          </li>
+          <OpenSourceCard
+            repo="jaredLunde/masonic"
+            name="masonic"
+            description="High performance virtual masonry layouts for React."
+            techStack={["React", "TypeScript", "Algorithms"]}
+          />
 
-          <li className={gridItem({ colStart: 1, colEnd: 3 })}>
-            <a
-              className={openSourceCard()}
-              href="https://github.com/jaredLunde/blog"
-            >
-              <h3>blog</h3>
-              <p className={text({ size: 100 })}>
+          <OpenSourceCard
+            repo="jaredLunde/blog"
+            name="blog"
+            description={
+              <React.Fragment>
                 <span aria-hidden>👋</span> See the code that went into making
-                this website
-              </p>
-              <span>React, TypeScript, Next.js, CSS</span>
-            </a>
-          </li>
+                this website.
+              </React.Fragment>
+            }
+            techStack={["React", "TypeScript", "Next.js", "CSS"]}
+            className={gridItem({ colStart: 1, colEnd: 3 })}
+          />
         </ul>
-      </section>
+      </Section>
     </div>
   );
 };
+
+function Section({
+  title,
+  children,
+}: {
+  title: React.ReactNode;
+  children: React.ReactElement;
+}) {
+  const id = useId();
+
+  return (
+    <section className={section()}>
+      <h2 className={section.heading()} id={id} aria-hidden>
+        {title}
+      </h2>
+
+      {React.cloneElement(children, { "aria-labelledby": id })}
+    </section>
+  );
+}
+
+function AboutMeCard({
+  title,
+  examples,
+}: {
+  title: string;
+  examples: React.ReactNode[];
+}) {
+  const id = useId();
+  return (
+    <li className={aboutMeCard()}>
+      <h3 id={id} aria-hidden>
+        {title}
+      </h3>
+
+      <ul aria-labelledby={id}>
+        {examples.map((example, i) => (
+          <li key={i}>{example}</li>
+        ))}
+      </ul>
+    </li>
+  );
+}
+
+function ProfessionalExperienceCard({
+  title,
+  startDate,
+  endDate,
+  companyName,
+  companyDescription,
+  companyWebsite,
+  children,
+}: {
+  title: string;
+  startDate: string;
+  endDate?: string;
+  companyName: string;
+  companyDescription?: string;
+  companyWebsite?: string;
+  children?: React.ReactElement;
+}) {
+  return (
+    <li className={professionalExperience.card()}>
+      <div
+        role="heading"
+        aria-level={3}
+        aria-label={`${title} at "${companyName}" from ${startDate} to ${
+          endDate ?? "now"
+        }`}
+      >
+        <h3>
+          {title}{" "}
+          <span className="date-range">
+            {startDate} &ndash; {endDate ?? "Now"}
+          </span>
+        </h3>
+
+        <h4>
+          {companyWebsite ? (
+            <a href={companyWebsite}>
+              <Icon name="System/external-link-fill" /> {companyName}{" "}
+              {companyDescription && (
+                <React.Fragment>— {companyDescription}</React.Fragment>
+              )}
+            </a>
+          ) : (
+            <React.Fragment>
+              {companyName}{" "}
+              {companyDescription && (
+                <React.Fragment>— {companyDescription}</React.Fragment>
+              )}
+            </React.Fragment>
+          )}
+        </h4>
+      </div>
+
+      {children &&
+        React.cloneElement(children, {
+          "aria-label": `Achievements at ${companyName}`,
+        })}
+    </li>
+  );
+}
+
+function TechnicalCompetencyCard({
+  title,
+  examples,
+}: {
+  title: string;
+  examples: React.ReactNode[];
+}) {
+  const id = useId();
+  return (
+    <li className={technicalCompetencyCard()}>
+      <h3 id={id} aria-hidden>
+        {title}
+      </h3>
+
+      <ul aria-labelledby={id}>
+        {examples.map((example, i) => (
+          <li key={i}>{example}</li>
+        ))}
+      </ul>
+    </li>
+  );
+}
+
+function OpenSourceCard({
+  repo,
+  name,
+  description,
+  techStack,
+  className,
+}: {
+  repo: string;
+  name: React.ReactNode;
+  description: React.ReactNode;
+  techStack: string[];
+  className?: string;
+}) {
+  const id = useId();
+
+  return (
+    <li className={className}>
+      <a
+        className={openSourceCard()}
+        href={"https://github.com/" + repo}
+        aria-labelledby={id + "-title"}
+        aria-describedby={id + "-desc " + id + "-tech"}
+      >
+        <h3 id={id + "-title"}>{name}</h3>
+        <p className={text({ size: 100 })} id={id + "-desc"}>
+          {description}
+        </p>
+        <span
+          aria-label={"Tech stack: " + techStack.join(", ")}
+          id={id + "-tech"}
+        >
+          {techStack.join(", ")}
+        </span>
+      </a>
+    </li>
+  );
+}
 
 const section = Object.assign(() => vstack({ gap: 500 }), {
   heading: () => text({ size: 400, weight: 400, color: "text" }),
@@ -340,7 +488,7 @@ const aboutMeCard = styles.one(
       borderRadius: t.radius.primary,
       color: t.color.text400,
 
-      b: {
+      strong: {
         fontWeight: 500,
       },
 
@@ -365,6 +513,42 @@ const aboutMeCard = styles.one(
         height: 4,
         left: 0,
         color: t.color.text400,
+      },
+    })
+  )
+);
+
+const technicalCompetencyCard = styles.one(
+  pipeStyles(
+    grid.css({
+      gap: 400,
+      cols: { min: 1, xs: [120, "auto"] },
+      alignY: "center",
+      pad: { min: 500, xs: [500, 600] },
+    }),
+    (t) => ({
+      lineHeight: t.font.leading[400],
+      backgroundColor: t.color.accent,
+      borderRadius: t.radius.primary,
+      color: t.color.text400,
+
+      strong: {
+        fontWeight: 500,
+      },
+
+      h3: {
+        color: t.color.text,
+        fontWeight: 500,
+        fontSize: t.font.size[200],
+      },
+
+      "> ul > li": {
+        display: "inline",
+        fontSize: t.font.size[100],
+      },
+
+      "> ul > li:not(:last-child)::after": {
+        content: '", "',
       },
     })
   )
@@ -455,29 +639,42 @@ const professionalExperience = Object.assign(
 const openSourceCard = styles.one(
   pipeStyles(
     vstack.css({
+      height: "100%",
       gap: 400,
       pad: { min: 500, xs: 600 },
     }),
-    (t) => ({
-      textDecoration: "none",
-      lineHeight: t.font.leading[400],
-      backgroundColor: t.color.accent,
-      borderRadius: t.radius.primary,
-      color: t.color.text400,
+    mq({
+      default: (t) => ({
+        textDecoration: "none",
+        lineHeight: t.font.leading[400],
+        borderRadius: t.radius.primary,
+        border: `${t.borderWidth[50]} solid ${t.color.secondary}`,
+        color: t.color.text400,
 
-      b: {
-        fontWeight: 500,
-      },
+        b: {
+          fontWeight: 500,
+        },
 
-      h3: {
-        fontWeight: 500,
-        fontSize: t.font.size[300],
-        color: t.color.text,
-      },
+        h3: {
+          fontWeight: 500,
+          fontSize: t.font.size[300],
+          color: t.color.text,
+        },
 
-      "> *:last-child": {
-        fontSize: t.font.size[50],
-      },
+        "> *:last-child": {
+          fontSize: t.font.size[50],
+          color: t.color.secondary,
+        },
+
+        ":focus-visible": {
+          backgroundColor: t.color.accent,
+        },
+      }),
+      hover: (t) => ({
+        ":hover": {
+          backgroundColor: t.color.accent,
+        },
+      }),
     })
   )
 );

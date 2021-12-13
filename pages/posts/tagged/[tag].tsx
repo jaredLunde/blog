@@ -5,7 +5,7 @@ import { slugify, useOrder, useTag } from "proser";
 import * as React from "react";
 import { PostsList } from "@/components/posts-list";
 import { posts, postsMap } from "@/posts";
-import { routes } from "@/routes.config";
+import { absRoutes, routes } from "@/routes.config";
 import { box, vstack } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -23,11 +23,16 @@ const Tag: NextPage<TagProps> = function ({ tag }) {
       <NextSeo
         title={`${formattedTitle} articles / Jared Lunde`}
         description={`Dive in to articles tagged "${formattedTitle}". Follow me at @jaredLunde on Twitter for more.`}
-        canonical={routes.tag({ tag: formattedTitle })}
+        canonical={absRoutes.tag({ tag: formattedTitle })}
         openGraph={{
           images: postWithImage?.metadata.image
             ? [{ url: postWithImage.metadata.image }]
             : [],
+        }}
+        twitter={{
+          cardType: postWithImage?.metadata.image
+            ? "summary_large_image"
+            : "summary",
         }}
       />
 
