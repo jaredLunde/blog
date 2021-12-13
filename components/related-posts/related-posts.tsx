@@ -90,13 +90,13 @@ export interface BlogPostCardProps {
 }
 
 const postCard = Object.assign(
-  styles.one(({ radius, borderWidth, color, pad }) => ({
-    padding: pad[500],
-    borderRadius: radius.primary,
-    border: `${borderWidth[50]} solid ${color.secondary}`,
+  styles.one((t) => ({
+    padding: t.pad[500],
+    borderRadius: t.radius.primary,
+    border: `${t.borderWidth[50]} solid ${t.color.secondary}`,
   })),
   {
-    imageContainer: styles.one(({ radius }) => ({
+    imageContainer: styles.one((t) => ({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -104,7 +104,7 @@ const postCard = Object.assign(
       width: "100%",
       maxWidth: "100%",
       height: 296,
-      borderRadius: radius.primary,
+      borderRadius: t.radius.primary,
 
       picture: {
         maxWidth: "none",
@@ -116,12 +116,12 @@ const postCard = Object.assign(
         },
       },
     })),
-    link: styles.one((t) => ({
+    link: styles.one({
       textDecoration: "none",
 
       "&:focus-visible": {
         textDecoration: "underline",
       },
-    })),
+    }),
   }
 );

@@ -1,5 +1,5 @@
 import { mq, responsiveStyles, styles } from "@/dash.config";
-import { em, rem, round } from "@/utils/unit";
+import { em, round } from "@/utils/unit";
 
 export const typography = responsiveStyles.variants({
   default: mq({
