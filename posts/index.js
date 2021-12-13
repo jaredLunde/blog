@@ -6,13 +6,12 @@
  */
 import dynamic from "next/dynamic";
 import React from "react";
-/*__PROSER_HOISTED_STRINGS__*/ const _macro = "macro",
-  _HowTo = "How-to",
-  _Snowpack = "Snowpack",
-  _Webpack = "Webpack",
-  _Frontend = "Frontend",
-  _minRead = "2 min read",
-  _Personal = "Personal";
+/*__PROSER_HOISTED_STRINGS__*/ const _macro2 = "macro",
+  _HowTo2 = "How-to",
+  _Snowpack2 = "Snowpack",
+  _Webpack2 = "Webpack",
+  _Frontend2 = "Frontend",
+  _minRead2 = "2 min read";
 
 export const postsMap = {
   "write-your-first-babel-plugin": {
@@ -25,9 +24,9 @@ export const postsMap = {
       description:
         "Here are the Babel plugin basics and resources you need to get started.",
       timestamp: 1598459311282,
-      type: _macro,
+      type: _macro2,
       tags: ["Babel", "Node"],
-      categories: [_HowTo],
+      categories: [_HowTo2],
       readingTime: { text: "5 min read", time: 284400, words: 948 },
     },
   },
@@ -42,10 +41,10 @@ export const postsMap = {
       description:
         "Snowpack and ES modules are the future of the web. If you don't need to support legacy browsers, why not drop your bundler?",
       timestamp: 1598476509136,
-      type: _macro,
-      tags: [_Snowpack, _Webpack, "Rollup", "Parcel", "ES modules"],
-      categories: ["Hot takes", _Frontend],
-      readingTime: { text: _minRead, time: 104400, words: 348 },
+      type: _macro2,
+      tags: [_Snowpack2, _Webpack2, "Rollup", "Parcel", "ES modules"],
+      categories: ["Hot takes", _Frontend2],
+      readingTime: { text: _minRead2, time: 104400, words: 348 },
     },
   },
 
@@ -61,10 +60,10 @@ export const postsMap = {
       description:
         "How to fix common issues when adding Storybook to a Snowpack app.",
       timestamp: 1598485593466,
-      type: _macro,
-      tags: [_Snowpack, _Webpack, "Storybook"],
-      categories: [_HowTo, _Frontend],
-      readingTime: { text: _minRead, time: 78300, words: 261 },
+      type: _macro2,
+      tags: [_Snowpack2, _Webpack2, "Storybook"],
+      categories: [_HowTo2, _Frontend2],
+      readingTime: { text: _minRead2, time: 78300, words: 261 },
     },
   },
 
@@ -81,25 +80,10 @@ export const postsMap = {
       get image() {
         return "/sleep-paralysis.jpg";
       },
-      type: _macro,
-      tags: ["Mortality", _Personal],
+      type: _macro2,
+      tags: ["Mortality", "Personal"],
       categories: ["Philosophy"],
       readingTime: { text: "8 min read", time: 434100, words: 1447 },
-    },
-  },
-
-  "forget-what-i-said": {
-    id: 4,
-    slug: "forget-what-i-said",
-
-    component: dynamic(() => import("./4-forget-what-i-said.mdx")),
-    metadata: {
-      title: "Forget what I said",
-      description: "A serious request",
-      timestamp: 1639246973466,
-      tags: [_Personal],
-      categories: ["Frontpage"],
-      readingTime: { text: "1 min read", time: 7800, words: 26 },
     },
   },
 };

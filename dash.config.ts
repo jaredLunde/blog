@@ -494,6 +494,7 @@ export const themes = {
     color: {
       bodyBg: pathToToken<Tokens>("color.white"),
       border: pathToToken<Tokens>("color.blueGray200"),
+      accent: pathToToken<Tokens>("color.blueGray100"),
 
       primary: pathToToken<Tokens>("color.blueGray800"),
       secondary: pathToToken<Tokens>("color.blue700"),
@@ -619,6 +620,7 @@ export const themes = {
     color: {
       bodyBg: pathToToken<Tokens>("color.black"),
       border: pathToToken<Tokens>("color.blueGray700"),
+      accent: pathToToken<Tokens>("color.blueGray900"),
 
       primary: pathToToken<Tokens>("color.white"),
       secondary: pathToToken<Tokens>("color.blue400"),

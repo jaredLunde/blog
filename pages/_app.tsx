@@ -157,7 +157,7 @@ function Header() {
 
             <div>
               {React.createElement(
-                homeActive ? "h1" : "div",
+                homeActive || resumeActive ? "h1" : "div",
                 {
                   className: text({
                     size: homeActive ? 600 : 300,
@@ -172,7 +172,7 @@ function Header() {
               )}
 
               {React.createElement(
-                homeActive ? "h2" : "div",
+                homeActive || resumeActive ? "h2" : "div",
                 {
                   className: text({
                     size: homeActive ? 500 : 300,

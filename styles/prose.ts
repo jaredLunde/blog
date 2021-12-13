@@ -144,15 +144,14 @@ export const typography = responsiveStyles.variants({
         paddingRight: "0",
       },
     }),
-    hover: ({ color }) => ({
+    hover: {
       a: {
-        ":hover,:focus": {
+        ":hover,:focus-visible": {
           boxShadow: "none",
-          textDecorationStyle: "wavy",
-          textDecorationColor: color.primary,
+          textDecorationStyle: "underline",
         },
       },
-    }),
+    },
     retina: {
       "h1,h2,h3,h4,h5,h6": {
         WebkitFontSmoothing: "antialiased",
