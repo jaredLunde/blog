@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://jaredlunde.com</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/resume</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/how-to/write-your-first-babel-plugin</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/hot-takes/drop-your-bundler-in-2020</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/how-to/set-up-storybook-in-a-snowpack-project</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/philosophy/on-death-and-dying</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/frontpage/forget-what-i-said</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/how-to</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/hot-takes</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/frontend</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/philosophy</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/frontpage</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/babel</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/node</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/snowpack</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/webpack</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/rollup</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/parcel</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/es-modules</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/storybook</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/mortality</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+<url><loc>https://jaredlunde.com/posts/tagged/personal</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-12T22:17:17.864Z</lastmod></url>
+</urlset>

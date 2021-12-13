@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="18" failures="0" errors="0" time="2.833">
+  <testsuite name="`&lt;Icon&gt;` — _components/icon/icon.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-10-30T05:05:38" time="1.348" tests="13">
+    <testcase classname="&lt;Icon&gt; should set a &apos;src&apos;" name="&lt;Icon&gt; should set a &apos;src&apos;" time="0.045" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;color&apos;" name="&lt;Icon&gt; should set a &apos;color&apos;" time="0.014" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with numeric value" name="&lt;Icon&gt; should set a &apos;size&apos; with numeric value" time="0.009" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with numeric array value" name="&lt;Icon&gt; should set a &apos;size&apos; with numeric array value" time="0.009" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with mixed array value" name="&lt;Icon&gt; should set a &apos;size&apos; with mixed array value" time="0.007" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with empty height value" name="&lt;Icon&gt; should set a &apos;size&apos; with empty height value" time="0.008" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with empty width value" name="&lt;Icon&gt; should set a &apos;size&apos; with empty width value" time="0.007" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with null height value" name="&lt;Icon&gt; should set a &apos;size&apos; with null height value" time="0.008" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with null width value" name="&lt;Icon&gt; should set a &apos;size&apos; with null width value" time="0.006" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a &apos;size&apos; with null values" name="&lt;Icon&gt; should set a &apos;size&apos; with null values" time="0.005" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set a default &apos;size&apos;" name="&lt;Icon&gt; should set a default &apos;size&apos;" time="0.006" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should be hidden without &apos;aria-label&apos; attribute" name="&lt;Icon&gt; should be hidden without &apos;aria-label&apos; attribute" time="0.002" file="components/icon/icon.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Icon&gt; should set custom &apos;role&apos; attribute" name="&lt;Icon&gt; should set custom &apos;role&apos; attribute" time="0.004" file="components/icon/icon.test.tsx">
+    </testcase>
+  </testsuite>
+  <testsuite name="`&lt;Link&gt;` — _components/link/index.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-10-30T05:05:38" time="1.372" tests="5">
+    <testcase classname="&lt;Link&gt; should navigate to about page" name="&lt;Link&gt; should navigate to about page" time="0.068" file="components/link/index.test.tsx">
+    </testcase>
+    <testcase classname="&lt;Link&gt; should add props to the underlying &lt;a&gt; tag" name="&lt;Link&gt; should add props to the underlying &lt;a&gt; tag" time="0.009" file="components/link/index.test.tsx">
+    </testcase>
+    <testcase classname="&lt;NavLink&gt; should navigate to about page" name="&lt;NavLink&gt; should navigate to about page" time="0.015" file="components/link/index.test.tsx">
+    </testcase>
+    <testcase classname="&lt;NavLink&gt; should toggle aria-current attribute when active/inactive" name="&lt;NavLink&gt; should toggle aria-current attribute when active/inactive" time="0.016" file="components/link/index.test.tsx">
+    </testcase>
+    <testcase classname="&lt;NavLink&gt; should add props to the underlying &lt;a&gt; tag" name="&lt;NavLink&gt; should add props to the underlying &lt;a&gt; tag" time="0.004" file="components/link/index.test.tsx">
+    </testcase>
+  </testsuite>
+</testsuites>

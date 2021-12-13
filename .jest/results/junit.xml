@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="1.052">
+  <testsuite name="`undefined` — _components/index.test.ts_" errors="0" failures="0" skipped="0" timestamp="2021-10-27T03:46:48" time="0.622" tests="1">
+    <testcase classname=" should work" name=" should work" time="0.003" file="components/index.test.ts">
+    </testcase>
+  </testsuite>
+</testsuites>
