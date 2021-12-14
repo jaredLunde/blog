@@ -46,10 +46,26 @@ const Post: NextPage<PostProps> = function ({ slug }) {
           images: post.metadata.image
             ? [{ url: absoluteUrl(post.metadata.image) }]
             : [],
+          type: "article",
+          article: {
+            publishedTime: new Date(post.metadata.timestamp).toISOString(),
+            authors: ["Jared Lunde"],
+            tags: [...post.metadata.categories, ...post.metadata.tags],
+          },
         }}
         twitter={{
           cardType: post.metadata.image ? "summary_large_image" : "summary",
         }}
+        additionalMetaTags={
+          post.metadata.image
+            ? [
+                {
+                  name: "twitter:image",
+                  content: absoluteUrl(post.metadata.image),
+                },
+              ]
+            : []
+        }
       />
 
       <div

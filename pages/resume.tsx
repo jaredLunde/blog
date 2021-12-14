@@ -30,6 +30,12 @@ const Resume: NextPage = function () {
         twitter={{
           cardType: "summary",
         }}
+        additionalMetaTags={[
+          {
+            name: "twitter:image",
+            content: absoluteUrl("/avatar.jpeg"),
+          },
+        ]}
       />
 
       <Section

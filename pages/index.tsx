@@ -20,6 +20,12 @@ const Home: NextPage<HomeProps> = function ({}) {
         twitter={{
           cardType: "summary_large_image",
         }}
+        additionalMetaTags={[
+          {
+            name: "twitter:image",
+            content: absoluteUrl("/dunes.jpeg"),
+          },
+        ]}
       />
 
       <div

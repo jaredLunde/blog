@@ -34,6 +34,16 @@ const Category: NextPage<CategoryProps> = function ({ category }) {
             ? "summary_large_image"
             : "summary",
         }}
+        additionalMetaTags={
+          postWithImage?.metadata.image
+            ? [
+                {
+                  name: "twitter:image",
+                  content: absoluteUrl(postWithImage.metadata.image),
+                },
+              ]
+            : []
+        }
       />
 
       <section

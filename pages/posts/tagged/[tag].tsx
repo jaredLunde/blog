@@ -34,6 +34,16 @@ const Tag: NextPage<TagProps> = function ({ tag }) {
             ? "summary_large_image"
             : "summary",
         }}
+        additionalMetaTags={
+          postWithImage?.metadata.image
+            ? [
+                {
+                  name: "twitter:image",
+                  content: absoluteUrl(postWithImage.metadata.image),
+                },
+              ]
+            : []
+        }
       />
 
       <div
