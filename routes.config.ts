@@ -27,7 +27,9 @@ export const routes = {
 export function absoluteUrl(path: string) {
   return new URL(
     path,
-    process.env.NEXT_PUBLIC_VERCEL_URL
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+      ? "https://jaredlunde.com"
+      : process.env.NEXT_PUBLIC_VERCEL_URL
       ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
       : "http://localhost:3000"
   ).href;
