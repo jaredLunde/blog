@@ -16,7 +16,7 @@ const Home: NextPage<HomeProps> = function ({}) {
         title="✌️ Jared Lunde / UI Engineer / Denver, CO"
         description={`👋 I'm a UI engineer & creative living in Denver, Colorado. Follow my blog to see what I am thinking about right now.`}
         canonical={absoluteUrl(routes.home())}
-        openGraph={{ images: [{ url: absoluteUrl("/dunes.jpg") }] }}
+        openGraph={{ images: [{ url: absoluteUrl("/dunes.jpeg") }] }}
         twitter={{
           cardType: "summary_large_image",
         }}
