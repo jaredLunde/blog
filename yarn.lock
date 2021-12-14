@@ -7525,10 +7525,10 @@ property-information@^5.0.0, property-information@^5.3.0:
   dependencies:
     xtend "^4.0.0"
 
-proser@^0.1.21:
-  version "0.1.21"
-  resolved "https://registry.yarnpkg.com/proser/-/proser-0.1.21.tgz#77341bc70585336f4e8b5e4a4e88f79412c53e1a"
-  integrity sha512-KUkthzT2VVOwo3KXjV5Dis1t6ARt9MpC2tf5rw/Yruez2gu2pdcJSuH+chW5kIsojbVEdn76zEKCp2ln+77YeQ==
+proser@^0.1.22:
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/proser/-/proser-0.1.22.tgz#c908da20e8e05bdde80708f188b84c177e9fa6a8"
+  integrity sha512-VKog6osHPN5SM5P9fdfQpl8G+5qMpISmBEvqlwa4YeZ8r2Sg7p2IM1I88tBSTV1cmpiIz8tGmI6yz5n9W/vFhQ==
   dependencies:
     "@babel/core" "^7.11.1"
     "@babel/generator" "^7.11.0"
