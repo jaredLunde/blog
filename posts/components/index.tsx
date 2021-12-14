@@ -24,7 +24,8 @@ export function img(props: React.ImgHTMLAttributes<HTMLImageElement>) {
 
 export function time({ children }: { children: number }) {
   const datetime = new Date(children);
-  return <time dateTime={datetime.toJSON()}>{ago(datetime)}</time>;
+  const agoText = ago(datetime);
+  return <time dateTime={datetime.toJSON()}>{agoText}</time>;
 }
 
 function createHeading(Component: "h1" | "h2" | "h3" | "h4" | "h5") {

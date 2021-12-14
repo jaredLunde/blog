@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 import * as React from "react";
 import { Icon } from "@/components/icon";
 import { mq, pipeStyles, styles } from "@/dash.config";
-import { absRoutes } from "@/routes.config";
+import { absoluteUrl, routes } from "@/routes.config";
 import { grid, gridItem, vstack } from "@/styles/layout";
 import { text } from "@/styles/text";
 
@@ -23,13 +23,19 @@ const Resume: NextPage = function () {
       <NextSeo
         title="Resume / UI Engineer / Jared Lunde"
         description={`Want to know more about my professional experience? Check out my resume here.`}
-        canonical={absRoutes.resume()}
+        canonical={absoluteUrl(routes.resume())}
         openGraph={{
-          images: [{ url: "/avatar.jpeg" }],
+          images: [{ url: absoluteUrl("/avatar.jpeg") }],
         }}
         twitter={{
           cardType: "summary",
         }}
+        additionalMetaTags={[
+          {
+            name: "twitter:image",
+            content: absoluteUrl("/avatar.jpeg"),
+          },
+        ]}
       />
 
       <Section

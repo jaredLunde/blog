@@ -4,7 +4,7 @@ import { useOrder } from "proser";
 import * as React from "react";
 import { PostsList } from "@/components/posts-list";
 import { posts } from "@/posts";
-import { absRoutes } from "@/routes.config";
+import { absoluteUrl, routes } from "@/routes.config";
 import { vstack } from "@/styles/layout";
 
 const Home: NextPage<HomeProps> = function ({}) {
@@ -15,11 +15,17 @@ const Home: NextPage<HomeProps> = function ({}) {
       <NextSeo
         title="✌️ Jared Lunde / UI Engineer / Denver, CO"
         description={`👋 I'm a UI engineer & creative living in Denver, Colorado. Follow my blog to see what I am thinking about right now.`}
-        canonical={absRoutes.home()}
-        openGraph={{ images: [{ url: "/dunes.jpg" }] }}
+        canonical={absoluteUrl(routes.home())}
+        openGraph={{ images: [{ url: absoluteUrl("/dunes.jpeg") }] }}
         twitter={{
           cardType: "summary_large_image",
         }}
+        additionalMetaTags={[
+          {
+            name: "twitter:image",
+            content: absoluteUrl("/dunes.jpeg"),
+          },
+        ]}
       />
 
       <div

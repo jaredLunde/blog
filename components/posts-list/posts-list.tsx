@@ -1,3 +1,4 @@
+import { useId } from "@radix-ui/react-id";
 import clsx from "clsx";
 import { DynamicList, useScroller, useSize } from "mini-virtual-list";
 import type { DynamicListRenderProps } from "mini-virtual-list";
@@ -44,47 +45,35 @@ export function PostsList({ posts }: { posts: Post[] }) {
 }
 
 function Post({ data: post, measure, width, index, numPosts }: PostProps) {
+  const id = useId();
   React.useEffect(measure, [measure, width, post.id]);
 
   return (
     <React.Fragment>
-      <section
+      <article
         className={clsx(
           vstack({
             gap: 500,
             pad: { min: 500, sm: 600 },
+            reversed: true,
           })
         )}
+        aria-labelledby={id + "-title"}
+        aria-describedby={`${id}-desc ${id}-reading-time`}
       >
-        <div
-          className={clsx(
-            hstack({ gap: 400 }),
-            text({ color: "text400", variant: "caption" })
-          )}
-        >
-          <postComponents.time>{post.metadata.timestamp}</postComponents.time>{" "}
-          <span aria-hidden>&mdash;</span>
-          <span className={hstack({ gap: 400 })}>
-            {post.metadata.categories.map((category) => (
-              <React.Fragment key={category}>
-                <Link to="category" params={{ category }} rel="category">
-                  {category}
-                </Link>
-              </React.Fragment>
-            ))}
-          </span>
-        </div>
-
         <Link
           to="post"
           params={{ category: post.metadata.categories[0], slug: post.slug }}
           className={clsx(vstack({ gap: 500 }), postCard.link())}
         >
           <div className={vstack({ gap: 400 })}>
-            <h3 className={text({ weight: 400, size: 400, color: "text" })}>
+            <h3
+              className={text({ weight: 400, size: 400, color: "text" })}
+              id={id + "-title"}
+            >
               {post.metadata.title}
             </h3>
-            <p>{post.metadata.description}</p>
+            <p id={id + "-desc"}>{post.metadata.description}</p>
           </div>
 
           {post.metadata.image && (
@@ -98,14 +87,39 @@ function Post({ data: post, measure, width, index, numPosts }: PostProps) {
             </div>
           )}
 
-          <div className={text({ color: "secondary", weight: 400 })}>
+          <div
+            className={text({ color: "secondary", weight: 400 })}
+            aria-hidden
+          >
             Hear me out{" "}
             <span className={text({ color: "text500" })}>
-              &middot; {post.metadata.readingTime.text}
+              &middot;{" "}
+              <span id={id + "-reading-time"}>
+                {post.metadata.readingTime.text}
+              </span>
             </span>
           </div>
         </Link>
-      </section>
+
+        <div
+          className={clsx(
+            hstack({ gap: 400 }),
+            text({ color: "text400", variant: "caption" })
+          )}
+        >
+          <postComponents.time>{post.metadata.timestamp}</postComponents.time>{" "}
+          <span aria-hidden>&mdash;</span>
+          <ul className={hstack({ gap: 400 })} aria-label="Post categories">
+            {post.metadata.categories.map((category) => (
+              <li key={category}>
+                <Link to="category" params={{ category }} rel="category">
+                  {category}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </article>
 
       {index < numPosts - 1 && <div className={divider()} />}
     </React.Fragment>
