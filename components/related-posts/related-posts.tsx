@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRelatedPosts } from "proser";
 import React from "react";
 import { Link } from "@/components/link";
-import { styles } from "@/dash.config";
+import { mq, styles } from "@/dash.config";
 import type { Post } from "@/posts";
 import * as components from "@/posts/components";
 import { box, hstack, vstack } from "@/styles/layout";
@@ -120,6 +120,12 @@ const postCard = Object.assign(
     padding: t.pad[500],
     borderRadius: t.radius.primary,
     border: `${t.borderWidth[50]} solid ${t.color.secondary}`,
+
+    [mq("hover")]: {
+      ":hover": {
+        backgroundColor: t.color.accent,
+      },
+    },
   })),
   {
     imageContainer: styles.one((t) => ({
