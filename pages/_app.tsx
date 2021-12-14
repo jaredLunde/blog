@@ -149,7 +149,7 @@ function Header() {
       >
         <div
           className={clsx(
-            box({ width: "100%", height: 200 }),
+            box({ width: "100%", height: 224 }),
             scale(homeActive ? "in" : "out")
           )}
           aria-hidden={!homeActive}
@@ -300,7 +300,7 @@ const scale = transition(styles, {
   }),
   in: {
     scale: 1,
-    height: 200,
+    height: 224,
     opacity: 1,
   },
   out: {
