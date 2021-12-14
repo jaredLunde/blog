@@ -8,7 +8,7 @@ import { RelatedPosts } from "@/components/related-posts";
 import { mq, styles } from "@/dash.config";
 import { Post, posts, postsMap } from "@/posts";
 import * as postComponents from "@/posts/components";
-import { absRoutes, routes } from "@/routes.config";
+import { absoluteUrl, routes } from "@/routes.config";
 import { divider } from "@/styles/divider";
 import { bleed, box, grid, hstack, inline, vstack } from "@/styles/layout";
 import { prose } from "@/styles/prose";
@@ -26,6 +26,8 @@ const Post: NextPage<PostProps> = function ({ slug }) {
         border: [["none", 50], "border"],
       })}
       style={{ marginLeft: "auto", marginRight: "auto" }}
+      itemScope
+      itemType="https://schema.org/BlogPosting"
     >
       <NextSeo
         title={`${post.metadata.title} / Jared Lunde`}
@@ -34,12 +36,16 @@ const Post: NextPage<PostProps> = function ({ slug }) {
             ? post.metadata.description
             : ""
         }
-        canonical={absRoutes.post({
-          category: post.metadata.categories[0],
-          slug: post.slug,
-        })}
+        canonical={absoluteUrl(
+          routes.post({
+            category: post.metadata.categories[0],
+            slug: post.slug,
+          })
+        )}
         openGraph={{
-          images: post.metadata.image ? [{ url: post.metadata.image }] : [],
+          images: post.metadata.image
+            ? [{ url: absoluteUrl(post.metadata.image) }]
+            : [],
         }}
         twitter={{
           cardType: post.metadata.image ? "summary_large_image" : "summary",
@@ -52,6 +58,15 @@ const Post: NextPage<PostProps> = function ({ slug }) {
           pad: { min: [500, 500, "none"], sm: [600, 600, "none"] },
         })}
       >
+        <meta
+          itemProp="datePublished"
+          content={new Date(post.metadata.timestamp).toISOString()}
+        />
+        <meta
+          itemProp="wordCount"
+          content={"" + post.metadata.readingTime.words}
+        />
+
         <div
           className={clsx(
             hstack({ gap: 400 }),
@@ -60,22 +75,22 @@ const Post: NextPage<PostProps> = function ({ slug }) {
         >
           <postComponents.time>{post.metadata.timestamp}</postComponents.time>{" "}
           <span aria-hidden>&mdash;</span>
-          <span className={hstack({ gap: 400 })}>
+          <ul className={hstack({ gap: 400 })} aria-label="Post categories">
             {post.metadata.categories.map((category) => (
-              <Link
-                key={category}
-                to="category"
-                params={{ category }}
-                rel="category"
-              >
-                {category}
-              </Link>
+              <li key={category}>
+                <Link to="category" params={{ category }} rel="category">
+                  {category}
+                </Link>
+              </li>
             ))}
-          </span>
+          </ul>
         </div>
 
         <div className={vstack({ gap: 500 })}>
-          <h1 className={text({ weight: 400, size: 500, color: "text" })}>
+          <h1
+            className={text({ weight: 400, size: 500, color: "text" })}
+            itemProp="headline"
+          >
             {post.metadata.title}
           </h1>
 
@@ -86,6 +101,7 @@ const Post: NextPage<PostProps> = function ({ slug }) {
               leading: 300,
               color: "text",
             })}
+            itemProp="alternativeHeadline"
           >
             {post.metadata.description}
           </h2>
@@ -99,14 +115,15 @@ const Post: NextPage<PostProps> = function ({ slug }) {
         })}
       >
         <MDXProvider components={postComponents}>
-          <div className={prose()}>
+          <div className={prose()} itemProp="articleBody">
             <React.Suspense fallback={null}>
               <post.component />
             </React.Suspense>
           </div>
         </MDXProvider>
 
-        <section
+        <ul
+          aria-label="Post tags"
           className={clsx(
             inline({ gap: 300 }),
             bleed({ amount: ["em300"] }),
@@ -114,11 +131,13 @@ const Post: NextPage<PostProps> = function ({ slug }) {
           )}
         >
           {post.metadata.tags.map((tag) => (
-            <Link key={tag} to="tag" params={{ tag }} rel="tag">
-              {tag}
-            </Link>
+            <li key={tag}>
+              <Link to="tag" params={{ tag }} rel="tag">
+                {tag}
+              </Link>
+            </li>
           ))}
-        </section>
+        </ul>
 
         <div className={divider()} />
 
@@ -128,6 +147,7 @@ const Post: NextPage<PostProps> = function ({ slug }) {
             gap: 500,
             alignY: { min: "stretch", sm: "center" },
           })}
+          aria-label="Written by Jared Lunde. I am just building the things that make me curious."
         >
           <div
             className={box({
@@ -135,40 +155,48 @@ const Post: NextPage<PostProps> = function ({ slug }) {
               border: [["none", 50, "none", "none"], "border"],
             })}
             style={{ whiteSpace: "pre" }}
+            aria-hidden
           >
             <div className={text({ variant: "caption" })}>Written by</div>
-            <div className="author">Jared Lunde</div>
+            <div className="author" itemProp="author">
+              Jared Lunde
+            </div>
           </div>
-          <p className={text({ color: "text400", size: 200 })}>
-            <span role="img" aria-label="Peace sign emoji">
-              ✌️
-            </span>{" "}
-            I&apos;m just building the things that make me curious
+
+          <p className={text({ color: "text400", size: 200 })} aria-hidden>
+            <span>✌️</span> I&apos;m just building the things that make me
+            curious
           </p>
         </section>
       </div>
 
       <div className={divider()} />
 
-      <section
+      <aside
         className={vstack({
           gap: 500,
           pad: { min: [400, 500, 500], sm: [400, 600, 600] },
         })}
       >
         <h2
+          id="related-posts"
           className={text({
             weight: 400,
             size: 400,
             leading: 300,
             color: "text",
           })}
+          aria-hidden
         >
           Recommended for you
         </h2>
 
-        <RelatedPosts post={post} posts={posts} />
-      </section>
+        <RelatedPosts
+          post={post}
+          posts={posts}
+          aria-labelledby="related-posts"
+        />
+      </aside>
     </article>
   );
 };
@@ -176,7 +204,7 @@ const Post: NextPage<PostProps> = function ({ slug }) {
 const tags = styles.one(
   mq({
     default: (t) => ({
-      "> a": {
+      "> li a": {
         color: t.color.secondary,
         backgroundColor: t.iconButton.color.primary.bg,
         fontWeight: "bold",
@@ -187,14 +215,14 @@ const tags = styles.one(
         textTransform: "uppercase",
       },
 
-      "> a:focus-visible": {
+      "> li a:focus-visible": {
         color: t.iconButton.color.primary.hoverText,
         backgroundColor: t.iconButton.color.primary.hoverBg,
         textDecoration: "none!important",
       },
     }),
     hover: (t) => ({
-      "> a:hover": {
+      "> li a:hover": {
         color: t.iconButton.color.primary.hoverText,
         backgroundColor: t.iconButton.color.primary.hoverBg,
         textDecoration: "none!important",

@@ -80,10 +80,9 @@ function Header() {
 
         <div className={hstack({ gap: 500, align: "center" })}>
           <IconButton
-            aria-label={`Switch to ${
-              theme === "light" ? "dark" : "light"
-            } theme`}
-            title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            aria-label="Toggle dark theme"
+            aria-pressed={theme === "dark"}
+            title="Toggle dark theme"
             onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             icon={
               theme === "light" ? "Weather/sun-fill" : "Weather/moon-clear-fill"

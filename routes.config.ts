@@ -24,16 +24,11 @@ export const routes = {
   },
 };
 
-export const absRoutes = reduce(
-  routes,
-  (acc, key) => {
-    acc[key] = (...args: any[]) =>
-      new URL(
-        // @ts-expect-error: this is fine
-        routes[key](...args),
-        process.env.NEXT_PUBLIC_VERCEL_URL ?? "http://localhost:3000"
-      ).href;
-    return acc;
-  },
-  {} as typeof routes
-);
+export function absoluteUrl(path: string) {
+  return new URL(
+    path,
+    process.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : "http://localhost:3000"
+  ).href;
+}
