@@ -40,10 +40,28 @@ function BlogPostCard({ post }: BlogPostCardProps) {
   return (
     <li className={clsx(postCard())}>
       <article
-        className={vstack({ gap: 500, reversed: true })}
+        className={vstack({ gap: 500 })}
         aria-labelledby={id + "-title"}
         aria-describedby={`${id}-desc ${id}-reading-time`}
       >
+        <div
+          role="complementary"
+          aria-label="Post categories and publish date"
+          className={clsx(hstack({ gap: 400 }), text({ variant: "caption" }))}
+        >
+          <components.time>{post.metadata.timestamp}</components.time>{" "}
+          <span aria-hidden>&mdash;</span>
+          <ul className={hstack({ gap: 400 })} aria-label="Post categories">
+            {post.metadata.categories.map((category) => (
+              <li key={category}>
+                <Link to="category" params={{ category }} rel="category">
+                  {category}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <Link
           to="post"
           params={{ category: post.metadata.categories[0], slug: post.slug }}
@@ -90,22 +108,6 @@ function BlogPostCard({ post }: BlogPostCardProps) {
             </span>
           </div>
         </Link>
-
-        <div
-          className={clsx(hstack({ gap: 400 }), text({ variant: "caption" }))}
-        >
-          <components.time>{post.metadata.timestamp}</components.time>{" "}
-          <span aria-hidden>&mdash;</span>
-          <ul className={hstack({ gap: 400 })} aria-label="Post categories">
-            {post.metadata.categories.map((category) => (
-              <li key={category}>
-                <Link to="category" params={{ category }} rel="category">
-                  {category}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </article>
     </li>
   );

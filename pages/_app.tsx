@@ -90,6 +90,7 @@ function Header() {
           />
 
           <ul
+            role="navigation"
             className={hstack({ gap: 500, align: "center" })}
             aria-label="Links to my social media accounts"
           >

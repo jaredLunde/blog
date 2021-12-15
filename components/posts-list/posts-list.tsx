@@ -55,12 +55,32 @@ function Post({ data: post, measure, width, index, numPosts }: PostProps) {
           vstack({
             gap: 500,
             pad: { min: 500, sm: 600 },
-            reversed: true,
           })
         )}
         aria-labelledby={id + "-title"}
         aria-describedby={`${id}-desc ${id}-reading-time`}
       >
+        <div
+          role="complementary"
+          aria-label="Post categories and publish date"
+          className={clsx(
+            hstack({ gap: 400 }),
+            text({ color: "text400", variant: "caption" })
+          )}
+        >
+          <postComponents.time>{post.metadata.timestamp}</postComponents.time>{" "}
+          <span aria-hidden>&mdash;</span>
+          <ul className={hstack({ gap: 400 })} aria-label="Post categories">
+            {post.metadata.categories.map((category) => (
+              <li key={category}>
+                <Link to="category" params={{ category }} rel="category">
+                  {category}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <Link
           to="post"
           params={{ category: post.metadata.categories[0], slug: post.slug }}
@@ -100,25 +120,6 @@ function Post({ data: post, measure, width, index, numPosts }: PostProps) {
             </span>
           </div>
         </Link>
-
-        <div
-          className={clsx(
-            hstack({ gap: 400 }),
-            text({ color: "text400", variant: "caption" })
-          )}
-        >
-          <postComponents.time>{post.metadata.timestamp}</postComponents.time>{" "}
-          <span aria-hidden>&mdash;</span>
-          <ul className={hstack({ gap: 400 })} aria-label="Post categories">
-            {post.metadata.categories.map((category) => (
-              <li key={category}>
-                <Link to="category" params={{ category }} rel="category">
-                  {category}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
       </article>
 
       {index < numPosts - 1 && <div className={divider()} />}

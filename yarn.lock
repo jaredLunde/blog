@@ -1261,10 +1261,10 @@
     chalk "^4.0.0"
     css "^2.2.4"
 
-"@dash-ui/layout@^1.0.0-alpha.5":
-  version "1.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/@dash-ui/layout/-/layout-1.0.0-alpha.8.tgz#611cd46f3a8976db3e8d2891437c54fb0ff09b53"
-  integrity sha512-1O9GEg/h2bGrK2ar/JBsOIlrPLUdyWcwdtJ46d3fDWuAo8WRwAS0zjF716i2YNkY7eOEiMZZ7mPHV94GRRMxWQ==
+"@dash-ui/layout@^1.0.0-alpha.10":
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@dash-ui/layout/-/layout-1.0.0-alpha.10.tgz#8971780e23ac59f1bab3cb2be9a4ea0ad570b14f"
+  integrity sha512-Za5o26rUpyo8uqk+v+P25/HVaihwMVyzIHk2My+uKSq9cltFhev5lFpZZ2ev2H8Iqjwz3DCdfATiqba+ktswiQ==
   dependencies:
     "@dash-ui/compound" "^1.0.0-alpha.2"
 

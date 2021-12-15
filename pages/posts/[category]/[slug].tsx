@@ -84,6 +84,8 @@ const Post: NextPage<PostProps> = function ({ slug }) {
         />
 
         <div
+          role="complementary"
+          aria-label="Post categories and publish date"
           className={clsx(
             hstack({ gap: 400 }),
             text({ color: "text400", variant: "caption" })
