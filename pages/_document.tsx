@@ -67,9 +67,9 @@ export default class Document extends NextDocument {
 
 function csp(nonce: string) {
   return "".concat(
+    `default-src 'none';`,
     `base-uri 'self';`,
     `form-action 'self';`,
-    `default-src 'self';`,
     `script-src 'self' ${
       process.env.NODE_ENV === "production"
         ? `'nonce-${nonce}'`
@@ -83,7 +83,7 @@ function csp(nonce: string) {
     };`,
     `img-src 'self' https://*.githubusercontent.com data: blob:;`,
     `font-src 'self' https://fonts.gstatic.com;`,
-    `frame-src *;`,
+    `frame-src 'self';`,
     `media-src *;`
   );
 }

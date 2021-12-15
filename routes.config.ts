@@ -1,6 +1,5 @@
 import { URL } from "iso-url";
 import { slugify } from "proser";
-import { reduce } from "@/utils/obj";
 
 export const routes = {
   home() {
