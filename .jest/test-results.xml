@@ -1,39 +1,39 @@
 <?xml version="1.0"?>
 <testsuites failures="0" errors="0" tests="30">
-  <testsuite name="`&lt;Icon&gt;` — _components/icon/icon.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-12-15T04:43:10" time="1.714" tests="13">
+  <testsuite name="`&lt;Icon&gt;` — _components/icon/icon.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-12-15T05:23:36" time="1.765" tests="13">
     <testcase classname="&lt;Icon&gt; should set a 'src'" name="&lt;Icon&gt; should set a 'src'" time="0.06" file="components/icon/icon.test.tsx"/>
     <testcase classname="&lt;Icon&gt; should set a 'color'" name="&lt;Icon&gt; should set a 'color'" time="0.015" file="components/icon/icon.test.tsx"/>
     <testcase classname="&lt;Icon&gt; should set a 'size' with numeric value" name="&lt;Icon&gt; should set a 'size' with numeric value" time="0.013" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a 'size' with numeric array value" name="&lt;Icon&gt; should set a 'size' with numeric array value" time="0.011" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a 'size' with mixed array value" name="&lt;Icon&gt; should set a 'size' with mixed array value" time="0.018" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a 'size' with empty height value" name="&lt;Icon&gt; should set a 'size' with empty height value" time="0.021" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a 'size' with empty width value" name="&lt;Icon&gt; should set a 'size' with empty width value" time="0.014" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a 'size' with null height value" name="&lt;Icon&gt; should set a 'size' with null height value" time="0.017" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a 'size' with null width value" name="&lt;Icon&gt; should set a 'size' with null width value" time="0.018" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a 'size' with null values" name="&lt;Icon&gt; should set a 'size' with null values" time="0.017" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set a default 'size'" name="&lt;Icon&gt; should set a default 'size'" time="0.018" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should be hidden without 'aria-label' attribute" name="&lt;Icon&gt; should be hidden without 'aria-label' attribute" time="0.006" file="components/icon/icon.test.tsx"/>
-    <testcase classname="&lt;Icon&gt; should set custom 'role' attribute" name="&lt;Icon&gt; should set custom 'role' attribute" time="0.029" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a 'size' with numeric array value" name="&lt;Icon&gt; should set a 'size' with numeric array value" time="0.012" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a 'size' with mixed array value" name="&lt;Icon&gt; should set a 'size' with mixed array value" time="0.017" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a 'size' with empty height value" name="&lt;Icon&gt; should set a 'size' with empty height value" time="0.038" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a 'size' with empty width value" name="&lt;Icon&gt; should set a 'size' with empty width value" time="0.021" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a 'size' with null height value" name="&lt;Icon&gt; should set a 'size' with null height value" time="0.015" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a 'size' with null width value" name="&lt;Icon&gt; should set a 'size' with null width value" time="0.02" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a 'size' with null values" name="&lt;Icon&gt; should set a 'size' with null values" time="0.018" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set a default 'size'" name="&lt;Icon&gt; should set a default 'size'" time="0.019" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should be hidden without 'aria-label' attribute" name="&lt;Icon&gt; should be hidden without 'aria-label' attribute" time="0.003" file="components/icon/icon.test.tsx"/>
+    <testcase classname="&lt;Icon&gt; should set custom 'role' attribute" name="&lt;Icon&gt; should set custom 'role' attribute" time="0.005" file="components/icon/icon.test.tsx"/>
   </testsuite>
-  <testsuite name="`persistAtom()` — _stores/atoms.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-12-15T04:43:12" time="0.379" tests="5">
-    <testcase classname="persistAtom() should set initial value" name="persistAtom() should set initial value" time="0.021" file="stores/atoms.test.tsx"/>
+  <testsuite name="`persistAtom()` — _stores/atoms.test.tsx_" errors="0" failures="0" skipped="0" timestamp="2021-12-15T05:23:38" time="0.377" tests="5">
+    <testcase classname="persistAtom() should set initial value" name="persistAtom() should set initial value" time="0.016" file="stores/atoms.test.tsx"/>
     <testcase classname="persistAtom() should persist value to localStorage on mount" name="persistAtom() should persist value to localStorage on mount" time="0.001" file="stores/atoms.test.tsx"/>
     <testcase classname="persistAtom() should persist value to localStorage on set" name="persistAtom() should persist value to localStorage on set" time="0.003" file="stores/atoms.test.tsx"/>
     <testcase classname="persistAtom() should replace stale versions" name="persistAtom() should replace stale versions" time="0.001" file="stores/atoms.test.tsx"/>
     <testcase classname="persistAtom() should not overwrite stored values on mount" name="persistAtom() should not overwrite stored values on mount" time="0.001" file="stores/atoms.test.tsx"/>
   </testsuite>
-  <testsuite name="`createFluxStore()` — _stores/flux.test.ts_" errors="0" failures="0" skipped="0" timestamp="2021-12-15T04:43:13" time="0.27" tests="12">
+  <testsuite name="`createFluxStore()` — _stores/flux.test.ts_" errors="0" failures="0" skipped="0" timestamp="2021-12-15T05:23:38" time="0.279" tests="12">
     <testcase classname="createFluxStore() should invoke mutation on dispatch" name="createFluxStore() should invoke mutation on dispatch" time="0.004" file="stores/flux.test.ts"/>
     <testcase classname="createFluxStore() should be immutable" name="createFluxStore() should be immutable" time="0.001" file="stores/flux.test.ts"/>
-    <testcase classname="createFluxStore() should set state from api" name="createFluxStore() should set state from api" time="0.001" file="stores/flux.test.ts"/>
-    <testcase classname="createFluxStore() should set state from promise api" name="createFluxStore() should set state from promise api" time="0.001" file="stores/flux.test.ts"/>
+    <testcase classname="createFluxStore() should set state from api" name="createFluxStore() should set state from api" time="0" file="stores/flux.test.ts"/>
+    <testcase classname="createFluxStore() should set state from promise api" name="createFluxStore() should set state from promise api" time="0" file="stores/flux.test.ts"/>
     <testcase classname="createPersistentFluxStore() should invoke mutation on dispatch" name="createPersistentFluxStore() should invoke mutation on dispatch" time="0.002" file="stores/flux.test.ts"/>
     <testcase classname="createPersistentFluxStore() should be immutable" name="createPersistentFluxStore() should be immutable" time="0.001" file="stores/flux.test.ts"/>
     <testcase classname="createPersistentFluxStore() should commit items to localStorage" name="createPersistentFluxStore() should commit items to localStorage" time="0.001" file="stores/flux.test.ts"/>
     <testcase classname="createPersistentFluxStore() should exclude keys from localStorage" name="createPersistentFluxStore() should exclude keys from localStorage" time="0.001" file="stores/flux.test.ts"/>
-    <testcase classname="createPersistentFluxStore() should not exclude keys from localStorage if include is defined" name="createPersistentFluxStore() should not exclude keys from localStorage if include is defined" time="0" file="stores/flux.test.ts"/>
+    <testcase classname="createPersistentFluxStore() should not exclude keys from localStorage if include is defined" name="createPersistentFluxStore() should not exclude keys from localStorage if include is defined" time="0.001" file="stores/flux.test.ts"/>
     <testcase classname="createPersistentFluxStore() should not include keys from localStorage" name="createPersistentFluxStore() should not include keys from localStorage" time="0.001" file="stores/flux.test.ts"/>
-    <testcase classname="createPersistentFluxStore() should persist to localStorage from api setState" name="createPersistentFluxStore() should persist to localStorage from api setState" time="0" file="stores/flux.test.ts"/>
+    <testcase classname="createPersistentFluxStore() should persist to localStorage from api setState" name="createPersistentFluxStore() should persist to localStorage from api setState" time="0.001" file="stores/flux.test.ts"/>
     <testcase classname="createPersistentFluxStore() should clear items in localStorage if versions mismatch and reset with initialState" name="createPersistentFluxStore() should clear items in localStorage if versions mismatch and reset with initialState" time="0.002" file="stores/flux.test.ts"/>
   </testsuite>
 </testsuites>
