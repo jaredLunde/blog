@@ -81,6 +81,7 @@ function csp(nonce: string) {
         ? "'self' vitals.vercel-insights.com"
         : "*"
     };`,
+    `prefetch-src 'self';`,
     `img-src 'self' https://*.githubusercontent.com data: blob:;`,
     `font-src 'self' https://fonts.gstatic.com;`,
     `frame-src 'self';`,
