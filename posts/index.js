@@ -96,14 +96,14 @@ export const postsMap = {
     component: dynamic(() => import("./4-forget-what-i-said.mdx")),
     metadata: {
       title: "Forget what I said",
-      description: "A serious request",
+      description: "A serious request for grace.",
       timestamp: 1639456859806,
       get image() {
         return "/shape-shift.jpeg";
       },
       tags: [_Personal, _Snowpack, "Next.js"],
       categories: [_Philosophy, "Software engineering"],
-      readingTime: { text: "3 min read", time: 171600, words: 572 },
+      readingTime: { text: "4 min read", time: 181500, words: 605 },
     },
   },
 };

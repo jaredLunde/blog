@@ -87,13 +87,17 @@ const Post: NextPage<PostProps> = function ({ slug }) {
           role="complementary"
           aria-label="Post categories and publish date"
           className={clsx(
-            hstack({ gap: 400 }),
+            inline({ gap: 400 }),
             text({ color: "text400", variant: "caption" })
           )}
         >
-          <postComponents.time>{post.metadata.timestamp}</postComponents.time>{" "}
+          <div>
+            <postComponents.time>{post.metadata.timestamp}</postComponents.time>{" "}
+            <span aria-hidden>&middot;</span> {post.metadata.readingTime.text}
+          </div>
+
           <span aria-hidden>&mdash;</span>
-          <ul className={hstack({ gap: 400 })} aria-label="Post categories">
+          <ul className={inline({ gap: 400 })} aria-label="Post categories">
             {post.metadata.categories.map((category) => (
               <li key={category}>
                 <Link to="category" params={{ category }} rel="category">
