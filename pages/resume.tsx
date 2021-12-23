@@ -62,13 +62,14 @@ const Resume: NextPage = function () {
             title="Library & app code"
             examples={[
               <React.Fragment key={0}>
-                <strong>14 years</strong> shipping web applications
+                <strong>{currentYear - 2008} years</strong> shipping web
+                applications
               </React.Fragment>,
               <React.Fragment key={1}>
-                <strong>6 years</strong> programming in React
+                <strong>{currentYear - 2014} years</strong> programming in React
               </React.Fragment>,
               <React.Fragment key={2}>
-                <strong>120+</strong> public repositories
+                <strong>130+</strong> public repositories
               </React.Fragment>,
               <React.Fragment key={3}>
                 <strong>500,000+</strong> weekly NPM downloads
@@ -80,10 +81,12 @@ const Resume: NextPage = function () {
             title="UI/UX"
             examples={[
               <React.Fragment key={0}>
-                <strong>3 years</strong> creating design systems
+                <strong>{currentYear - 2018} years</strong> creating design
+                systems
               </React.Fragment>,
               <React.Fragment key={1}>
-                <strong>14 years</strong> creating user experiences
+                <strong>{currentYear - 2007} years</strong> creating user
+                experiences
               </React.Fragment>,
               "Laser-focused on WAI-ARIA accessibility patterns",
             ]}
@@ -311,6 +314,8 @@ const Resume: NextPage = function () {
     </div>
   );
 };
+
+const currentYear = new Date().getFullYear();
 
 function Section({
   title,
