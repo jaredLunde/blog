@@ -10,7 +10,7 @@ import { Post, posts, postsMap } from "@/posts";
 import * as postComponents from "@/posts/components";
 import { absoluteUrl, routes } from "@/routes.config";
 import { divider } from "@/styles/divider";
-import { bleed, box, grid, hstack, inline, vstack } from "@/styles/layout";
+import { bleed, box, grid, inline, vstack } from "@/styles/layout";
 import { prose } from "@/styles/prose";
 import { text } from "@/styles/text";
 
