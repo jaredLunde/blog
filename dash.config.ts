@@ -823,6 +823,7 @@ export const compoundStyles = compound(styles);
  * ```
  */
 function pipe<Tokens extends DashTokens, Themes extends DashThemes>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   styles: Styles<Tokens, Themes>
 ) {
   return (

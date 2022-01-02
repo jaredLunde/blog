@@ -43,6 +43,12 @@ function Header() {
   const { active: resumeActive } = useNavLink({ href: "/resume" });
   const { active: homeActive } = useNavLink({ href: "/" });
   const [theme, setTheme] = useAtom(themeAtom);
+  const [didMount, setDidMount] = React.useState("light");
+
+  React.useEffect(() => {
+    setDidMount(theme);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <React.Fragment>
@@ -80,6 +86,7 @@ function Header() {
 
         <div className={hstack({ gap: 500, align: "center" })}>
           <IconButton
+            key={didMount}
             aria-label="Toggle dark theme"
             aria-pressed={theme === "dark"}
             title="Toggle dark theme"
@@ -159,8 +166,8 @@ function Header() {
             src="/dunes.jpeg"
             alt="An image of the Great Sand Dunes in Southwest Colorado"
             layout="fill"
-            loading="eager"
             objectFit="cover"
+            priority
           />
         </div>
 
