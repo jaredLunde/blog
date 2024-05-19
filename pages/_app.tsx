@@ -232,9 +232,9 @@ function Header() {
               ) : (
                 <React.Fragment>
                   I write code, read things, design, eat, think, and
-                  occasionally hyperbolize on{" "}
-                  <a href="https://twitter.com/jaredLunde">Twitter</a>. Now I
-                  write words here. Sometimes with more nuance.
+                  work on{" "}
+                  <a href="https://flexstack.com/">FlexStack</a>. I sometimes
+                  write words here.
                 </React.Fragment>
               )}
             </p>
