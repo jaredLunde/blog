@@ -101,7 +101,7 @@ jobs:
       # When one test job fails, DO NOT cancel the other containers
       fail-fast: false
       matrix:
-        node-version: [16.x]
+        node-version: [22.x]
         # Runs in X jobs
         jobs_total: [1] # [2]
         jobs_index: [0] # [0, 1]
@@ -170,25 +170,6 @@ jobs:
         with:
           file_pattern: .jest/test-results.xml
           commit_message: "chore: update test results"
-
-  deploy-preview:
-    name: 🖼️ Deploy Preview
-    # Don't run deployments for test-only commits/PRs
-    if: "github.event_name == 'pull_request' && !startsWith(github.event.head_commit.message, 'test:') && !startsWith(github.event.pull_request.title, 'test:') && !startsWith(github.event.head_commit.message, 'test(') && !startsWith(github.event.pull_request.title, 'test(') && !contains(github.event.head_commit.message, '[skip ci]') && !startsWith(github.event.head_commit.message, 'docs:') && !startsWith(github.event.head_commit.message, 'chore:') && !startsWith(github.event.head_commit.message, 'style:') && !contains(github.event.pull_request.title, '[skip ci]') && !startsWith(github.event.pull_request.title, 'docs:') && !startsWith(github.event.pull_request.title, 'chore:') && !startsWith(github.event.pull_request.title, 'style:') && !startsWith(github.event.head_commit.message, 'docs(') && !startsWith(github.event.head_commit.message, 'chore(') && !startsWith(github.event.head_commit.message, 'style(') && !startsWith(github.event.pull_request.title, 'docs(') && !startsWith(github.event.pull_request.title, 'chore(') && !startsWith(github.event.pull_request.title, 'style(')"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Deploy
-        uses: amondnet/vercel-action@v20
-        with:
-          # see: https://github.com/marketplace/actions/vercel-action#inputs
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID}}
-          vercel-project-id: ${{ secrets.PROJECT_ID}}
 
   deploy-production:
     name: 🚀 Deploy to Production

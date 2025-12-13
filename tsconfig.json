@@ -4,6 +4,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -28,9 +29,10 @@
       "@/types/*": ["types/*"],
       "@/utils/*": ["utils/*"]
     },
-    "types": ["react/next", "react-dom/next"],
+    "typeRoots": ["./node_modules/@types"],
+    "types": [],
     "isolatedModules": true
   },
   "include": ["next-env.d.ts", ".jest/setup.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "node_modules/@types/minimatch"]
 }
