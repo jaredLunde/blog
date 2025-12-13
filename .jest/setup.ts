@@ -1,7 +1,7 @@
-import "@testing-library/jest-dom";
-import "@testing-library/jest-dom/extend-expect";
-import mockRouter from "next-router-mock";
-import { matchers } from "@dash-ui/jest";
+require("@testing-library/jest-dom");
+require("@testing-library/jest-dom/extend-expect");
+const mockRouter = require("next-router-mock").default;
+const { matchers } = require("@dash-ui/jest");
 
 /**
  * Adds matchers for toHaveStyleRule from @dash-ui/jest
@@ -37,3 +37,6 @@ beforeAll(() => {
    */
   (global as any).IS_REACT_ACT_ENVIRONMENT = true;
 });
+
+// Make this file a module for TypeScript
+export {};
