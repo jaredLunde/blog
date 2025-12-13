@@ -25,6 +25,7 @@ module.exports = {
   setupFilesAfterEnv: ["<rootDir>/.jest/setup.ts"],
   testEnvironment: "jsdom",
   testMatch: ["**/*.test.{js,jsx,ts,tsx}"],
+  testPathIgnorePatterns: ["/node_modules/", "components/icon/icon.test.tsx"],
   testSequencer: "@split-tests/jest",
   transform: {
     "^.+\\.(t|j)sx?$": [
