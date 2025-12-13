@@ -16,7 +16,11 @@ module.exports = {
       .flatMap((dirs) => dirs.map((dir) => path.dirname(dir)))
       .filter((dir, i, arr) => arr.indexOf(dir) === i),
   ],
-  moduleNameMapper: { "^@/(.*)$": "<rootDir>/$1" },
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/$1",
+    "^react-dom/client$": "<rootDir>/node_modules/react-dom",
+    "^react$": "<rootDir>/node_modules/react",
+  },
   rootDir: path.resolve(__dirname, "../"),
   setupFilesAfterEnv: ["<rootDir>/.jest/setup.ts"],
   testEnvironment: "jsdom",

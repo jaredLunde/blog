@@ -96,7 +96,8 @@
     "zustand": "^3.6.7"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.4"
+    "@swc/core": "^1.15.4",
+    "@swc/helpers": "^0.5.17"
   },
   "commitlint": {
     "extends": [

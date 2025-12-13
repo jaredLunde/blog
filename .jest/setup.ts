@@ -1,6 +1,6 @@
 require("@testing-library/jest-dom");
 require("@testing-library/jest-dom/extend-expect");
-const mockRouter = require("next-router-mock");
+const mockRouter = require("next-router-mock").default;
 const { matchers } = require("@dash-ui/jest");
 
 /**
