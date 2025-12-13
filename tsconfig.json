@@ -30,9 +30,14 @@
       "@/utils/*": ["utils/*"]
     },
     "typeRoots": ["./node_modules/@types"],
-    "types": [],
+    "types": ["jest", "node"],
     "isolatedModules": true
   },
   "include": ["next-env.d.ts", ".jest/setup.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "node_modules/@types/minimatch"]
+  "exclude": [
+    "node_modules",
+    "node_modules/@types/minimatch",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
 }

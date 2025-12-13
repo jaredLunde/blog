@@ -37,3 +37,6 @@ beforeAll(() => {
    */
   (global as any).IS_REACT_ACT_ENVIRONMENT = true;
 });
+
+// Make this file a module for TypeScript
+export {};
