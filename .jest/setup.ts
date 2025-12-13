@@ -1,7 +1,7 @@
-import "@testing-library/jest-dom";
-import "@testing-library/jest-dom/extend-expect";
-import mockRouter from "next-router-mock";
-import { matchers } from "@dash-ui/jest";
+require("@testing-library/jest-dom");
+require("@testing-library/jest-dom/extend-expect");
+const mockRouter = require("next-router-mock");
+const { matchers } = require("@dash-ui/jest");
 
 /**
  * Adds matchers for toHaveStyleRule from @dash-ui/jest

@@ -26,10 +26,19 @@ module.exports = {
     "^.+\\.(t|j)sx?$": [
       "@swc-node/jest",
       {
-        react: {
-          runtime: "automatic",
-          useBuiltins: true,
+        jsc: {
+          parser: {
+            syntax: "typescript",
+            tsx: true,
+          },
+          transform: {
+            react: {
+              runtime: "automatic",
+              useBuiltins: true,
+            },
+          },
         },
+        module: "commonjs",
       },
     ],
   },
