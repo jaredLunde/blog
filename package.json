@@ -2,6 +2,9 @@
   "private": true,
   "name": "blog",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=18.20.0"
+  },
   "scripts": {
     "post": "proser post",
     "build": "proser build && next build",
@@ -10,7 +13,7 @@
     "check-types": "tsc --noEmit",
     "dev": "next dev",
     "lint": "eslint . --ext .js,.ts,.tsx",
-    "prepare": "husky install",
+    "prepare": "husky install || true",
     "start": "next start",
     "test": "jest --config .jest/config.js",
     "watch-posts": "proser watch"
