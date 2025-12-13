@@ -15,6 +15,6 @@ export const {
   gridItem,
   bleed,
 } = layout<DesignTokens, typeof themes, typeof mediaQueries>(
-  styles,
+  styles as any,
   mediaQueries
 );

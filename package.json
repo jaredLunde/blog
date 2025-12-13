@@ -3,13 +3,13 @@
   "name": "blog",
   "version": "0.1.0",
   "scripts": {
-    "post": "proser post",
     "build": "proser build && next build",
     "postbuild": "next-sitemap",
     "build-posts": "proser build",
     "check-types": "tsc --noEmit",
     "dev": "next dev",
     "lint": "eslint . --ext .js,.ts,.tsx",
+    "post": "proser post",
     "prepare": "husky install",
     "start": "next start",
     "test": "jest --config .jest/config.js",
@@ -94,6 +94,9 @@
     "typescript": "^4.5.3",
     "use-subscription": "^1.5.1",
     "zustand": "^3.6.7"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.15.4"
   },
   "commitlint": {
     "extends": [
